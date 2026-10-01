@@ -4,82 +4,53 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#071d3b">
 
-<title>Mis XV Años - Marian</title>
+<title>XV Años de Marian</title>
 
 <style>
-/* =========================
-   CONFIGURACIÓN GENERAL
-========================= */
-
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-html {
-    scroll-behavior: smooth;
+html,
+body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    background: #071d3b;
-    color: #f4d77a;
-    font-family: Georgia, "Times New Roman", serif;
-    overflow-x: hidden;
+  background: #071b36;
+  color: white;
+  font-family: Georgia, "Times New Roman", serif;
+  overflow-x: hidden;
+  line-height: 0;
 }
 
 /* =========================
    NIEVE
 ========================= */
 
-#copos {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    overflow: hidden;
-    z-index: 9999;
-}
-
-.copo {
-    position: absolute;
-    top: -30px;
-    color: #ffffff;
-    user-select: none;
-    opacity: 0.85;
-    animation-name: caer;
-    animation-timing-function: linear;
-    animation-iteration-count: 1;
+.nieve {
+  position: fixed;
+  top: -30px;
+  color: white;
+  pointer-events: none;
+  z-index: 9999;
+  animation: caer linear forwards;
+  line-height: 1;
 }
 
 @keyframes caer {
-    0% {
-        transform:
-            translateY(-30px)
-            translateX(0)
-            rotate(0deg);
-        opacity: 0;
-    }
+  from {
+    transform: translateY(-30px) rotate(0deg);
+  }
 
-    10% {
-        opacity: 0.9;
-    }
-
-    50% {
-        transform:
-            translateY(50vh)
-            translateX(35px)
-            rotate(180deg);
-    }
-
-    100% {
-        transform:
-            translateY(110vh)
-            translateX(-35px)
-            rotate(360deg);
-        opacity: 0;
-    }
+  to {
+    transform: translateY(110vh) rotate(360deg);
+  }
 }
 
 /* =========================
@@ -87,57 +58,65 @@ body {
 ========================= */
 
 #portada {
-    position: fixed;
-    inset: 0;
-    z-index: 1000;
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100vh;
 
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
+  background-image: url("portada.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 
-    background-color: #071d3b;
-    background-image: url("portada.jpeg");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
 
-    cursor: pointer;
+  z-index: 1000;
 
-    transition:
-        opacity 1.2s ease,
-        transform 1.2s ease;
+  transition:
+    opacity 1s ease,
+    transform 1s ease;
 }
 
-#portada.saliendo {
-    opacity: 0;
-    transform: scale(1.06);
-    pointer-events: none;
+#portada.oculta {
+  opacity: 0;
+  transform: scale(1.05);
+  pointer-events: none;
 }
 
-.mensaje-portada {
-    margin-bottom: 8vh;
+.abrir {
+  margin-bottom: 45px;
 
-    color: #f4d77a;
-    font-size: clamp(14px, 3vw, 20px);
-    letter-spacing: 3px;
-    text-align: center;
+  padding: 15px 28px;
 
-    text-shadow:
-        0 2px 10px rgba(0,0,0,.8);
+  border: 2px solid #FFD700;
+  border-radius: 50px;
 
-    animation: brillo 2s infinite alternate;
+  background: rgba(7, 27, 54, 0.85);
+
+  color: #FFD700;
+
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 1.2;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 0 15px rgba(255, 215, 0, 0.5);
+
+  animation: pulsar 1.8s infinite;
 }
 
-@keyframes brillo {
-    from {
-        opacity: .55;
-        transform: translateY(3px);
-    }
+@keyframes pulsar {
+  0%, 100% {
+    transform: scale(1);
+  }
 
-    to {
-        opacity: 1;
-        transform: translateY(-3px);
-    }
+  50% {
+    transform: scale(1.05);
+  }
 }
 
 /* =========================
@@ -145,202 +124,216 @@ body {
 ========================= */
 
 #contenido {
-    opacity: 0;
-    visibility: hidden;
-
-    transition:
-        opacity 1s ease,
-        visibility 1s ease;
+  display: none;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
-#contenido.activo {
+#contenido.mostrar {
+  display: block;
+  animation: aparecer 1s ease;
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+  }
+
+  to {
     opacity: 1;
-    visibility: visible;
+  }
 }
 
 /* =========================
-   SECCIONES
+   TODAS LAS IMÁGENES
 ========================= */
 
 .seccion {
-    position: relative;
-
-    width: 100%;
-    min-height: 100vh;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    padding: 20px;
-
-    background-color: #071d3b;
-
-    opacity: 0;
-    transform: translateY(40px);
-
-    transition:
-        opacity 1.2s ease,
-        transform 1.2s ease;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: block;
+  overflow: hidden;
 }
 
-.seccion.visible {
-    opacity: 1;
-    transform: translateY(0);
+.seccion img {
+  display: block;
+
+  width: 100%;
+  max-width: 100%;
+
+  height: auto;
+
+  margin: 0;
+  padding: 0;
+
+  object-fit: contain;
 }
 
 /* =========================
-   IMÁGENES
+   CRONÓMETRO
 ========================= */
 
-.imagen-fondo {
-    width: 100%;
-    min-height: 100vh;
+.contador {
+  position: relative;
 
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
+  width: 100%;
+
+  margin: 0;
+  padding: 0;
+
+  overflow: hidden;
+
+  line-height: 0;
+}
+
+/* Imagen del cronómetro */
+
+.imagen-contador {
+  display: block;
+
+  width: 100%;
+  max-width: 100%;
+
+  height: auto;
+
+  margin: 0;
+  padding: 0;
+
+  object-fit: contain;
+}
+
+/* Números encima de la imagen */
+
+.numeros-contador {
+  position: absolute;
+
+  top: 63%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  width: 92%;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+  text-align: center;
+
+  color: #FFD700;
+
+  line-height: normal;
+
+  text-shadow:
+    0 2px 5px #000,
+    0 0 10px rgba(255, 215, 0, 0.8);
+}
+
+.tiempo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.numero {
+  font-size: clamp(28px, 7vw, 75px);
+
+  font-weight: bold;
+
+  line-height: 1;
+}
+
+.etiqueta {
+  margin-top: 6px;
+
+  font-size: clamp(8px, 2vw, 17px);
+
+  font-weight: bold;
+
+  letter-spacing: 1px;
+
+  line-height: 1.2;
 }
 
 /* =========================
-   BOTÓN CONFIRMAR
+   CONFIRMAR ASISTENCIA
 ========================= */
 
-.boton-area {
-    position: absolute;
+.confirmacion {
+  width: 100%;
 
-    bottom: 9%;
+  margin: 0;
+  padding: 18px 15px 25px;
 
-    left: 50%;
-    transform: translateX(-50%);
+  background: #071b36;
 
-    z-index: 10;
+  text-align: center;
 
-    text-align: center;
+  line-height: normal;
 }
 
-.boton-confirmar {
-    border: 1px solid #f4d77a;
+.boton {
+  display: inline-block;
 
-    background:
-        linear-gradient(
-            135deg,
-            #b8860b,
-            #f4d77a,
-            #d4af37
-        );
+  padding: 14px 28px;
 
-    color: #071d3b;
+  border-radius: 50px;
 
-    padding: 15px 28px;
+  background: #FFD700;
 
-    border-radius: 50px;
+  color: #071b36;
 
-    font-family: Georgia, serif;
-    font-size: 17px;
-    font-weight: bold;
+  text-decoration: none;
 
-    cursor: pointer;
+  font-size: 18px;
 
-    box-shadow:
-        0 0 20px rgba(244,215,122,.35),
-        0 6px 20px rgba(0,0,0,.35);
+  font-weight: bold;
 
-    transition:
-        transform .3s ease,
-        box-shadow .3s ease;
+  line-height: 1.2;
+
+  box-shadow:
+    0 5px 20px rgba(255, 215, 0, 0.4);
+
+  transition: transform 0.3s ease;
 }
 
-.boton-confirmar:hover {
-    transform: scale(1.06);
-
-    box-shadow:
-        0 0 30px rgba(244,215,122,.6),
-        0 8px 25px rgba(0,0,0,.4);
-}
-
-.boton-confirmar:active {
-    transform: scale(.96);
+.boton:hover {
+  transform: scale(1.05);
 }
 
 /* =========================
-   BOTÓN MÚSICA
+   BOTÓN DE MÚSICA
 ========================= */
 
 #botonMusica {
-    position: fixed;
+  position: fixed;
 
-    top: 20px;
-    right: 20px;
+  right: 16px;
+  bottom: 16px;
 
-    width: 48px;
-    height: 48px;
+  width: 52px;
+  height: 52px;
 
-    z-index: 10000;
+  border-radius: 50%;
 
-    border-radius: 50%;
+  border: 2px solid #FFD700;
 
-    border: 1px solid #f4d77a;
+  background: rgba(7, 27, 54, 0.92);
 
-    background: rgba(7,29,59,.85);
+  color: #FFD700;
 
-    color: #f4d77a;
+  font-size: 22px;
 
-    font-size: 21px;
+  cursor: pointer;
 
-    cursor: pointer;
+  z-index: 9998;
 
-    display: none;
+  line-height: 1;
 
-    align-items: center;
-    justify-content: center;
-
-    box-shadow:
-        0 0 15px rgba(244,215,122,.25);
-
-    backdrop-filter: blur(5px);
-}
-
-#botonMusica.visible {
-    display: flex;
-}
-
-/* =========================
-   DESTELLOS DORADOS
-========================= */
-
-.destello {
-    position: fixed;
-
-    width: 4px;
-    height: 4px;
-
-    border-radius: 50%;
-
-    background: #f4d77a;
-
-    pointer-events: none;
-
-    z-index: 9998;
-
-    animation: destello 2s ease-out forwards;
-}
-
-@keyframes destello {
-    0% {
-        opacity: 0;
-        transform: scale(0);
-    }
-
-    40% {
-        opacity: 1;
-        transform: scale(1);
-    }
-
-    100% {
-        opacity: 0;
-        transform: scale(0);
-    }
+  box-shadow:
+    0 0 15px rgba(255, 215, 0, 0.4);
 }
 
 /* =========================
@@ -349,424 +342,38 @@ body {
 
 @media (max-width: 600px) {
 
-    .seccion {
-        padding: 0;
-        min-height: 100svh;
-    }
+  .abrir {
+    margin-bottom: 35px;
+    padding: 13px 24px;
+    font-size: 17px;
+  }
 
-    .imagen-fondo {
-        min-height: 100svh;
-    }
+  .numeros-contador {
+    width: 96%;
+  }
 
-    .mensaje-portada {
-        margin-bottom: 7vh;
-        font-size: 13px;
-        letter-spacing: 2px;
-    }
+  .numero {
+    font-size: clamp(23px, 9vw, 50px);
+  }
 
-    .boton-confirmar {
-        font-size: 15px;
-        padding: 13px 22px;
-    }
+  .etiqueta {
+    font-size: clamp(7px, 2.5vw, 13px);
+  }
 
-    #botonMusica {
-        top: 14px;
-        right: 14px;
-        width: 44px;
-        height: 44px;
-    }
+  .confirmacion {
+    padding: 15px 12px 20px;
+  }
+
+  .boton {
+    font-size: 16px;
+    padding: 13px 24px;
+  }
 }
 </style>
 </head>
 
-
 <body>
 
 <!-- =========================
-     MÚSICA
-========================= -->
-
-<audio id="musica" loop preload="auto">
-    <source src="musica.mp3" type="audio/mpeg">
-</audio>
-
-
-<!-- =========================
-     COPOS
-========================= -->
-
-<div id="copos"></div>
-
-
-<!-- =========================
-     BOTÓN MÚSICA
-========================= -->
-
-<button id="botonMusica"
-        aria-label="Controlar música"
-        onclick="alternarMusica()">
-    🔊
-</button>
-
-
-<!-- =========================
      PORTADA
-========================= -->
-
-<section id="portada"
-         onclick="abrirInvitacion()">
-
-    <div class="mensaje-portada">
-        Toca para abrir la invitación ✨
-    </div>
-
-</section>
-
-
-<!-- =========================
-     CONTENIDO
-========================= -->
-
-<main id="contenido">
-
-
-    <!-- INVITACIÓN -->
-
-    <section class="seccion">
-
-        <div
-            class="imagen-fondo"
-            style="background-image:url('invitacion.jpeg');">
-        </div>
-
-    </section>
-
-
-    <!-- DETALLES -->
-
-    <section class="seccion">
-
-        <div
-            class="imagen-fondo"
-            style="background-image:url('detalles.jpeg');">
-        </div>
-
-    </section>
-
-
-    <!-- CONFIRMACIÓN -->
-
-    <section class="seccion">
-
-        <div
-            class="imagen-fondo"
-            style="background-image:url('confirmar.jpeg');">
-        </div>
-
-
-        <div class="boton-area">
-
-            <button
-                class="boton-confirmar"
-                onclick="confirmarAsistencia(event)">
-
-                💌 Confirmar asistencia
-
-            </button>
-
-        </div>
-
-    </section>
-
-
-    <!-- FINAL -->
-
-    <section class="seccion">
-
-        <div
-            class="imagen-fondo"
-            style="background-image:url('final.jpeg');">
-        </div>
-
-    </section>
-
-
-</main>
-
-
-<script>
-
-/* =========================
-   VARIABLES
-========================= */
-
-const musica =
-    document.getElementById("musica");
-
-const portada =
-    document.getElementById("portada");
-
-const contenido =
-    document.getElementById("contenido");
-
-const botonMusica =
-    document.getElementById("botonMusica");
-
-let musicaEncendida = false;
-let invitacionAbierta = false;
-
-
-/* =========================
-   CREAR COPOS
-========================= */
-
-function crearCopo() {
-
-    const copo =
-        document.createElement("span");
-
-    copo.className = "copo";
-
-    const simbolos = [
-        "❄",
-        "❅",
-        "❆",
-        "✦",
-        "•"
-    ];
-
-    copo.textContent =
-        simbolos[
-            Math.floor(
-                Math.random() *
-                simbolos.length
-            )
-        ];
-
-    copo.style.left =
-        Math.random() * 100 + "vw";
-
-    const tamanio =
-        Math.random() * 14 + 8;
-
-    copo.style.fontSize =
-        tamanio + "px";
-
-    const duracion =
-        Math.random() * 6 + 6;
-
-    copo.style.animationDuration =
-        duracion + "s";
-
-    copo.style.opacity =
-        Math.random() * .6 + .3;
-
-    document
-        .getElementById("copos")
-        .appendChild(copo);
-
-    setTimeout(() => {
-
-        copo.remove();
-
-    }, (duracion + 1) * 1000);
-}
-
-
-/* =========================
-   NIEVE CONTINUA
-========================= */
-
-setInterval(crearCopo, 180);
-
-
-/* =========================
-   ABRIR INVITACIÓN
-========================= */
-
-function abrirInvitacion() {
-
-    if (invitacionAbierta) return;
-
-    invitacionAbierta = true;
-
-
-    /* Música */
-
-    musica.volume = 0.7;
-
-    musica.play()
-        .then(() => {
-
-            musicaEncendida = true;
-
-            botonMusica.textContent = "🔊";
-
-        })
-        .catch(() => {
-
-            botonMusica.textContent = "🔇";
-
-        });
-
-
-    /* Portada */
-
-    portada.classList.add("saliendo");
-
-
-    setTimeout(() => {
-
-        portada.style.display = "none";
-
-        contenido.classList.add("activo");
-
-        botonMusica.classList.add("visible");
-
-        mostrarSecciones();
-
-        crearDestellos();
-
-    }, 900);
-}
-
-
-/* =========================
-   MOSTRAR SECCIONES
-========================= */
-
-function mostrarSecciones() {
-
-    const secciones =
-        document.querySelectorAll(".seccion");
-
-    secciones.forEach(
-        (seccion, indice) => {
-
-            setTimeout(() => {
-
-                seccion.classList.add(
-                    "visible"
-                );
-
-            }, indice * 350);
-
-        }
-    );
-}
-
-
-/* =========================
-   CONTROL DE MÚSICA
-========================= */
-
-function alternarMusica() {
-
-    if (musica.paused) {
-
-        musica.play();
-
-        botonMusica.textContent = "🔊";
-
-        musicaEncendida = true;
-
-    } else {
-
-        musica.pause();
-
-        botonMusica.textContent = "🔇";
-
-        musicaEncendida = false;
-
-    }
-}
-
-
-/* =========================
-   CONFIRMAR WHATSAPP
-========================= */
-
-function confirmarAsistencia(event) {
-
-    event.stopPropagation();
-
-
-    /*
-       CAMBIA ESTE NÚMERO POR EL WHATSAPP
-       DONDE QUIERES RECIBIR LAS CONFIRMACIONES.
-
-       Ejemplo México:
-       529511234567
-    */
-
-    const telefono =
-        "2871424816";
-
-
-    const mensaje =
-        "Hola, confirmo mi asistencia a los XV años de Marian. 💙💛";
-
-
-    const url =
-        "https://wa.me/" +
-        telefono +
-        "?text=" +
-        encodeURIComponent(mensaje);
-
-
-    window.open(
-        url,
-        "_blank"
-    );
-}
-
-
-/* =========================
-   DESTELLOS
-========================= */
-
-function crearDestellos() {
-
-    for (
-        let i = 0;
-        i < 18;
-        i++
-    ) {
-
-        setTimeout(() => {
-
-            const destello =
-                document.createElement(
-                    "div"
-                );
-
-            destello.className =
-                "destello";
-
-            destello.style.left =
-                Math.random() * 100 + "vw";
-
-            destello.style.top =
-                Math.random() * 100 + "vh";
-
-            document.body.appendChild(
-                destello
-            );
-
-            setTimeout(() => {
-
-                destello.remove();
-
-            }, 2000);
-
-        }, i * 120);
-
-    }
-}
-
-</script>
-
-</body>
-</html>
 ```
-
