@@ -8,9 +8,9 @@
 
 <style>
 
-/* =========================================================
+/* =====================================================
    CONFIGURACIÓN GENERAL
-========================================================= */
+===================================================== */
 
 * {
   box-sizing: border-box;
@@ -31,13 +31,14 @@ body {
 }
 
 
-/* =========================================================
+/* =====================================================
    PORTADA
-========================================================= */
+===================================================== */
 
 #portada {
   position: fixed;
   inset: 0;
+
   width: 100%;
   height: 100vh;
 
@@ -66,9 +67,9 @@ body {
 }
 
 
-/* =========================================================
-   TEXTO "TOCA PARA ABRIR"
-========================================================= */
+/* =====================================================
+   TOCA PARA ABRIR
+===================================================== */
 
 .abrir {
   margin-bottom: 55px;
@@ -76,6 +77,7 @@ body {
   padding: 14px 28px;
 
   color: #fff;
+
   font-size: 18px;
   letter-spacing: 1px;
   text-align: center;
@@ -83,6 +85,7 @@ body {
   background: rgba(4, 20, 50, 0.72);
 
   border: 1px solid rgba(255, 215, 120, 0.8);
+
   border-radius: 30px;
 
   box-shadow:
@@ -96,7 +99,7 @@ body {
   0%,
   100% {
     transform: scale(1);
-    opacity: 0.85;
+    opacity: .85;
   }
 
   50% {
@@ -106,9 +109,9 @@ body {
 }
 
 
-/* =========================================================
+/* =====================================================
    CONTENIDO
-========================================================= */
+===================================================== */
 
 #contenido {
   width: 100%;
@@ -117,13 +120,15 @@ body {
 }
 
 
-/* =========================================================
-   SECCIONES CON IMAGEN
-========================================================= */
+/* =====================================================
+   SECCIONES
+===================================================== */
 
 .seccion {
   position: relative;
+
   width: 100%;
+
   margin: 0;
   padding: 0;
 
@@ -141,9 +146,9 @@ body {
 }
 
 
-/* =========================================================
+/* =====================================================
    CRONÓMETRO
-========================================================= */
+===================================================== */
 
 .contador {
   position: relative;
@@ -167,22 +172,34 @@ body {
 }
 
 
-/* =========================================================
-   CÚPULA DE VIDRIO
-========================================================= */
+/* =====================================================
+   CÚPULA DE LA ROSA
+   ARRIBA DEL CRONÓMETRO
+===================================================== */
 
 .cupula-rosa {
 
   position: absolute;
 
   left: 50%;
-  top: 22%;
+
+  /*
+     MUY ARRIBA para no tapar
+     el contador.
+  */
+
+  top: 2%;
 
   transform: translateX(-50%);
 
-  width: 46%;
-  max-width: 360px;
-  aspect-ratio: 0.72;
+  /*
+     Más pequeña para que sea
+     solamente un adorno.
+  */
+
+  width: min(34vw, 250px);
+
+  height: min(40vw, 300px);
 
   z-index: 10;
 
@@ -190,7 +207,9 @@ body {
 }
 
 
-/* Parte exterior de vidrio */
+/* =====================================================
+   VIDRIO
+===================================================== */
 
 .vidrio {
 
@@ -199,31 +218,35 @@ body {
   inset: 0;
 
   border-radius:
-    50% 50% 18% 18% /
-    38% 38% 12% 12%;
+    50% 50% 15% 15% /
+    32% 32% 7% 7%;
 
   background:
     linear-gradient(
-      105deg,
-      rgba(255,255,255,0.24),
-      rgba(255,255,255,0.05) 30%,
-      rgba(255,255,255,0.12) 55%,
-      rgba(255,255,255,0.03)
+      90deg,
+      rgba(255,255,255,.025),
+      rgba(255,255,255,.10),
+      rgba(255,255,255,.025)
     );
 
   border:
-    2px solid rgba(255,255,255,0.58);
+    1.5px solid rgba(255,255,255,.52);
 
   box-shadow:
-    inset 8px 0 20px rgba(255,255,255,0.18),
-    inset -8px 0 20px rgba(255,255,255,0.08),
-    0 0 25px rgba(255,255,255,0.22);
+
+    inset 5px 0 15px rgba(255,255,255,.12),
+
+    inset -5px 0 15px rgba(255,255,255,.08),
+
+    0 0 18px rgba(255,255,255,.13);
 
   backdrop-filter: blur(1px);
 }
 
 
-/* Brillo del vidrio */
+/* =====================================================
+   REFLEJO DEL VIDRIO
+===================================================== */
 
 .vidrio::before {
 
@@ -231,248 +254,187 @@ body {
 
   position: absolute;
 
-  top: 7%;
-  left: 13%;
+  top: 8%;
+  left: 12%;
 
-  width: 9%;
-  height: 55%;
+  width: 6%;
+  height: 52%;
 
   border-radius: 50%;
 
   background:
     linear-gradient(
       to bottom,
-      rgba(255,255,255,0.75),
+      rgba(255,255,255,.75),
       rgba(255,255,255,0)
     );
 
   transform: rotate(7deg);
 
-  opacity: 0.65;
+  opacity: .55;
 }
 
 
-/* Base de la cúpula */
+.vidrio::after {
 
-.base-vidrio {
+  content: "";
 
   position: absolute;
 
-  left: -7%;
-  bottom: -1%;
+  top: 18%;
+  right: 12%;
 
-  width: 114%;
-  height: 12%;
+  width: 3%;
+  height: 30%;
 
   border-radius: 50%;
 
   background:
     linear-gradient(
       to bottom,
-      rgba(255,255,255,0.45),
-      rgba(180,200,220,0.16)
+      rgba(255,255,255,.4),
+      transparent
     );
 
-  border:
-    2px solid rgba(255,255,255,0.65);
+  transform: rotate(-8deg);
 
-  box-shadow:
-    0 4px 12px rgba(0,0,0,0.28),
-    inset 0 3px 7px rgba(255,255,255,0.35);
+  opacity: .35;
 }
 
 
-/* =========================================================
-   ROSA ROJA GRANDE
-========================================================= */
+/* =====================================================
+   BASE DEL VIDRIO
+===================================================== */
 
-.rosa-grande {
-
-  position: absolute;
-
-  left: 50%;
-  bottom: 8%;
-
-  transform: translateX(-50%);
-
-  width: 72%;
-  height: 72%;
-
-  z-index: 4;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  animation:
-    movimientoRosa 5s ease-in-out infinite;
-}
-
-
-/* Tallo */
-
-.rosa-grande::after {
-
-  content: "";
+.base-vidrio {
 
   position: absolute;
 
-  left: 50%;
-  bottom: 0;
+  left: -5%;
+  bottom: -1%;
 
-  width: 7px;
-  height: 43%;
+  width: 110%;
+  height: 9%;
+
+  border-radius: 50%;
 
   background:
     linear-gradient(
-      to right,
-      #174d2b,
-      #3e8a46,
-      #174d2b
+      to bottom,
+      rgba(255,255,255,.28),
+      rgba(255,255,255,.06)
     );
 
-  border-radius: 8px;
-
-  transform:
-    translateX(-50%)
-    rotate(3deg);
+  border:
+    1.5px solid rgba(255,255,255,.5);
 
   box-shadow:
-    2px 0 4px rgba(0,0,0,0.25);
+    inset 0 2px 6px rgba(255,255,255,.2),
+    0 3px 9px rgba(0,0,0,.3);
 }
 
 
-/* Rosa */
+/* =====================================================
+   ROSA ROJA
+===================================================== */
 
-.flor {
-
-  position: relative;
-
-  width: 78%;
-  aspect-ratio: 1;
-
-  margin-bottom: 28%;
-
-  border-radius: 50%;
-
-  background:
-
-    radial-gradient(
-      circle at 50% 50%,
-      #ff6b6b 0%,
-      #d91532 25%,
-      #a5001d 52%,
-      #6d0014 76%,
-      #43000c 100%
-    );
-
-  box-shadow:
-    0 7px 15px rgba(0,0,0,0.45),
-    0 0 22px rgba(180,0,25,0.38);
-
-  z-index: 5;
-}
-
-
-/* Pétalos visuales de la rosa */
-
-.flor::before {
-
-  content: "";
-
-  position: absolute;
-
-  inset: 8%;
-
-  border-radius: 50%;
-
-  background:
-
-    radial-gradient(
-      ellipse at 50% 25%,
-      transparent 0 28%,
-      rgba(95,0,15,0.65) 29% 37%,
-      transparent 38%
-    ),
-
-    radial-gradient(
-      ellipse at 25% 50%,
-      transparent 0 28%,
-      rgba(95,0,15,0.6) 29% 38%,
-      transparent 39%
-    ),
-
-    radial-gradient(
-      ellipse at 75% 50%,
-      transparent 0 28%,
-      rgba(95,0,15,0.6) 29% 38%,
-      transparent 39%
-    ),
-
-    radial-gradient(
-      ellipse at 50% 75%,
-      transparent 0 28%,
-      rgba(95,0,15,0.55) 29% 38%,
-      transparent 39%
-    );
-
-  transform: rotate(15deg);
-}
-
-
-/* Centro de la rosa */
-
-.flor::after {
-
-  content: "";
+.rosa-neon {
 
   position: absolute;
 
   left: 50%;
-  top: 50%;
+  top: 16%;
 
-  width: 28%;
-  height: 28%;
+  width: 72%;
 
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
 
-  border-radius: 50%;
+  z-index: 5;
 
-  background:
-    radial-gradient(
-      circle,
-      #ff7474,
-      #b5001e 55%,
-      #620010
-    );
-
-  box-shadow:
-    0 0 8px rgba(0,0,0,0.35);
+  animation:
+    respirarRosa 4s ease-in-out infinite;
 }
 
 
-/* Movimiento MUY suave */
-
-@keyframes movimientoRosa {
+@keyframes respirarRosa {
 
   0%,
   100% {
     transform:
       translateX(-50%)
-      rotate(-1deg);
+      scale(1);
   }
 
   50% {
     transform:
       translateX(-50%)
-      rotate(1deg);
+      scale(1.025);
   }
 }
 
 
-/* =========================================================
+/* =====================================================
+   SVG ROSA
+===================================================== */
+
+.rosa-svg {
+
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  overflow: visible;
+}
+
+
+/* Brillo de la rosa */
+
+.brillo-rosa {
+
+  filter:
+    drop-shadow(0 0 2px #ff173f)
+    drop-shadow(0 0 5px #ff173f)
+    drop-shadow(0 0 9px rgba(255,20,55,.7));
+}
+
+
+/* =====================================================
+   TALLO
+===================================================== */
+
+.tallo {
+
+  position: absolute;
+
+  left: 50%;
+  top: 62%;
+
+  width: 3px;
+  height: 30%;
+
+  background:
+    linear-gradient(
+      to right,
+      #bcbcbc,
+      #ffffff,
+      #8f8f8f
+    );
+
+  border-radius: 100%;
+
+  transform:
+    translateX(-50%)
+    rotate(4deg);
+
+  box-shadow:
+    0 0 3px rgba(255,255,255,.7);
+}
+
+
+/* =====================================================
    PÉTALOS QUE CAEN
-========================================================= */
+===================================================== */
 
 .petalo {
 
@@ -480,8 +442,8 @@ body {
 
   z-index: 20;
 
-  width: 13px;
-  height: 18px;
+  width: 8px;
+  height: 12px;
 
   border-radius:
     70% 30% 70% 30%;
@@ -489,13 +451,13 @@ body {
   background:
     linear-gradient(
       135deg,
-      #ff6875,
-      #d20b2e 55%,
-      #820016
+      #ff5068,
+      #dc0b32 55%,
+      #800016
     );
 
   box-shadow:
-    0 2px 4px rgba(0,0,0,0.25);
+    0 0 4px rgba(255,30,65,.5);
 
   opacity: 0;
 
@@ -511,25 +473,29 @@ body {
     opacity: 0;
 
     transform:
-      translateY(-20px)
+      translateY(-10px)
       translateX(0)
       rotate(0deg);
   }
 
   10% {
-    opacity: 0.9;
+    opacity: .9;
   }
 
-  50% {
+  40% {
 
     transform:
-      translateY(150px)
-      translateX(20px)
-      rotate(150deg);
+      translateY(65px)
+      translateX(12px)
+      rotate(100deg);
   }
 
-  80% {
-    opacity: 0.8;
+  70% {
+
+    transform:
+      translateY(130px)
+      translateX(-10px)
+      rotate(220deg);
   }
 
   100% {
@@ -537,16 +503,16 @@ body {
     opacity: 0;
 
     transform:
-      translateY(330px)
-      translateX(-15px)
-      rotate(310deg);
+      translateY(210px)
+      translateX(8px)
+      rotate(330deg);
   }
 }
 
 
-/* =========================================================
-   CONTADOR NUMÉRICO
-========================================================= */
+/* =====================================================
+   CONTADOR
+===================================================== */
 
 .numeros-contador {
 
@@ -559,13 +525,13 @@ body {
 
   z-index: 30;
 
-  width: 90%;
+  width: 92%;
 
   display: flex;
 
   justify-content: center;
 
-  gap: 10px;
+  gap: 8px;
 
   text-align: center;
 }
@@ -573,20 +539,20 @@ body {
 
 .numero {
 
-  min-width: 65px;
+  min-width: 62px;
 
-  padding: 8px 5px;
+  padding: 7px 4px;
 
   border-radius: 10px;
 
   background:
-    rgba(4, 20, 50, 0.60);
+    rgba(4,20,50,.65);
 
   border:
-    1px solid rgba(255,215,120,0.65);
+    1px solid rgba(255,215,120,.65);
 
   box-shadow:
-    0 4px 12px rgba(0,0,0,0.25);
+    0 4px 12px rgba(0,0,0,.28);
 }
 
 
@@ -596,14 +562,15 @@ body {
 
   color: #fff;
 
-  font-size: clamp(20px, 5vw, 38px);
+  font-size:
+    clamp(19px,5vw,36px);
 
   font-weight: bold;
 
   line-height: 1;
 
   text-shadow:
-    0 2px 5px rgba(0,0,0,0.6);
+    0 2px 5px rgba(0,0,0,.7);
 }
 
 
@@ -615,15 +582,16 @@ body {
 
   color: #f7d77a;
 
-  font-size: clamp(8px, 2vw, 12px);
+  font-size:
+    clamp(7px,2vw,11px);
 
-  letter-spacing: 1px;
+  letter-spacing: .8px;
 }
 
 
-/* =========================================================
+/* =====================================================
    CONFIRMACIÓN
-========================================================= */
+===================================================== */
 
 .confirmacion {
 
@@ -653,6 +621,7 @@ body {
   text-decoration: none;
 
   font-size: 17px;
+
   font-weight: bold;
 
   border-radius: 30px;
@@ -668,13 +637,13 @@ body {
     1px solid #e7c76b;
 
   box-shadow:
-    0 5px 18px rgba(0,0,0,0.3);
+    0 5px 18px rgba(0,0,0,.3);
 }
 
 
-/* =========================================================
+/* =====================================================
    BOTÓN DE MÚSICA
-========================================================= */
+===================================================== */
 
 #botonMusica {
 
@@ -688,12 +657,13 @@ body {
 
   z-index: 999;
 
-  border: 1px solid rgba(255,215,120,0.8);
+  border:
+    1px solid rgba(255,215,120,.8);
 
   border-radius: 50%;
 
   background:
-    rgba(4, 20, 50, 0.82);
+    rgba(4,20,50,.82);
 
   color: #f7d77a;
 
@@ -702,13 +672,13 @@ body {
   cursor: pointer;
 
   box-shadow:
-    0 4px 12px rgba(0,0,0,0.3);
+    0 4px 12px rgba(0,0,0,.3);
 }
 
 
-/* =========================================================
+/* =====================================================
    NIEVE
-========================================================= */
+===================================================== */
 
 .nieve {
 
@@ -723,7 +693,7 @@ body {
   color: #fff;
 
   text-shadow:
-    0 0 5px rgba(255,255,255,0.9);
+    0 0 5px rgba(255,255,255,.9);
 
   animation-name: caerNieve;
 
@@ -736,14 +706,12 @@ body {
 @keyframes caerNieve {
 
   0% {
-
     transform:
       translateY(-30px)
       rotate(0deg);
   }
 
   100% {
-
     transform:
       translateY(110vh)
       rotate(360deg);
@@ -751,27 +719,41 @@ body {
 }
 
 
-/* =========================================================
-   AJUSTES PARA CELULAR
-========================================================= */
+/* =====================================================
+   CELULAR
+===================================================== */
 
 @media (max-width: 600px) {
 
+  /*
+     En celular la hacemos todavía
+     más pequeña y arriba.
+  */
+
   .cupula-rosa {
 
-    width: 52%;
+    width: 31vw;
 
-    top: 20%;
+    height: 38vw;
+
+    top: 2%;
+  }
+
+  .rosa-neon {
+
+    top: 16%;
+
+    width: 70%;
   }
 
   .numeros-contador {
 
-    gap: 4px;
+    gap: 3px;
   }
 
   .numero {
 
-    min-width: 55px;
+    min-width: 54px;
 
     padding: 6px 3px;
   }
@@ -783,7 +765,7 @@ body {
 
   .numero small {
 
-    font-size: 8px;
+    font-size: 7px;
   }
 
   .abrir {
@@ -801,11 +783,13 @@ body {
 <body>
 
 
-<!-- =======================================================
+<!-- =====================================================
      PORTADA
-======================================================= -->
+===================================================== -->
 
-<div id="portada" onclick="abrirInvitacion()">
+<div
+  id="portada"
+  onclick="abrirInvitacion()">
 
   <div class="abrir">
     ✨ Toca para abrir ✨
@@ -814,11 +798,14 @@ body {
 </div>
 
 
-<!-- =======================================================
+<!-- =====================================================
      MÚSICA
-======================================================= -->
+===================================================== -->
 
-<audio id="musica" loop preload="auto">
+<audio
+  id="musica"
+  loop
+  preload="auto">
 
   <source
     src="musica.mp3"
@@ -827,16 +814,16 @@ body {
 </audio>
 
 
-<!-- =======================================================
+<!-- =====================================================
      CONTENIDO
-======================================================= -->
+===================================================== -->
 
 <main id="contenido">
 
 
-  <!-- =====================================================
+  <!-- ===================================================
        INICIO
-  ====================================================== -->
+  ==================================================== -->
 
   <section class="seccion">
 
@@ -847,9 +834,9 @@ body {
   </section>
 
 
-  <!-- =====================================================
+  <!-- ===================================================
        INVITACIÓN
-  ====================================================== -->
+  ==================================================== -->
 
   <section class="seccion">
 
@@ -860,9 +847,9 @@ body {
   </section>
 
 
-  <!-- =====================================================
+  <!-- ===================================================
        DETALLES
-  ====================================================== -->
+  ==================================================== -->
 
   <section class="seccion">
 
@@ -873,11 +860,12 @@ body {
   </section>
 
 
-  <!-- =====================================================
+  <!-- ===================================================
        CRONÓMETRO
-  ====================================================== -->
+  ==================================================== -->
 
   <section class="contador">
+
 
     <img
       class="imagen-contador"
@@ -885,36 +873,314 @@ body {
       alt="Una noche soñada está por comenzar">
 
 
-    <!-- ===================================================
-         CÚPULA DE VIDRIO + ROSA
-    ==================================================== -->
+    <!-- ================================================
+         ROSA ARRIBA
+    ================================================= -->
 
     <div class="cupula-rosa">
 
-      <!-- Vidrio -->
+
+      <!-- VIDRIO -->
+
       <div class="vidrio"></div>
 
-      <!-- Rosa -->
-      <div class="rosa-grande">
 
-        <div class="flor"></div>
+      <!-- ==============================================
+           ROSA ROJA
+      =============================================== -->
+
+      <div class="rosa-neon">
+
+        <!-- Tallo -->
+
+        <div class="tallo"></div>
+
+
+        <!-- Rosa -->
+
+        <svg
+          class="rosa-svg"
+          viewBox="0 0 400 420"
+          xmlns="http://www.w3.org/2000/svg">
+
+
+          <defs>
+
+
+            <!-- ROJO -->
+
+            <linearGradient
+              id="rojoRosa"
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="100%">
+
+              <stop
+                offset="0%"
+                stop-color="#ff526d"/>
+
+              <stop
+                offset="45%"
+                stop-color="#e50935"/>
+
+              <stop
+                offset="100%"
+                stop-color="#850019"/>
+
+            </linearGradient>
+
+
+            <!-- ROJO CLARO -->
+
+            <linearGradient
+              id="rojoClaro"
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="100%">
+
+              <stop
+                offset="0%"
+                stop-color="#ff7185"/>
+
+              <stop
+                offset="50%"
+                stop-color="#ed1742"/>
+
+              <stop
+                offset="100%"
+                stop-color="#a80028"/>
+
+            </linearGradient>
+
+
+            <!-- BRILLO -->
+
+            <filter
+              id="glowRosa"
+              x="-60%"
+              y="-60%"
+              width="220%"
+              height="220%">
+
+              <feGaussianBlur
+                stdDeviation="4"
+                result="blur"/>
+
+              <feMerge>
+
+                <feMergeNode
+                  in="blur"/>
+
+                <feMergeNode
+                  in="SourceGraphic"/>
+
+              </feMerge>
+
+            </filter>
+
+          </defs>
+
+
+          <!-- LUZ DE LA ROSA -->
+
+          <ellipse
+            cx="200"
+            cy="185"
+            rx="115"
+            ry="118"
+            fill="none"
+            stroke="#ff1745"
+            stroke-width="4"
+            opacity=".23"
+            filter="url(#glowRosa)"/>
+
+
+          <!-- PÉTALO TRASERO IZQUIERDO -->
+
+          <path
+            class="brillo-rosa"
+            d="
+              M198 190
+              C155 190 105 166 105 120
+              C105 78 135 67 163 91
+              C184 109 190 143 198 190
+              Z
+            "
+            fill="url(#rojoRosa)"
+            stroke="#ff9aaa"
+            stroke-width="2"/>
+
+
+          <!-- PÉTALO TRASERO DERECHO -->
+
+          <path
+            class="brillo-rosa"
+            d="
+              M202 188
+              C244 188 292 161 291 119
+              C290 80 262 67 237 91
+              C216 110 210 144 202 188
+              Z
+            "
+            fill="url(#rojoRosa)"
+            stroke="#ff9aaa"
+            stroke-width="2"/>
+
+
+          <!-- PÉTALO SUPERIOR -->
+
+          <path
+            class="brillo-rosa"
+            d="
+              M200 191
+              C170 164 159 125 174 91
+              C188 58 211 55 226 82
+              C242 110 227 153 200 191
+              Z
+            "
+            fill="url(#rojoClaro)"
+            stroke="#ff9aaa"
+            stroke-width="2"/>
+
+
+          <!-- PÉTALO IZQUIERDO -->
+
+          <path
+            class="brillo-rosa"
+            d="
+              M198 205
+              C156 218 117 201 101 167
+              C88 138 98 111 120 107
+              C145 103 174 137 198 205
+              Z
+            "
+            fill="url(#rojoRosa)"
+            stroke="#ff9aaa"
+            stroke-width="2"/>
+
+
+          <!-- PÉTALO DERECHO -->
+
+          <path
+            class="brillo-rosa"
+            d="
+              M202 205
+              C244 218 282 200 299 167
+              C313 138 302 111 280 107
+              C255 103 225 138 202 205
+              Z
+            "
+            fill="url(#rojoRosa)"
+            stroke="#ff9aaa"
+            stroke-width="2"/>
+
+
+          <!-- PÉTALO CENTRAL IZQUIERDO -->
+
+          <path
+            class="brillo-rosa"
+            d="
+              M199 225
+              C169 216 137 197 129 166
+              C123 141 136 121 155 124
+              C180 128 196 165 199 225
+              Z
+            "
+            fill="url(#rojoClaro)"
+            stroke="#ffb0bd"
+            stroke-width="2"/>
+
+
+          <!-- PÉTALO CENTRAL DERECHO -->
+
+          <path
+            class="brillo-rosa"
+            d="
+              M201 225
+              C231 216 263 197 271 166
+              C277 141 264 121 245 124
+              C220 128 204 165 201 225
+              Z
+            "
+            fill="url(#rojoRosa)"
+            stroke="#ff9aaa"
+            stroke-width="2"/>
+
+
+          <!-- PÉTALO DELANTERO -->
+
+          <path
+            class="brillo-rosa"
+            d="
+              M200 236
+              C166 229 145 205 145 180
+              C145 160 159 149 177 159
+              C194 169 200 199 200 236
+              Z
+            "
+            fill="url(#rojoClaro)"
+            stroke="#ffb0bd"
+            stroke-width="2"/>
+
+
+          <!-- PÉTALO DELANTERO DERECHO -->
+
+          <path
+            class="brillo-rosa"
+            d="
+              M200 236
+              C234 229 255 205 255 180
+              C255 160 241 149 223 159
+              C206 169 200 199 200 236
+              Z
+            "
+            fill="url(#rojoRosa)"
+            stroke="#ff9aaa"
+            stroke-width="2"/>
+
+
+          <!-- CENTRO -->
+
+          <path
+            class="brillo-rosa"
+            d="
+              M200 228
+              C182 217 181 192 194 180
+              C204 171 220 180 220 195
+              C220 211 212 222 200 228
+              Z
+            "
+            fill="#c90835"
+            stroke="#ff9aaa"
+            stroke-width="2"/>
+
+
+        </svg>
 
       </div>
 
-      <!-- Base -->
+
+      <!-- PÉTALOS QUE CAEN -->
+
+      <div id="petalos"></div>
+
+
+      <!-- BASE -->
+
       <div class="base-vidrio"></div>
 
-      <!-- Los pétalos aparecerán aquí -->
-      <div id="petalos"></div>
 
     </div>
 
 
-    <!-- ===================================================
-         NÚMEROS DEL CONTADOR
-    ==================================================== -->
+    <!-- ================================================
+         CONTADOR
+    ================================================= -->
 
     <div class="numeros-contador">
+
 
       <div class="numero">
 
@@ -967,14 +1233,15 @@ body {
 
       </div>
 
+
     </div>
 
   </section>
 
 
-  <!-- =====================================================
+  <!-- ===================================================
        CONFIRMAR
-  ====================================================== -->
+  ==================================================== -->
 
   <section class="seccion">
 
@@ -985,9 +1252,9 @@ body {
   </section>
 
 
-  <!-- =====================================================
-       BOTÓN WHATSAPP
-  ====================================================== -->
+  <!-- ===================================================
+       WHATSAPP
+  ==================================================== -->
 
   <section class="confirmacion">
 
@@ -1004,9 +1271,9 @@ body {
   </section>
 
 
-  <!-- =====================================================
+  <!-- ===================================================
        FINAL
-  ====================================================== -->
+  ==================================================== -->
 
   <section class="seccion">
 
@@ -1020,9 +1287,9 @@ body {
 </main>
 
 
-<!-- =======================================================
-     BOTÓN DE MÚSICA
-======================================================= -->
+<!-- =====================================================
+     BOTÓN MÚSICA
+===================================================== -->
 
 <button
   id="botonMusica"
@@ -1036,10 +1303,9 @@ body {
 
 <script>
 
-
-/* =========================================================
+/* =====================================================
    ELEMENTOS
-========================================================= */
+===================================================== */
 
 const musica =
   document.getElementById("musica");
@@ -1048,50 +1314,38 @@ const portada =
   document.getElementById("portada");
 
 
-/* =========================================================
+/* =====================================================
    ABRIR INVITACIÓN
-========================================================= */
+===================================================== */
 
 function abrirInvitacion() {
-
-  /*
-     Reiniciamos la canción desde 0:00
-  */
 
   musica.currentTime = 0;
 
   musica.volume = 1;
 
-  musica.play()
-    .catch(function(error) {
+  musica.play().catch(
+    function(error) {
 
       console.log(
-        "El navegador bloqueó temporalmente el audio:",
+        "El navegador bloqueó el audio:",
         error
       );
 
-    });
+    }
+  );
 
-
-  /*
-     Cerramos la portada
-  */
 
   portada.classList.add("cerrada");
 
 
-  /*
-     Comenzamos los pétalos
-  */
-
   iniciarPetalos();
-
 }
 
 
-/* =========================================================
+/* =====================================================
    MÚSICA
-========================================================= */
+===================================================== */
 
 function alternarMusica() {
 
@@ -1099,22 +1353,25 @@ function alternarMusica() {
 
     musica.play();
 
-    document.getElementById("botonMusica").textContent = "🎵";
+    document
+      .getElementById("botonMusica")
+      .textContent = "🎵";
 
   } else {
 
     musica.pause();
 
-    document.getElementById("botonMusica").textContent = "🔇";
-
+    document
+      .getElementById("botonMusica")
+      .textContent = "🔇";
   }
 
 }
 
 
-/* =========================================================
+/* =====================================================
    CRONÓMETRO
-========================================================= */
+===================================================== */
 
 const fechaXV =
   new Date(
@@ -1138,16 +1395,19 @@ function actualizarContador() {
 
   if (diferencia <= 0) {
 
-    document.getElementById("dias").textContent = "0";
+    document.getElementById("dias")
+      .textContent = "0";
 
-    document.getElementById("horas").textContent = "0";
+    document.getElementById("horas")
+      .textContent = "0";
 
-    document.getElementById("minutos").textContent = "0";
+    document.getElementById("minutos")
+      .textContent = "0";
 
-    document.getElementById("segundos").textContent = "0";
+    document.getElementById("segundos")
+      .textContent = "0";
 
     return;
-
   }
 
 
@@ -1160,24 +1420,30 @@ function actualizarContador() {
 
   const horas =
     Math.floor(
-      (diferencia %
-        (1000 * 60 * 60 * 24)) /
+      (
+        diferencia %
+        (1000 * 60 * 60 * 24)
+      ) /
       (1000 * 60 * 60)
     );
 
 
   const minutos =
     Math.floor(
-      (diferencia %
-        (1000 * 60 * 60)) /
+      (
+        diferencia %
+        (1000 * 60 * 60)
+      ) /
       (1000 * 60)
     );
 
 
   const segundos =
     Math.floor(
-      (diferencia %
-        (1000 * 60)) /
+      (
+        diferencia %
+        (1000 * 60)
+      ) /
       1000
     );
 
@@ -1185,17 +1451,20 @@ function actualizarContador() {
   document.getElementById("dias")
     .textContent = dias;
 
+
   document.getElementById("horas")
-    .textContent = String(horas)
-    .padStart(2, "0");
+    .textContent =
+      String(horas).padStart(2, "0");
+
 
   document.getElementById("minutos")
-    .textContent = String(minutos)
-    .padStart(2, "0");
+    .textContent =
+      String(minutos).padStart(2, "0");
+
 
   document.getElementById("segundos")
-    .textContent = String(segundos)
-    .padStart(2, "0");
+    .textContent =
+      String(segundos).padStart(2, "0");
 
 }
 
@@ -1208,9 +1477,9 @@ setInterval(
 );
 
 
-/* =========================================================
+/* =====================================================
    PÉTALOS
-========================================================= */
+===================================================== */
 
 let petalosIniciados = false;
 
@@ -1235,24 +1504,20 @@ function crearPetalo() {
 
 
   /*
-     El pétalo nace en la parte superior
-     de la cúpula.
+     Los pétalos caen dentro
+     de la pequeña cúpula.
   */
 
   petalo.style.left =
-    (20 + Math.random() * 60) + "%";
+    (25 + Math.random() * 50) + "%";
 
 
   petalo.style.top =
-    (5 + Math.random() * 15) + "%";
+    (10 + Math.random() * 12) + "%";
 
-
-  /*
-     Variamos ligeramente el tamaño
-  */
 
   const tamaño =
-    9 + Math.random() * 7;
+    6 + Math.random() * 5;
 
 
   petalo.style.width =
@@ -1263,26 +1528,18 @@ function crearPetalo() {
     (tamaño * 1.35) + "px";
 
 
-  /*
-     Cada pétalo tarda diferente
-     tiempo en caer.
-  */
-
   petalo.style.animationDuration =
-    (4 + Math.random() * 4) + "s";
+    (4 + Math.random() * 3) + "s";
 
 
   petalo.style.animationDelay =
-    (Math.random() * 1.5) + "s";
+    (Math.random() * 1) + "s";
 
 
-  contenedor.appendChild(petalo);
+  contenedor.appendChild(
+    petalo
+  );
 
-
-  /*
-     Lo eliminamos cuando termina
-     para no llenar la página
-  */
 
   setTimeout(
     function() {
@@ -1290,9 +1547,8 @@ function crearPetalo() {
       petalo.remove();
 
     },
-    9000
+    8500
   );
-
 }
 
 
@@ -1302,17 +1558,17 @@ function iniciarPetalos() {
     return;
   }
 
+
   petalosIniciados = true;
 
 
   /*
-     Ponemos algunos pétalos
-     inicialmente.
+     Algunos pétalos iniciales.
   */
 
   for (
     let i = 0;
-    i < 4;
+    i < 3;
     i++
   ) {
 
@@ -1325,21 +1581,19 @@ function iniciarPetalos() {
 
 
   /*
-     Después aparece un pétalo
-     de vez en cuando.
+     Después caen lentamente.
   */
 
   setInterval(
     crearPetalo,
-    1800
+    2000
   );
-
 }
 
 
-/* =========================================================
+/* =====================================================
    NIEVE
-========================================================= */
+===================================================== */
 
 const simbolosNieve = [
   "❄",
@@ -1382,8 +1636,7 @@ function crearNieve() {
 
 
   elemento.style.opacity =
-    0.3 +
-    Math.random() * 0.7;
+    .3 + Math.random() * .7;
 
 
   document.body.appendChild(
@@ -1399,22 +1652,16 @@ function crearNieve() {
     },
     14000
   );
-
 }
 
-
-/*
-   La nieve comienza desde que se
-   carga la página.
-*/
 
 setInterval(
   crearNieve,
   350
 );
 
-
 </script>
 
 </body>
 </html>
+
