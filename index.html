@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
 <title>XV Años de Marian</title>
+
 
 <style>
 
 /* =========================================================
-   GENERAL
+   CONFIGURACIÓN GENERAL
 ========================================================= */
 
 *{
@@ -50,25 +54,73 @@ body{
 ========================================================= */
 
 #portada{
+
+  position:fixed;
+
+  inset:0;
+
   width:100%;
   height:100vh;
-  position:relative;
+
   overflow:hidden;
+
   cursor:pointer;
+
+  z-index:10000;
+
+  opacity:1;
+
+  visibility:visible;
+
+  transition:
+    opacity 1.2s ease,
+    transform 1.4s ease,
+    visibility 1.4s ease;
 }
 
 #portada img{
+
   width:100%;
   height:100%;
+
   object-fit:cover;
+
+  transition:
+    transform 1.5s ease;
 }
 
+
+/* transición al abrir */
+
+#portada.abierta{
+
+  opacity:0;
+
+  visibility:hidden;
+
+  transform:scale(1.08);
+}
+
+#portada.abierta img{
+
+  transform:scale(1.08);
+}
+
+
+/* =========================================================
+   BOTÓN PORTADA
+========================================================= */
+
 .overlay-portada{
+
   position:absolute;
+
   inset:0;
 
   display:flex;
+
   justify-content:center;
+
   align-items:flex-end;
 
   padding-bottom:8%;
@@ -82,27 +134,38 @@ body{
 }
 
 .boton-abrir{
-  padding:14px 32px;
 
-  border:1px solid #d8b75b;
+  padding:
+    14px 32px;
+
+  border:
+    1px solid #d8b75b;
+
   border-radius:30px;
 
   color:white;
 
-  background:rgba(0,0,0,.3);
+  background:
+    rgba(0,0,0,.3);
 
   backdrop-filter:blur(5px);
 
   font-size:17px;
+
   letter-spacing:2px;
 
   box-shadow:
-    0 0 15px rgba(216,183,91,.45);
+    0 0 15px
+    rgba(216,183,91,.45);
 
-  animation:pulso 2.2s ease-in-out infinite;
+  animation:
+    pulsoBoton
+    2.2s
+    ease-in-out
+    infinite;
 }
 
-@keyframes pulso{
+@keyframes pulsoBoton{
 
   0%,100%{
     transform:scale(1);
@@ -120,19 +183,37 @@ body{
 ========================================================= */
 
 #contenido{
-  display:none;
+
+  opacity:0;
+
+  visibility:hidden;
+
+  transform:
+    translateY(20px);
+
+  transition:
+    opacity 1.2s ease,
+    transform 1.2s ease,
+    visibility 1.2s ease;
 }
 
 #contenido.visible{
-  display:block;
+
+  opacity:1;
+
+  visibility:visible;
+
+  transform:
+    translateY(0);
 }
 
 
 /* =========================================================
-   MÚSICA
+   BOTÓN MÚSICA
 ========================================================= */
 
 .boton-musica{
+
   position:fixed;
 
   right:18px;
@@ -143,7 +224,8 @@ body{
 
   border-radius:50%;
 
-  border:1px solid #d8b75b;
+  border:
+    1px solid #d8b75b;
 
   background:
     rgba(5,14,32,.92);
@@ -153,6 +235,7 @@ body{
   z-index:9999;
 
   display:flex;
+
   justify-content:center;
   align-items:center;
 
@@ -161,7 +244,8 @@ body{
   cursor:pointer;
 
   box-shadow:
-    0 0 15px rgba(216,183,91,.35);
+    0 0 15px
+    rgba(216,183,91,.35);
 }
 
 
@@ -170,16 +254,23 @@ body{
 ========================================================= */
 
 #cronometro{
+
   position:relative;
+
   width:100%;
+
   overflow:hidden;
+
   background:#061a31;
 }
 
 .fondo-cronometro{
-  width:100%;
-  height:auto;
+
   display:block;
+
+  width:100%;
+
+  height:auto;
 }
 
 
@@ -187,48 +278,53 @@ body{
    CONTADOR
 ========================================================= */
 
-/*
-   MUY IMPORTANTE:
-
-   El contador ya NO queda en medio de la frase.
-
-   Lo colocamos debajo de la frase y antes
-   de la rosa.
-*/
-
 .contador{
+
   position:absolute;
 
   left:50%;
 
+  /*
+     La posición está debajo
+     de la frase de la imagen.
+  */
+
   top:59%;
 
-  transform:translateX(-50%);
+  transform:
+    translateX(-50%);
 
-  width:88%;
+  width:90%;
 
   display:flex;
 
   justify-content:center;
+
   align-items:center;
 
-  gap:clamp(7px,2.5vw,25px);
+  gap:
+    clamp(7px,2.5vw,25px);
 
-  z-index:30;
+  z-index:100;
 }
 
 .tiempo{
+
   text-align:center;
 
   min-width:55px;
 }
 
 .numero{
+
   display:block;
 
   color:white;
 
-  font-family:Georgia,"Times New Roman",serif;
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
 
   font-size:
     clamp(25px,6vw,52px);
@@ -238,18 +334,26 @@ body{
   line-height:1;
 
   text-shadow:
-    0 2px 4px rgba(0,0,0,.9),
-    0 0 8px rgba(0,0,0,.8);
+
+    0 2px 4px
+    rgba(0,0,0,.9),
+
+    0 0 8px
+    rgba(0,0,0,.8);
 }
 
 .etiqueta{
+
   display:block;
 
   margin-top:7px;
 
   color:white;
 
-  font-family:Georgia,"Times New Roman",serif;
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
 
   font-size:
     clamp(7px,1.7vw,14px);
@@ -258,7 +362,8 @@ body{
     clamp(1px,1vw,3px);
 
   text-shadow:
-    0 2px 4px rgba(0,0,0,.9);
+    0 2px 4px
+    rgba(0,0,0,.9);
 }
 
 
@@ -266,220 +371,493 @@ body{
    ZONA DE LA ROSA
 ========================================================= */
 
-.zona-rosa{
+/*
+   La rosa vive solamente aquí.
+
+   Se coloca abajo del cronómetro.
+*/
+
+.rosa-zona{
 
   position:absolute;
 
   left:0;
   right:0;
 
-  /*
-     La rosa queda en la parte inferior
-     del cronómetro.
-  */
+  bottom:0;
 
-  top:70%;
-
-  height:29%;
+  height:40%;
 
   display:flex;
 
   justify-content:center;
 
-  align-items:flex-start;
+  align-items:flex-end;
 
-  z-index:20;
+  z-index:50;
 
   pointer-events:none;
+
+  overflow:visible;
 }
 
 
 /* =========================================================
-   ROSA
+   CONTENEDOR ORIGINAL DE LA ROSA
 ========================================================= */
 
 .rosa-container{
 
   position:relative;
 
-  width:210px;
-  height:270px;
+  width:250px;
+
+  height:370px;
+
+  transform:
+    scale(.70);
 
   transform-origin:
-    50% 100%;
+    bottom center;
+
+  /*
+     Movimiento muy suave.
+     No afecta la caída de los pétalos.
+  */
 
   animation:
-    balanceoRosa
+    rosaSuave
     5s
     ease-in-out
     infinite;
 }
 
-
-/* movimiento muy suave */
-
-@keyframes balanceoRosa{
+@keyframes rosaSuave{
 
   0%,100%{
-    transform:
-      rotate(-1deg)
-      translateY(0);
+    margin-left:0;
   }
 
   50%{
-    transform:
-      rotate(1deg)
-      translateY(-3px);
+    margin-left:3px;
   }
 
 }
 
 
 /* =========================================================
-   CÚPULA DE CRISTAL
+   GLASS
+   CSS ORIGINAL DE TU ROSA
 ========================================================= */
 
-.glass{
+.rosa-container .glass{
 
-  position:absolute;
+  height:350px;
 
-  left:15px;
-  top:0;
+  width:200px;
 
-  width:180px;
-  height:225px;
+  background:#122139;
 
   border-radius:
-    90px 90px 25px 25px;
-
-  border:
-    2px solid
-    rgba(220,235,255,.40);
-
-  background:
-    linear-gradient(
-      90deg,
-      rgba(255,255,255,.035),
-      rgba(255,255,255,.11),
-      rgba(255,255,255,.025),
-      rgba(255,255,255,.08),
-      rgba(255,255,255,.025)
-    );
-
-  box-shadow:
-
-    inset
-    8px 0 15px
-    rgba(255,255,255,.08),
-
-    inset
-    -8px 0 15px
-    rgba(255,255,255,.04),
-
-    0 0 12px
-    rgba(180,210,255,.10);
-
-  z-index:20;
-}
-
-
-/* brillo del cristal */
-
-.shine{
+    300px 300px 0px 0px;
 
   position:absolute;
 
-  left:22px;
-  top:25px;
-
-  width:16px;
-  height:135px;
-
-  border-radius:50%;
-
-  background:
-    linear-gradient(
-      to bottom,
-      rgba(255,255,255,.65),
-      rgba(255,255,255,.02)
-    );
-
-  filter:blur(3px);
-
-  opacity:.35;
-
-  transform:rotate(8deg);
+  left:0;
+  top:0;
 }
 
-
-/* =========================================================
-   BASE DE LA CÚPULA
-========================================================= */
-
-.rosa-container::after{
+.rosa-container .glass:before{
 
   content:"";
 
-  position:absolute;
-
-  left:10px;
-  bottom:25px;
-
-  width:190px;
   height:10px;
 
-  border-radius:50%;
+  width:10px;
 
-  background:
-    linear-gradient(
-      to right,
-      transparent,
-      rgba(210,220,235,.35),
-      rgba(255,255,255,.45),
-      rgba(210,220,235,.35),
-      transparent
-    );
+  transform-origin:center;
 
-  filter:blur(.5px);
-
-  z-index:25;
-}
-
-
-/* =========================================================
-   TALLO
-========================================================= */
-
-.rosa-container::before{
-
-  content:"";
-
-  position:absolute;
-
-  left:103px;
-  top:105px;
-
-  width:7px;
-  height:145px;
+  border:
+    10px solid #122139;
 
   border-radius:100%;
 
-  background:
-    linear-gradient(
-      to right,
-      #06451f,
-      #1b8b3c,
-      #0a4e24
-    );
+  position:absolute;
+
+  left:87px;
+
+  top:-25px;
+}
+
+.rosa-container .glass:after{
+
+  content:"";
+
+  position:absolute;
+
+  height:15px;
+
+  width:250px;
+
+  background:#a52a2a;
+
+  top:100%;
+
+  left:-13%;
+}
+
+
+/* =========================================================
+   BRILLO
+========================================================= */
+
+.rosa-container .shine{
+
+  width:12px;
+
+  height:140px;
+
+  background:white;
+
+  opacity:.2;
+
+  position:absolute;
+
+  left:85%;
+
+  top:80px;
+
+  border-radius:100px;
+
+  z-index:10;
+}
+
+.rosa-container .shine:before{
+
+  content:"";
+
+  width:12px;
+
+  height:20px;
+
+  position:absolute;
+
+  background:white;
+
+  top:160px;
+
+  border-radius:100px;
+}
+
+
+/* =========================================================
+   PÉTALOS
+   CSS ORIGINAL
+========================================================= */
+
+.rosa-container .petals > div{
+
+  position:absolute;
+
+  background:#d52d58;
+
+  width:45px;
+
+  height:80px;
+
+  top:55px;
+
+  transition:
+    all .5s ease-out;
+}
+
+.rosa-container .petals > div:nth-child(1){
+
+  border-radius:15px;
 
   box-shadow:
-    0 0 5px
-    rgba(50,180,80,.4);
+    0px 0px 30px #f594b8;
 
-  transform:
-    rotate(2deg);
+  left:80px;
+
+  top:60px;
+
+  background:#d52d58;
+}
+
+.rosa-container .petals > div:nth-child(2),
+.rosa-container .petals > div:nth-child(4),
+.rosa-container .petals > div:nth-child(6){
+
+  background:#b81b43;
+
+  left:60px;
+
+  border-radius:
+    0px 30px 0px 30px;
+
+  transform-origin:
+    bottom right;
+}
+
+.rosa-container .petals > div:nth-child(3),
+.rosa-container .petals > div:nth-child(5),
+.rosa-container .petals > div:nth-child(7){
+
+  background:#b81b43;
+
+  left:100px;
+
+  border-radius:
+    30px 0px 30px 0px;
+
+  transform-origin:
+    bottom left;
+}
+
+
+/* =========================================================
+   ANIMACIONES DE APERTURA
+========================================================= */
+
+.rosa-container .petals > div:nth-child(2){
+
+  z-index:5;
+
+  background:#ab1a3f;
+
+  top:75px;
+
+  height:70px;
+
+  box-shadow:
+    0px 0px 50px
+    rgba(245,148,184,.5);
+
+  animation:
+    bloom2
+    3s
+    ease-in-out;
+
+  animation-fill-mode:forwards;
+}
+
+.rosa-container .petals > div:nth-child(3){
 
   z-index:4;
+
+  background:#ab1a3f;
+
+  top:75px;
+
+  height:70px;
+
+  box-shadow:
+    0px 0px 50px
+    rgba(245,148,184,.5);
+
+  animation:
+    bloom3
+    3s
+    ease-in-out,
+    glowing
+    2.5s
+    ease-in-out
+    infinite;
+
+  animation-fill-mode:forwards;
+}
+
+.rosa-container .petals > div:nth-child(4){
+
+  z-index:3;
+
+  background:#b81b43;
+
+  top:70px;
+
+  height:75px;
+
+  box-shadow:
+    0px 0px 50px
+    rgba(245,148,184,.5);
+
+  animation:
+    bloom4
+    3s
+    ease-in-out,
+    glowing
+    2.5s
+    ease-in-out
+    infinite;
+
+  animation-fill-mode:forwards;
+}
+
+.rosa-container .petals > div:nth-child(5){
+
+  z-index:2;
+
+  background:#b81b43;
+
+  top:70px;
+
+  height:75px;
+
+  box-shadow:
+    0px 0px 50px
+    rgba(245,148,184,.5);
+
+  animation:
+    bloom5
+    3s
+    ease-in-out,
+    glowing
+    2.5s
+    ease-in-out
+    infinite;
+
+  animation-fill-mode:forwards;
+}
+
+.rosa-container .petals > div:nth-child(6){
+
+  z-index:1;
+
+  background:#c9204b;
+
+  top:65px;
+
+  height:70px;
+
+  box-shadow:
+    0px 0px 50px
+    rgba(245,148,184,.3);
+
+  animation:
+    bloom6
+    3s
+    ease-in-out,
+    glowing
+    2.5s
+    ease-in-out
+    infinite;
+
+  animation-fill-mode:forwards;
+}
+
+.rosa-container .petals > div:nth-child(7){
+
+  z-index:0;
+
+  background:#c9204b;
+
+  top:65px;
+
+  height:70px;
+
+  box-shadow:
+    0px 0px 50px
+    rgba(245,148,184,.3);
+
+  animation:
+    bloom7
+    3s
+    ease-in-out,
+    glowing
+    2.5s
+    ease-in-out
+    infinite;
+
+  animation-fill-mode:forwards;
+}
+
+
+/* =========================================================
+   PÉTALOS QUE CAEN
+========================================================= */
+
+.rosa-container .deadPetals > div{
+
+  position:absolute;
+
+  background:#d52d58;
+
+  width:20px;
+
+  height:15px;
+
+  top:120px;
+
+  border-radius:
+    0px 30px 0px 30px;
+
+  box-shadow:
+    0px 0px 30px
+    rgba(245,148,184,.5);
+
+  transition:
+    all .5s ease-out;
+}
+
+.rosa-container .deadPetals > div:nth-child(1){
+
+  left:67px;
+
+  transform:
+    rotate(-30deg);
+
+  animation:
+    falling
+    20s
+    4s
+    ease-in-out
+    infinite;
+}
+
+.rosa-container .deadPetals > div:nth-child(2){
+
+  left:104px;
+
+  transform:
+    rotate(-30deg);
+
+  animation:
+    falling
+    20s
+    8s
+    ease-in-out
+    infinite;
+}
+
+.rosa-container .deadPetals > div:nth-child(3){
+
+  left:91px;
+
+  transform:
+    rotate(-30deg);
+
+  animation:
+    falling
+    20s
+    12s
+    ease-in-out
+    infinite;
+}
+
+.rosa-container .deadPetals > div:nth-child(4){
+
+  left:69px;
+
+  transform:
+    rotate(-30deg);
+
+  animation:
+    falling
+    20s
+    16s
+    ease-in-out
+    infinite;
 }
 
 
@@ -487,83 +865,89 @@ body{
    HOJAS
 ========================================================= */
 
-.leaves{
+.rosa-container .leaves > div:nth-last-child(1){
 
   position:absolute;
 
-  inset:0;
+  width:55px;
 
-  z-index:5;
+  height:30px;
+
+  background:#338f37;
+
+  top:120px;
+
+  left:75px;
+
+  border-radius:100px;
 }
 
-.leaves div{
+.rosa-container .leaves > div:nth-child(1){
 
   position:absolute;
 
-  width:48px;
-  height:22px;
+  width:6px;
 
-  background:
-    linear-gradient(
-      135deg,
-      #299746,
-      #07551f
-    );
+  height:210px;
+
+  background:#054c05;
+
+  top:95px;
+
+  left:100px;
 
   border-radius:
-    100% 0 100% 0;
+    0 0 100px 100px;
+}
+
+.rosa-container .leaves > div:nth-child(2){
+
+  position:absolute;
+
+  width:30px;
+
+  height:50px;
+
+  border-radius:
+    5px 40px 20px 40px;
+
+  background:#054c05;
+
+  transform-origin:bottom;
+
+  transform:rotate(-30deg);
+
+  top:180px;
+
+  left:80px;
 
   box-shadow:
-    0 0 5px
-    rgba(20,130,55,.35);
+    inset 5px 5px #066406;
 }
 
+.rosa-container .leaves > div:nth-child(3){
 
-/* izquierda */
+  position:absolute;
 
-.leaves div:nth-child(1){
+  width:30px;
 
-  left:56px;
-  top:175px;
+  height:50px;
 
-  transform:
-    rotate(-35deg);
-}
+  border-radius:
+    40px 5px 40px 20px;
 
+  background:#054c05;
 
-/* derecha */
+  transform-origin:bottom;
 
-.leaves div:nth-child(2){
+  transform:rotate(30deg);
 
-  left:110px;
-  top:165px;
+  top:150px;
 
-  transform:
-    rotate(35deg);
-}
+  left:95px;
 
-
-/* izquierda abajo */
-
-.leaves div:nth-child(3){
-
-  left:60px;
-  top:205px;
-
-  transform:
-    rotate(-18deg);
-}
-
-
-/* derecha abajo */
-
-.leaves div:nth-child(4){
-
-  left:112px;
-  top:208px;
-
-  transform:
-    rotate(20deg);
+  box-shadow:
+    inset -5px 5px #066406;
 }
 
 
@@ -571,21 +955,32 @@ body{
    ESPINAS
 ========================================================= */
 
-.thorns{
-
-  position:absolute;
-
-  inset:0;
-
-  z-index:6;
-}
-
-.thorns div{
+.rosa-container .thorns > div{
 
   position:absolute;
 
   width:0;
+
   height:0;
+
+  top:140px;
+}
+
+.rosa-container .thorns > div:nth-child(odd){
+
+  border-top:
+    5px solid transparent;
+
+  border-bottom:
+    5px solid transparent;
+
+  border-left:
+    5px solid #054c05;
+
+  left:105px;
+}
+
+.rosa-container .thorns > div:nth-child(even){
 
   border-top:
     5px solid transparent;
@@ -594,483 +989,145 @@ body{
     5px solid transparent;
 
   border-right:
-    11px solid #14632c;
+    5px solid #054c05;
+
+  left:95px;
 }
 
-.thorns div:nth-child(1){
+.rosa-container .thorns > div:nth-child(1){
 
-  left:84px;
-  top:165px;
-
-  transform:rotate(20deg);
+  top:200px;
 }
 
-.thorns div:nth-child(2){
+.rosa-container .thorns > div:nth-child(2){
 
-  left:120px;
-  top:188px;
-
-  transform:rotate(190deg);
+  top:170px;
 }
 
-.thorns div:nth-child(3){
+.rosa-container .thorns > div:nth-child(4){
 
-  left:83px;
-  top:212px;
-
-  transform:rotate(25deg);
-}
-
-.thorns div:nth-child(4){
-
-  left:119px;
-  top:145px;
-
-  transform:rotate(190deg);
+  top:230px;
 }
 
 
 /* =========================================================
-   PÉTALOS DE LA ROSA
+   BLOOM
 ========================================================= */
 
-.petals{
-
-  position:absolute;
-
-  left:50%;
-  top:48px;
-
-  width:125px;
-  height:105px;
-
-  transform:translateX(-50%);
-
-  z-index:10;
-}
-
-
-/*
-   Ahora sí:
-
-   pétalos definidos y curvos,
-   no bolitas.
-*/
-
-.petals div{
-
-  position:absolute;
-
-  background:
-    radial-gradient(
-      ellipse at 40% 30%,
-      #ff6a78 0%,
-      #f21c43 32%,
-      #bd0829 65%,
-      #650014 100%
-    );
-
-  box-shadow:
-
-    inset
-    3px 3px 7px
-    rgba(255,150,160,.35),
-
-    inset
-    -4px -5px 8px
-    rgba(70,0,15,.4),
-
-    0 0 8px
-    rgba(255,20,55,.18);
-
-}
-
-
-/* pétalo exterior izquierdo */
-
-.petals div:nth-child(1){
-
-  width:65px;
-  height:65px;
-
-  left:0;
-  top:25px;
-
-  border-radius:
-    70% 35% 65% 45%;
-
-  transform:
-    rotate(-30deg);
-}
-
-
-/* pétalo exterior derecho */
-
-.petals div:nth-child(2){
-
-  width:68px;
-  height:68px;
-
-  right:0;
-  top:23px;
-
-  border-radius:
-    35% 70% 45% 65%;
-
-  transform:
-    rotate(30deg);
-}
-
-
-/* pétalo superior izquierdo */
-
-.petals div:nth-child(3){
-
-  width:63px;
-  height:62px;
-
-  left:22px;
-  top:5px;
-
-  border-radius:
-    65% 35% 55% 45%;
-
-  transform:
-    rotate(-12deg);
-}
-
-
-/* pétalo superior derecho */
-
-.petals div:nth-child(4){
-
-  width:63px;
-  height:62px;
-
-  right:21px;
-  top:4px;
-
-  border-radius:
-    35% 65% 45% 55%;
-
-  transform:
-    rotate(12deg);
-}
-
-
-/* pétalo central izquierdo */
-
-.petals div:nth-child(5){
-
-  width:52px;
-  height:53px;
-
-  left:28px;
-  top:38px;
-
-  border-radius:
-    70% 35% 60% 40%;
-
-  transform:
-    rotate(-20deg);
-
-  z-index:5;
-}
-
-
-/* pétalo central derecho */
-
-.petals div:nth-child(6){
-
-  width:52px;
-  height:53px;
-
-  right:28px;
-  top:37px;
-
-  border-radius:
-    35% 70% 40% 60%;
-
-  transform:
-    rotate(20deg);
-
-  z-index:5;
-}
-
-
-/* centro */
-
-.petals div:nth-child(7){
-
-  width:45px;
-  height:48px;
-
-  left:40px;
-  top:33px;
-
-  border-radius:
-    50% 50% 45% 55%;
-
-  transform:
-    rotate(8deg);
-
-  background:
-    radial-gradient(
-      ellipse at 35% 25%,
-      #ff8994,
-      #ed153d 35%,
-      #a50022 70%,
-      #4d000e
-    );
-
-  z-index:15;
-}
-
-
-/* =========================================================
-   PÉTALOS QUE CAEN
-========================================================= */
-
-.deadPetals{
-
-  position:absolute;
-
-  inset:0;
-
-  z-index:30;
-}
-
-
-/* forma */
-
-.deadPetals div{
-
-  position:absolute;
-
-  width:9px;
-  height:13px;
-
-  border-radius:
-    70% 30% 70% 30%;
-
-  background:
-    linear-gradient(
-      135deg,
-      #ff6275,
-      #dc0b32 60%,
-      #850016
-    );
-
-  box-shadow:
-    0 0 4px
-    rgba(255,40,70,.45);
-
-  opacity:0;
-}
-
-
-/* pétalo 1 */
-
-.deadPetals div:nth-child(1){
-
-  left:82px;
-  top:95px;
-
-  animation:
-    petalo1
-    5.5s
-    ease-in
-    infinite;
-}
-
-
-/* pétalo 2 */
-
-.deadPetals div:nth-child(2){
-
-  left:122px;
-  top:105px;
-
-  animation:
-    petalo2
-    6s
-    ease-in
-    infinite;
-
-  animation-delay:1.7s;
-}
-
-
-/* pétalo 3 */
-
-.deadPetals div:nth-child(3){
-
-  left:94px;
-  top:112px;
-
-  animation:
-    petalo3
-    5.8s
-    ease-in
-    infinite;
-
-  animation-delay:3s;
-}
-
-
-/* pétalo 4 */
-
-.deadPetals div:nth-child(4){
-
-  left:135px;
-  top:92px;
-
-  animation:
-    petalo4
-    6.2s
-    ease-in
-    infinite;
-
-  animation-delay:4s;
-}
-
-
-/* =========================================================
-   ANIMACIONES DE PÉTALOS
-========================================================= */
-
-@keyframes petalo1{
-
-  0%{
-    opacity:0;
-    transform:
-      translate(0,0)
-      rotate(0);
-  }
-
-  10%{
-    opacity:.9;
-  }
-
-  40%{
-    transform:
-      translate(-15px,45px)
-      rotate(100deg);
-  }
-
-  70%{
-    transform:
-      translate(8px,90px)
-      rotate(210deg);
-  }
-
-  100%{
-    opacity:0;
-    transform:
-      translate(-10px,135px)
-      rotate(320deg);
-  }
-}
-
-
-@keyframes petalo2{
-
-  0%{
-    opacity:0;
-    transform:
-      translate(0,0)
-      rotate(0);
-  }
-
-  10%{
-    opacity:.9;
-  }
-
-  45%{
-    transform:
-      translate(16px,45px)
-      rotate(110deg);
-  }
-
-  75%{
-    transform:
-      translate(-8px,95px)
-      rotate(230deg);
-  }
-
-  100%{
-    opacity:0;
-    transform:
-      translate(10px,140px)
-      rotate(350deg);
-  }
-}
-
-
-@keyframes petalo3{
-
-  0%{
-    opacity:0;
-    transform:
-      translate(0,0)
-      rotate(0);
-  }
-
-  10%{
-    opacity:.85;
-  }
+@keyframes bloom2{
 
   50%{
+
     transform:
-      translate(18px,55px)
-      rotate(160deg);
+      rotate(-90deg);
+
+    top:200px;
+
+    left:100px;
   }
 
   100%{
-    opacity:0;
+
     transform:
-      translate(-10px,140px)
-      rotate(330deg);
+      rotate(-60deg);
+
+    top:252px;
+
+    left:50px;
+
+    background:#71122a;
+
+    box-shadow:
+      0px 0px 0px
+      rgba(245,148,184,0);
   }
 }
 
-
-@keyframes petalo4{
-
-  0%{
-    opacity:0;
-    transform:
-      translate(0,0)
-      rotate(0);
-  }
-
-  10%{
-    opacity:.85;
-  }
-
-  45%{
-    transform:
-      translate(-16px,50px)
-      rotate(140deg);
-  }
-
-  75%{
-    transform:
-      translate(8px,100px)
-      rotate(260deg);
-  }
+@keyframes bloom3{
 
   100%{
-    opacity:0;
     transform:
-      translate(-4px,145px)
-      rotate(370deg);
+      rotate(45deg);
+  }
+}
+
+@keyframes bloom4{
+
+  100%{
+    transform:
+      rotate(-20deg);
+  }
+}
+
+@keyframes bloom5{
+
+  100%{
+    transform:
+      rotate(20deg);
+  }
+}
+
+@keyframes bloom6{
+
+  100%{
+    transform:
+      rotate(-5deg);
+  }
+}
+
+@keyframes bloom7{
+
+  100%{
+    transform:
+      rotate(5deg);
   }
 }
 
 
 /* =========================================================
-   CONFIRMAR
+   BRILLO DE LA ROSA
+========================================================= */
+
+@keyframes glowing{
+
+  50%{
+
+    background:#d7365f;
+
+    box-shadow:
+      0px 0px 60px #f594b8;
+  }
+}
+
+
+/* =========================================================
+   PÉTALOS CAYENDO
+========================================================= */
+
+@keyframes falling{
+
+  20%{
+
+    top:335px;
+
+    background:#9d193b;
+
+    box-shadow:
+      0px 0px 0px
+      rgba(245,148,184,0);
+  }
+
+  100%{
+
+    top:335px;
+
+    opacity:0;
+  }
+}
+
+
+/* =========================================================
+   CONFIRMAR ASISTENCIA
 ========================================================= */
 
 #confirmar{
@@ -1082,11 +1139,14 @@ body{
   position:absolute;
 
   left:50%;
+
   bottom:8%;
 
-  transform:translateX(-50%);
+  transform:
+    translateX(-50%);
 
-  padding:14px 28px;
+  padding:
+    14px 28px;
 
   border-radius:30px;
 
@@ -1121,9 +1181,7 @@ body{
   text-align:center;
 
   padding:
-    30px
-    15px
-    40px;
+    30px 15px 40px;
 
   color:#ddd;
 
@@ -1164,6 +1222,7 @@ body{
 }
 
 .creditos a:hover{
+
   color:#d8b75b;
 }
 
@@ -1176,11 +1235,6 @@ body{
 
   .contador{
 
-    /*
-      Más abajo de la frase,
-      pero separado de la rosa.
-    */
-
     top:59%;
 
     width:94%;
@@ -1188,12 +1242,10 @@ body{
     gap:4px;
   }
 
-
   .tiempo{
 
     min-width:48px;
   }
-
 
   .numero{
 
@@ -1201,68 +1253,41 @@ body{
       clamp(23px,7vw,34px);
   }
 
-
   .etiqueta{
 
     font-size:
       clamp(7px,1.8vw,10px);
 
-    letter-spacing:
-      1px;
+    letter-spacing:1px;
 
     margin-top:6px;
   }
 
 
   /*
-     ROSA MÁS PEQUEÑA
+     ROSA EN CELULAR
+
+     Se hace más pequeña pero
+     conserva exactamente
+     su diseño y animaciones.
   */
 
-  .zona-rosa{
+  .rosa-zona{
 
-    top:71%;
+    height:39%;
 
-    height:28%;
+    bottom:0;
 
-    align-items:flex-start;
+    align-items:flex-end;
   }
-
 
   .rosa-container{
 
-    width:180px;
-    height:235px;
-
     transform:
-      scale(.82);
+      scale(.54);
 
     transform-origin:
-      top center;
-
-    animation:
-      balanceoRosaMobile
-      5s
-      ease-in-out
-      infinite;
-  }
-
-
-  @keyframes balanceoRosaMobile{
-
-    0%,100%{
-      transform:
-        scale(.82)
-        rotate(-1deg)
-        translateY(0);
-    }
-
-    50%{
-      transform:
-        scale(.82)
-        rotate(1deg)
-        translateY(-3px);
-    }
-
+      bottom center;
   }
 
 
@@ -1271,15 +1296,14 @@ body{
     font-size:14px;
 
     padding:
-      12px
-      21px;
+      12px 21px;
   }
 
 }
 
 
 /* =========================================================
-   PANTALLAS MUY PEQUEÑAS
+   CELULARES MUY PEQUEÑOS
 ========================================================= */
 
 @media(max-width:380px){
@@ -1299,14 +1323,16 @@ body{
     font-size:7px;
   }
 
-  .zona-rosa{
+  .rosa-container{
 
-    top:70%;
+    transform:
+      scale(.48);
   }
 
 }
 
 </style>
+
 </head>
 
 
@@ -1349,15 +1375,6 @@ body{
     type="audio/mpeg">
 
 </audio>
-
-
-<button
-  id="botonMusica"
-  class="boton-musica">
-
-  ♪
-
-</button>
 
 
 <!-- =====================================================
@@ -1517,12 +1534,11 @@ body{
 
 
   <!-- =================================================
-       ROSA
-       ABAJO DEL CONTADOR
+       ROSA B&B
+       AQUÍ ESTÁ TU ROSA ORIGINAL
   ================================================== -->
 
-  <div class="zona-rosa">
-
+  <div class="rosa-zona">
 
     <div class="rosa-container">
 
@@ -1560,7 +1576,7 @@ body{
       </div>
 
 
-      <!-- ROSA -->
+      <!-- PÉTALOS -->
 
       <div class="petals">
 
@@ -1672,6 +1688,19 @@ body{
 </main>
 
 
+<!-- =====================================================
+     BOTÓN DE MÚSICA
+===================================================== -->
+
+<button
+  id="botonMusica"
+  class="boton-musica">
+
+  ♪
+
+</button>
+
+
 <script>
 
 /* =========================================================
@@ -1695,12 +1724,35 @@ const botonMusica =
    ABRIR INVITACIÓN
 ========================================================= */
 
+let invitacionAbierta = false;
+
+
 function abrirInvitacion(){
+
+  if(invitacionAbierta){
+    return;
+  }
+
+  invitacionAbierta = true;
+
+
+  /*
+     Primero aparece el contenido
+     para permitir la transición.
+  */
 
   contenido.classList.add("visible");
 
+
   /*
-     La música empieza desde 0:00
+     Después desaparece la portada.
+  */
+
+  portada.classList.add("abierta");
+
+
+  /*
+     Música desde 0:00
   */
 
   musica.currentTime = 0;
@@ -1718,16 +1770,26 @@ function abrirInvitacion(){
     }
   );
 
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
+
+  /*
+     Nos aseguramos de comenzar
+     la invitación desde arriba.
+  */
+
+  setTimeout(function(){
+
+    window.scrollTo({
+      top:0,
+      behavior:"smooth"
+    });
+
+  },300);
 
 }
 
 
 /* =========================================================
-   PORTADA
+   TOCAR PORTADA
 ========================================================= */
 
 portada.addEventListener(
@@ -1737,7 +1799,7 @@ portada.addEventListener(
 
 
 /* =========================================================
-   BOTÓN MÚSICA
+   MÚSICA
 ========================================================= */
 
 function toggleMusica(){
