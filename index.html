@@ -1,636 +1,797 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>XV Años de Marian</title>
 
-
 <style>
 
-/* =========================================
+/* =========================================================
    CONFIGURACIÓN GENERAL
-========================================= */
+========================================================= */
 
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
 }
 
 html,
 body {
-    width: 100%;
-    min-width: 100%;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  background: #061b3a;
+  overflow-x: hidden;
+  font-family: Georgia, "Times New Roman", serif;
 }
 
 body {
-    background: #071b36;
-    color: white;
-    font-family: Georgia, "Times New Roman", serif;
+  position: relative;
 }
 
 
-/* =========================================
-   NIEVE
-========================================= */
-
-.nieve {
-
-    position: fixed;
-
-    top: -30px;
-
-    color: white;
-
-    pointer-events: none;
-
-    z-index: 9999;
-
-    line-height: 1;
-
-    animation: caerNieve linear forwards;
-}
-
-
-@keyframes caerNieve {
-
-    from {
-        transform:
-            translateY(-30px)
-            rotate(0deg);
-    }
-
-    to {
-        transform:
-            translateY(110vh)
-            rotate(360deg);
-    }
-
-}
-
-
-/* =========================================
-   ROSAS SOBRE LAS IMÁGENES
-========================================= */
-
-.capa-rosas {
-
-    position: absolute;
-
-    inset: 0;
-
-    width: 100%;
-    height: 100%;
-
-    overflow: hidden;
-
-    pointer-events: none;
-
-    z-index: 5;
-}
-
-
-/* Cada rosa */
-
-.rosa {
-
-    position: absolute;
-
-    line-height: 1;
-
-    opacity: 0.75;
-
-    filter:
-        drop-shadow(
-            0 2px 3px
-            rgba(0,0,0,0.25)
-        );
-
-    animation:
-        movimientoRosa
-        5s ease-in-out infinite;
-
-}
-
-
-/* Movimiento MUY LEVE */
-
-@keyframes movimientoRosa {
-
-    0% {
-
-        transform:
-            translateX(0)
-            rotate(-3deg);
-
-    }
-
-    50% {
-
-        transform:
-            translateX(8px)
-            rotate(4deg);
-
-    }
-
-    100% {
-
-        transform:
-            translateX(0)
-            rotate(-3deg);
-
-    }
-
-}
-
-
-/* =========================================
+/* =========================================================
    PORTADA
-========================================= */
+========================================================= */
 
 #portada {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100vh;
 
-    position: fixed;
+  background-image: url("portada.jpeg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 
-    top: 0;
-    left: 0;
+  z-index: 1000;
 
-    width: 100%;
-    height: 100vh;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
 
-    background-image:
-        url("portada.jpeg");
+  cursor: pointer;
 
-    background-size: cover;
+  transition:
+    opacity 1.2s ease,
+    visibility 1.2s ease;
+}
 
-    background-position: center;
-
-    background-repeat: no-repeat;
-
-    display: flex;
-
-    align-items: flex-end;
-
-    justify-content: center;
-
-    z-index: 1000;
-
-    overflow: hidden;
-
-    transition:
-        opacity 1s ease,
-        transform 1s ease;
+#portada.cerrada {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 
-/* Rosas de portada */
-
-#rosasPortada {
-
-    position: absolute;
-
-    inset: 0;
-
-    pointer-events: none;
-
-    overflow: hidden;
-
-    z-index: 2;
-}
-
-
-/* Botón abrir */
+/* =========================================================
+   TEXTO "TOCA PARA ABRIR"
+========================================================= */
 
 .abrir {
+  margin-bottom: 55px;
 
-    position: relative;
+  padding: 14px 28px;
 
-    z-index: 10;
+  color: #fff;
+  font-size: 18px;
+  letter-spacing: 1px;
+  text-align: center;
 
-    margin-bottom: 45px;
+  background: rgba(4, 20, 50, 0.72);
 
-    padding: 15px 28px;
+  border: 1px solid rgba(255, 215, 120, 0.8);
+  border-radius: 30px;
 
-    border:
-        2px solid #FFD700;
+  box-shadow:
+    0 0 15px rgba(255, 215, 120, 0.35);
 
-    border-radius: 50px;
-
-    background:
-        rgba(7, 27, 54, 0.90);
-
-    color: #FFD700;
-
-    font-size: 20px;
-
-    font-weight: bold;
-
-    line-height: 1.2;
-
-    cursor: pointer;
-
-    box-shadow:
-        0 0 20px
-        rgba(255, 215, 0, 0.5);
-
-    animation:
-        pulsar 1.8s infinite;
+  animation: pulsar 2s ease-in-out infinite;
 }
-
 
 @keyframes pulsar {
 
-    0%,
-    100% {
-        transform: scale(1);
-    }
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.85;
+  }
 
-    50% {
-        transform: scale(1.06);
-    }
-
+  50% {
+    transform: scale(1.04);
+    opacity: 1;
+  }
 }
 
 
-/* Ocultar portada */
+/* =========================================================
+   CONTENIDO
+========================================================= */
 
-#portada.oculta {
+#contenido {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+
+/* =========================================================
+   SECCIONES CON IMAGEN
+========================================================= */
+
+.seccion {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+
+  overflow: hidden;
+}
+
+.seccion img {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  margin: 0;
+  padding: 0;
+}
+
+
+/* =========================================================
+   CRONÓMETRO
+========================================================= */
+
+.contador {
+  position: relative;
+
+  width: 100%;
+
+  margin: 0;
+  padding: 0;
+
+  overflow: hidden;
+}
+
+.imagen-contador {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  margin: 0;
+  padding: 0;
+}
+
+
+/* =========================================================
+   CÚPULA DE VIDRIO
+========================================================= */
+
+.cupula-rosa {
+
+  position: absolute;
+
+  left: 50%;
+  top: 22%;
+
+  transform: translateX(-50%);
+
+  width: 46%;
+  max-width: 360px;
+  aspect-ratio: 0.72;
+
+  z-index: 10;
+
+  pointer-events: none;
+}
+
+
+/* Parte exterior de vidrio */
+
+.vidrio {
+
+  position: absolute;
+
+  inset: 0;
+
+  border-radius:
+    50% 50% 18% 18% /
+    38% 38% 12% 12%;
+
+  background:
+    linear-gradient(
+      105deg,
+      rgba(255,255,255,0.24),
+      rgba(255,255,255,0.05) 30%,
+      rgba(255,255,255,0.12) 55%,
+      rgba(255,255,255,0.03)
+    );
+
+  border:
+    2px solid rgba(255,255,255,0.58);
+
+  box-shadow:
+    inset 8px 0 20px rgba(255,255,255,0.18),
+    inset -8px 0 20px rgba(255,255,255,0.08),
+    0 0 25px rgba(255,255,255,0.22);
+
+  backdrop-filter: blur(1px);
+}
+
+
+/* Brillo del vidrio */
+
+.vidrio::before {
+
+  content: "";
+
+  position: absolute;
+
+  top: 7%;
+  left: 13%;
+
+  width: 9%;
+  height: 55%;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(255,255,255,0.75),
+      rgba(255,255,255,0)
+    );
+
+  transform: rotate(7deg);
+
+  opacity: 0.65;
+}
+
+
+/* Base de la cúpula */
+
+.base-vidrio {
+
+  position: absolute;
+
+  left: -7%;
+  bottom: -1%;
+
+  width: 114%;
+  height: 12%;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(255,255,255,0.45),
+      rgba(180,200,220,0.16)
+    );
+
+  border:
+    2px solid rgba(255,255,255,0.65);
+
+  box-shadow:
+    0 4px 12px rgba(0,0,0,0.28),
+    inset 0 3px 7px rgba(255,255,255,0.35);
+}
+
+
+/* =========================================================
+   ROSA ROJA GRANDE
+========================================================= */
+
+.rosa-grande {
+
+  position: absolute;
+
+  left: 50%;
+  bottom: 8%;
+
+  transform: translateX(-50%);
+
+  width: 72%;
+  height: 72%;
+
+  z-index: 4;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  animation:
+    movimientoRosa 5s ease-in-out infinite;
+}
+
+
+/* Tallo */
+
+.rosa-grande::after {
+
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  bottom: 0;
+
+  width: 7px;
+  height: 43%;
+
+  background:
+    linear-gradient(
+      to right,
+      #174d2b,
+      #3e8a46,
+      #174d2b
+    );
+
+  border-radius: 8px;
+
+  transform:
+    translateX(-50%)
+    rotate(3deg);
+
+  box-shadow:
+    2px 0 4px rgba(0,0,0,0.25);
+}
+
+
+/* Rosa */
+
+.flor {
+
+  position: relative;
+
+  width: 78%;
+  aspect-ratio: 1;
+
+  margin-bottom: 28%;
+
+  border-radius: 50%;
+
+  background:
+
+    radial-gradient(
+      circle at 50% 50%,
+      #ff6b6b 0%,
+      #d91532 25%,
+      #a5001d 52%,
+      #6d0014 76%,
+      #43000c 100%
+    );
+
+  box-shadow:
+    0 7px 15px rgba(0,0,0,0.45),
+    0 0 22px rgba(180,0,25,0.38);
+
+  z-index: 5;
+}
+
+
+/* Pétalos visuales de la rosa */
+
+.flor::before {
+
+  content: "";
+
+  position: absolute;
+
+  inset: 8%;
+
+  border-radius: 50%;
+
+  background:
+
+    radial-gradient(
+      ellipse at 50% 25%,
+      transparent 0 28%,
+      rgba(95,0,15,0.65) 29% 37%,
+      transparent 38%
+    ),
+
+    radial-gradient(
+      ellipse at 25% 50%,
+      transparent 0 28%,
+      rgba(95,0,15,0.6) 29% 38%,
+      transparent 39%
+    ),
+
+    radial-gradient(
+      ellipse at 75% 50%,
+      transparent 0 28%,
+      rgba(95,0,15,0.6) 29% 38%,
+      transparent 39%
+    ),
+
+    radial-gradient(
+      ellipse at 50% 75%,
+      transparent 0 28%,
+      rgba(95,0,15,0.55) 29% 38%,
+      transparent 39%
+    );
+
+  transform: rotate(15deg);
+}
+
+
+/* Centro de la rosa */
+
+.flor::after {
+
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 28%;
+  height: 28%;
+
+  transform: translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      #ff7474,
+      #b5001e 55%,
+      #620010
+    );
+
+  box-shadow:
+    0 0 8px rgba(0,0,0,0.35);
+}
+
+
+/* Movimiento MUY suave */
+
+@keyframes movimientoRosa {
+
+  0%,
+  100% {
+    transform:
+      translateX(-50%)
+      rotate(-1deg);
+  }
+
+  50% {
+    transform:
+      translateX(-50%)
+      rotate(1deg);
+  }
+}
+
+
+/* =========================================================
+   PÉTALOS QUE CAEN
+========================================================= */
+
+.petalo {
+
+  position: absolute;
+
+  z-index: 20;
+
+  width: 13px;
+  height: 18px;
+
+  border-radius:
+    70% 30% 70% 30%;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ff6875,
+      #d20b2e 55%,
+      #820016
+    );
+
+  box-shadow:
+    0 2px 4px rgba(0,0,0,0.25);
+
+  opacity: 0;
+
+  animation:
+    caerPetalo linear forwards;
+}
+
+
+@keyframes caerPetalo {
+
+  0% {
 
     opacity: 0;
 
-    transform: scale(1.05);
+    transform:
+      translateY(-20px)
+      translateX(0)
+      rotate(0deg);
+  }
 
-    pointer-events: none;
+  10% {
+    opacity: 0.9;
+  }
+
+  50% {
+
+    transform:
+      translateY(150px)
+      translateX(20px)
+      rotate(150deg);
+  }
+
+  80% {
+    opacity: 0.8;
+  }
+
+  100% {
+
+    opacity: 0;
+
+    transform:
+      translateY(330px)
+      translateX(-15px)
+      rotate(310deg);
+  }
 }
 
 
-/* =========================================
-   CONTENIDO
-========================================= */
-
-#contenido {
-
-    display: none;
-
-    width: 100%;
-
-    margin: 0;
-    padding: 0;
-}
-
-
-#contenido.mostrar {
-
-    display: block;
-
-    animation:
-        aparecer 1s ease;
-}
-
-
-@keyframes aparecer {
-
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-
-}
-
-
-/* =========================================
-   SECCIONES CON IMAGEN
-========================================= */
-
-.seccion {
-
-    position: relative;
-
-    display: block;
-
-    width: 100%;
-
-    margin: 0;
-    padding: 0;
-
-    overflow: hidden;
-
-    line-height: 0;
-}
-
-
-.seccion img {
-
-    position: relative;
-
-    z-index: 1;
-
-    display: block;
-
-    width: 100%;
-
-    height: auto;
-
-    max-width: none;
-
-    margin: 0;
-    padding: 0;
-
-    border: 0;
-}
-
-
-/* =========================================
-   CRONÓMETRO
-========================================= */
-
-.contador {
-
-    position: relative;
-
-    display: block;
-
-    width: 100%;
-
-    margin: 0;
-    padding: 0;
-
-    overflow: hidden;
-
-    line-height: 0;
-}
-
-
-/* Imagen del cronómetro */
-
-.imagen-contador {
-
-    position: relative;
-
-    z-index: 1;
-
-    display: block;
-
-    width: 100%;
-
-    height: auto;
-
-    max-width: none;
-
-    margin: 0;
-    padding: 0;
-
-    border: 0;
-}
-
-
-/* =========================================
-   NÚMEROS DEL CRONÓMETRO
-========================================= */
+/* =========================================================
+   CONTADOR NUMÉRICO
+========================================================= */
 
 .numeros-contador {
 
-    position: absolute;
+  position: absolute;
 
-    top: 63%;
+  left: 50%;
+  bottom: 5%;
 
-    left: 50%;
+  transform: translateX(-50%);
 
-    transform:
-        translate(-50%, -50%);
+  z-index: 30;
 
-    width: 92%;
+  width: 90%;
 
-    display: grid;
+  display: flex;
 
-    grid-template-columns:
-        repeat(4, 1fr);
+  justify-content: center;
 
-    text-align: center;
+  gap: 10px;
 
-    color: #FFD700;
-
-    line-height: normal;
-
-    z-index: 10;
-
-    text-shadow:
-        0 2px 5px #000,
-        0 0 10px
-        rgba(255, 215, 0, 0.8);
-}
-
-
-.tiempo {
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    justify-content: center;
+  text-align: center;
 }
 
 
 .numero {
 
-    font-size:
-        clamp(28px, 7vw, 75px);
+  min-width: 65px;
 
-    font-weight: bold;
+  padding: 8px 5px;
 
-    line-height: 1;
+  border-radius: 10px;
+
+  background:
+    rgba(4, 20, 50, 0.60);
+
+  border:
+    1px solid rgba(255,215,120,0.65);
+
+  box-shadow:
+    0 4px 12px rgba(0,0,0,0.25);
 }
 
 
-.etiqueta {
+.numero span {
 
-    margin-top: 7px;
+  display: block;
 
-    font-size:
-        clamp(8px, 2vw, 17px);
+  color: #fff;
 
-    font-weight: bold;
+  font-size: clamp(20px, 5vw, 38px);
 
-    letter-spacing: 1px;
+  font-weight: bold;
 
-    line-height: 1.2;
+  line-height: 1;
+
+  text-shadow:
+    0 2px 5px rgba(0,0,0,0.6);
 }
 
 
-/* =========================================
-   CONFIRMAR ASISTENCIA
-========================================= */
+.numero small {
+
+  display: block;
+
+  margin-top: 5px;
+
+  color: #f7d77a;
+
+  font-size: clamp(8px, 2vw, 12px);
+
+  letter-spacing: 1px;
+}
+
+
+/* =========================================================
+   CONFIRMACIÓN
+========================================================= */
 
 .confirmacion {
 
-    width: 100%;
+  width: 100%;
 
-    margin: 0;
+  padding: 25px 15px;
 
-    padding:
-        18px 15px 25px;
+  text-align: center;
 
-    background:
-        #071b36;
-
-    text-align: center;
-
-    line-height: normal;
+  background:
+    linear-gradient(
+      180deg,
+      #061b3a,
+      #092a58
+    );
 }
 
 
 .boton {
 
-    display: inline-block;
+  display: inline-block;
 
-    padding:
-        15px 30px;
+  padding: 14px 25px;
 
-    border-radius: 50px;
+  color: #fff;
 
-    background:
-        #FFD700;
+  text-decoration: none;
 
-    color:
-        #071b36;
+  font-size: 17px;
+  font-weight: bold;
 
-    text-decoration: none;
+  border-radius: 30px;
 
-    font-size: 18px;
+  background:
+    linear-gradient(
+      135deg,
+      #0d5d8c,
+      #147ca8
+    );
 
-    font-weight: bold;
+  border:
+    1px solid #e7c76b;
 
-    line-height: 1.2;
-
-    box-shadow:
-        0 5px 20px
-        rgba(255, 215, 0, 0.4);
-
-    transition:
-        transform 0.2s ease;
+  box-shadow:
+    0 5px 18px rgba(0,0,0,0.3);
 }
 
 
-.boton:hover {
-
-    transform:
-        scale(1.05);
-}
-
-
-.boton:active {
-
-    transform:
-        scale(0.96);
-}
-
-
-/* =========================================
+/* =========================================================
    BOTÓN DE MÚSICA
-========================================= */
+========================================================= */
 
 #botonMusica {
 
-    position: fixed;
+  position: fixed;
 
-    right: 16px;
-    bottom: 16px;
+  right: 18px;
+  bottom: 18px;
 
-    width: 52px;
-    height: 52px;
+  width: 48px;
+  height: 48px;
 
-    border-radius: 50%;
+  z-index: 999;
 
-    border:
-        2px solid #FFD700;
+  border: 1px solid rgba(255,215,120,0.8);
 
-    background:
-        rgba(7, 27, 54, 0.95);
+  border-radius: 50%;
 
-    color:
-        #FFD700;
+  background:
+    rgba(4, 20, 50, 0.82);
 
-    font-size: 22px;
+  color: #f7d77a;
 
-    cursor: pointer;
+  font-size: 20px;
 
-    z-index: 9998;
+  cursor: pointer;
 
-    line-height: 1;
-
-    box-shadow:
-        0 0 15px
-        rgba(255, 215, 0, 0.4);
+  box-shadow:
+    0 4px 12px rgba(0,0,0,0.3);
 }
 
 
-/* =========================================
-   CELULAR
-========================================= */
+/* =========================================================
+   NIEVE
+========================================================= */
+
+.nieve {
+
+  position: fixed;
+
+  top: -30px;
+
+  z-index: 500;
+
+  pointer-events: none;
+
+  color: #fff;
+
+  text-shadow:
+    0 0 5px rgba(255,255,255,0.9);
+
+  animation-name: caerNieve;
+
+  animation-timing-function: linear;
+
+  animation-fill-mode: forwards;
+}
+
+
+@keyframes caerNieve {
+
+  0% {
+
+    transform:
+      translateY(-30px)
+      rotate(0deg);
+  }
+
+  100% {
+
+    transform:
+      translateY(110vh)
+      rotate(360deg);
+  }
+}
+
+
+/* =========================================================
+   AJUSTES PARA CELULAR
+========================================================= */
 
 @media (max-width: 600px) {
 
-    .abrir {
+  .cupula-rosa {
 
-        margin-bottom: 35px;
+    width: 52%;
 
-        padding:
-            13px 24px;
+    top: 20%;
+  }
 
-        font-size: 17px;
-    }
+  .numeros-contador {
 
+    gap: 4px;
+  }
 
-    .numeros-contador {
+  .numero {
 
-        width: 96%;
-    }
+    min-width: 55px;
 
+    padding: 6px 3px;
+  }
 
-    .numero {
+  .numero span {
 
-        font-size:
-            clamp(22px, 9vw, 50px);
-    }
+    font-size: 20px;
+  }
 
+  .numero small {
 
-    .etiqueta {
+    font-size: 8px;
+  }
 
-        font-size:
-            clamp(7px, 2.5vw, 13px);
+  .abrir {
 
-        letter-spacing: 0;
-    }
+    margin-bottom: 35px;
 
-
-    .confirmacion {
-
-        padding:
-            15px 10px 20px;
-    }
-
-
-    .boton {
-
-        font-size: 16px;
-
-        padding:
-            13px 24px;
-    }
-
+    font-size: 16px;
+  }
 }
 
 </style>
@@ -640,276 +801,235 @@ body {
 <body>
 
 
-<!-- =========================================
+<!-- =======================================================
      PORTADA
-========================================= -->
+======================================================= -->
 
-<div
-    id="portada"
-    onclick="abrirInvitacion()"
->
+<div id="portada" onclick="abrirInvitacion()">
 
-
-    <!-- ROSAS DE LA PORTADA -->
-
-    <div id="rosasPortada"></div>
-
-
-    <!-- BOTÓN -->
-
-    <div class="abrir">
-
-        ✨ Toca para abrir ✨
-
-    </div>
-
+  <div class="abrir">
+    ✨ Toca para abrir ✨
+  </div>
 
 </div>
 
 
-<!-- =========================================
+<!-- =======================================================
      MÚSICA
-========================================= -->
+======================================================= -->
 
-<audio
-    id="musica"
-    loop
-    preload="auto"
->
+<audio id="musica" loop preload="auto">
 
-    <source
-        src="./musica.mp3"
-        type="audio/mpeg"
-    >
+  <source
+    src="musica.mp3"
+    type="audio/mpeg">
 
 </audio>
 
 
-<!-- =========================================
+<!-- =======================================================
      CONTENIDO
-========================================= -->
+======================================================= -->
 
 <main id="contenido">
 
 
-    <!-- =====================================
-         1. INICIO
-    ====================================== -->
+  <!-- =====================================================
+       INICIO
+  ====================================================== -->
 
-    <section class="seccion">
+  <section class="seccion">
 
-        <img
-            src="inicio.jpeg"
-            alt="Inicio de la invitación"
-        >
+    <img
+      src="inicio.jpeg"
+      alt="Inicio de la invitación">
 
-        <div class="capa-rosas"></div>
+  </section>
 
-    </section>
 
+  <!-- =====================================================
+       INVITACIÓN
+  ====================================================== -->
 
-    <!-- =====================================
-         2. INVITACIÓN
-    ====================================== -->
+  <section class="seccion">
 
-    <section class="seccion">
+    <img
+      src="invitacion.jpeg"
+      alt="Invitación de Marian">
 
-        <img
-            src="invitacion.jpeg"
-            alt="Invitación de Marian"
-        >
+  </section>
 
-        <div class="capa-rosas"></div>
 
-    </section>
+  <!-- =====================================================
+       DETALLES
+  ====================================================== -->
 
+  <section class="seccion">
 
-    <!-- =====================================
-         3. DETALLES
-    ====================================== -->
+    <img
+      src="detalles.jpeg"
+      alt="Detalles de los XV años">
 
-    <section class="seccion">
+  </section>
 
-        <img
-            src="detalles.jpeg"
-            alt="Detalles de los XV años"
-        >
 
-        <div class="capa-rosas"></div>
+  <!-- =====================================================
+       CRONÓMETRO
+  ====================================================== -->
 
-    </section>
+  <section class="contador">
 
+    <img
+      class="imagen-contador"
+      src="cronometro.jpeg"
+      alt="Una noche soñada está por comenzar">
 
-    <!-- =====================================
-         4. CRONÓMETRO
-    ====================================== -->
 
-    <section class="contador">
+    <!-- ===================================================
+         CÚPULA DE VIDRIO + ROSA
+    ==================================================== -->
 
+    <div class="cupula-rosa">
 
-        <!-- IMAGEN DEL CRONÓMETRO -->
+      <!-- Vidrio -->
+      <div class="vidrio"></div>
 
-        <img
-            class="imagen-contador"
-            src="cronometro.jpeg"
-            alt="Una noche soñada está por comenzar"
-        >
+      <!-- Rosa -->
+      <div class="rosa-grande">
 
+        <div class="flor"></div>
 
-        <!-- ROSAS -->
+      </div>
 
-        <div class="capa-rosas"></div>
+      <!-- Base -->
+      <div class="base-vidrio"></div>
 
+      <!-- Los pétalos aparecerán aquí -->
+      <div id="petalos"></div>
 
-        <!-- NÚMEROS -->
+    </div>
 
-        <div class="numeros-contador">
 
+    <!-- ===================================================
+         NÚMEROS DEL CONTADOR
+    ==================================================== -->
 
-            <!-- DÍAS -->
+    <div class="numeros-contador">
 
-            <div class="tiempo">
+      <div class="numero">
 
-                <span
-                    id="dias"
-                    class="numero"
-                >
-                    0
-                </span>
+        <span id="dias">
+          0
+        </span>
 
-                <span class="etiqueta">
-                    DÍAS
-                </span>
+        <small>
+          DÍAS
+        </small>
 
-            </div>
+      </div>
 
 
-            <!-- HORAS -->
+      <div class="numero">
 
-            <div class="tiempo">
+        <span id="horas">
+          0
+        </span>
 
-                <span
-                    id="horas"
-                    class="numero"
-                >
-                    00
-                </span>
+        <small>
+          HORAS
+        </small>
 
-                <span class="etiqueta">
-                    HORAS
-                </span>
+      </div>
 
-            </div>
 
+      <div class="numero">
 
-            <!-- MINUTOS -->
+        <span id="minutos">
+          0
+        </span>
 
-            <div class="tiempo">
+        <small>
+          MINUTOS
+        </small>
 
-                <span
-                    id="minutos"
-                    class="numero"
-                >
-                    00
-                </span>
+      </div>
 
-                <span class="etiqueta">
-                    MINUTOS
-                </span>
 
-            </div>
+      <div class="numero">
 
+        <span id="segundos">
+          0
+        </span>
 
-            <!-- SEGUNDOS -->
+        <small>
+          SEGUNDOS
+        </small>
 
-            <div class="tiempo">
+      </div>
 
-                <span
-                    id="segundos"
-                    class="numero"
-                >
-                    00
-                </span>
+    </div>
 
-                <span class="etiqueta">
-                    SEGUNDOS
-                </span>
+  </section>
 
-            </div>
 
+  <!-- =====================================================
+       CONFIRMAR
+  ====================================================== -->
 
-        </div>
+  <section class="seccion">
 
+    <img
+      src="confirmar.jpeg"
+      alt="Confirmar asistencia">
 
-    </section>
+  </section>
 
 
-    <!-- =====================================
-         5. CONFIRMAR ASISTENCIA
-    ====================================== -->
+  <!-- =====================================================
+       BOTÓN WHATSAPP
+  ====================================================== -->
 
-    <section class="seccion">
+  <section class="confirmacion">
 
-        <img
-            src="confirmar.jpeg"
-            alt="Confirmar asistencia"
-        >
+    <a
+      class="boton"
+      href="https://wa.me/522821424816"
+      target="_blank"
+      rel="noopener noreferrer">
 
-        <div class="capa-rosas"></div>
+      💌 Confirmar asistencia
 
-    </section>
+    </a>
 
+  </section>
 
-    <!-- =====================================
-         BOTÓN WHATSAPP
-    ====================================== -->
 
-    <section class="confirmacion">
+  <!-- =====================================================
+       FINAL
+  ====================================================== -->
 
-        <a
-            class="boton"
-            href="https://wa.me/522821424816"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
+  <section class="seccion">
 
-            💌 Confirmar asistencia
+    <img
+      src="final.jpeg"
+      alt="Gracias por acompañarme">
 
-        </a>
-
-    </section>
-
-
-    <!-- =====================================
-         6. FINAL
-    ====================================== -->
-
-    <section class="seccion">
-
-        <img
-            src="final.jpeg"
-            alt="Gracias por acompañarme"
-        >
-
-        <div class="capa-rosas"></div>
-
-    </section>
+  </section>
 
 
 </main>
 
 
-<!-- =========================================
+<!-- =======================================================
      BOTÓN DE MÚSICA
-========================================= -->
+======================================================= -->
 
 <button
-    id="botonMusica"
-    onclick="controlarMusica(event)"
-    aria-label="Controlar música"
->
+  id="botonMusica"
+  onclick="alternarMusica()"
+  aria-label="Reproducir o pausar música">
 
-    🎵
+  🎵
 
 </button>
 
@@ -917,466 +1037,384 @@ body {
 <script>
 
 
-/* =========================================
+/* =========================================================
+   ELEMENTOS
+========================================================= */
+
+const musica =
+  document.getElementById("musica");
+
+const portada =
+  document.getElementById("portada");
+
+
+/* =========================================================
    ABRIR INVITACIÓN
-========================================= */
+========================================================= */
 
 function abrirInvitacion() {
 
-    const portada =
-        document.getElementById("portada");
+  /*
+     Reiniciamos la canción desde 0:00
+  */
 
-    const contenido =
-        document.getElementById("contenido");
+  musica.currentTime = 0;
 
-    const musica =
-        document.getElementById("musica");
+  musica.volume = 1;
 
+  musica.play()
+    .catch(function(error) {
 
-    /* Ocultar portada */
+      console.log(
+        "El navegador bloqueó temporalmente el audio:",
+        error
+      );
 
-    portada.classList.add("oculta");
-
-
-    /* Mostrar contenido */
-
-    contenido.classList.add("mostrar");
-
-
-    /* Música desde 0:00 */
-
-    musica.currentTime = 0;
-
-    musica.volume = 1;
+    });
 
 
-    musica.play()
-        .then(function() {
+  /*
+     Cerramos la portada
+  */
 
-            document.getElementById(
-                "botonMusica"
-            ).textContent = "🎵";
-
-        })
-        .catch(function(error) {
-
-            console.log(
-                "No se pudo reproducir la música:",
-                error
-            );
-
-        });
+  portada.classList.add("cerrada");
 
 
-    /* Iniciar rosas */
+  /*
+     Comenzamos los pétalos
+  */
 
-    iniciarRosas();
+  iniciarPetalos();
 
 }
 
 
-/* =========================================
-   CONTROL DE MÚSICA
-========================================= */
+/* =========================================================
+   MÚSICA
+========================================================= */
 
-function controlarMusica(event) {
+function alternarMusica() {
 
-    event.stopPropagation();
+  if (musica.paused) {
 
-    const musica =
-        document.getElementById("musica");
+    musica.play();
 
-    const boton =
-        document.getElementById("botonMusica");
+    document.getElementById("botonMusica").textContent = "🎵";
 
+  } else {
 
-    if (musica.paused) {
+    musica.pause();
 
-        musica.play();
+    document.getElementById("botonMusica").textContent = "🔇";
 
-        boton.textContent = "🎵";
-
-    } else {
-
-        musica.pause();
-
-        boton.textContent = "🔇";
-
-    }
+  }
 
 }
 
 
-/* =========================================
+/* =========================================================
    CRONÓMETRO
-========================================= */
+========================================================= */
 
 const fechaXV =
-    new Date(
-        2026,
-        11,
-        30,
-        0,
-        0,
-        0
-    ).getTime();
+  new Date(
+    2026,
+    11,
+    30,
+    0,
+    0,
+    0
+  ).getTime();
 
 
 function actualizarContador() {
 
-    const ahora =
-        new Date().getTime();
+  const ahora =
+    new Date().getTime();
 
-    const diferencia =
-        fechaXV - ahora;
-
-
-    if (diferencia <= 0) {
-
-        document.getElementById(
-            "dias"
-        ).textContent = "0";
-
-        document.getElementById(
-            "horas"
-        ).textContent = "00";
-
-        document.getElementById(
-            "minutos"
-        ).textContent = "00";
-
-        document.getElementById(
-            "segundos"
-        ).textContent = "00";
-
-        return;
-    }
+  const diferencia =
+    fechaXV - ahora;
 
 
-    const dias =
-        Math.floor(
-            diferencia /
-            (1000 * 60 * 60 * 24)
-        );
+  if (diferencia <= 0) {
+
+    document.getElementById("dias").textContent = "0";
+
+    document.getElementById("horas").textContent = "0";
+
+    document.getElementById("minutos").textContent = "0";
+
+    document.getElementById("segundos").textContent = "0";
+
+    return;
+
+  }
 
 
-    const horas =
-        Math.floor(
-            (diferencia %
-                (1000 * 60 * 60 * 24)) /
-            (1000 * 60 * 60)
-        );
+  const dias =
+    Math.floor(
+      diferencia /
+      (1000 * 60 * 60 * 24)
+    );
 
 
-    const minutos =
-        Math.floor(
-            (diferencia %
-                (1000 * 60 * 60)) /
-            (1000 * 60)
-        );
+  const horas =
+    Math.floor(
+      (diferencia %
+        (1000 * 60 * 60 * 24)) /
+      (1000 * 60 * 60)
+    );
 
 
-    const segundos =
-        Math.floor(
-            (diferencia %
-                (1000 * 60)) /
-            1000
-        );
+  const minutos =
+    Math.floor(
+      (diferencia %
+        (1000 * 60 * 60)) /
+      (1000 * 60)
+    );
 
 
-    document.getElementById(
-        "dias"
-    ).textContent = dias;
+  const segundos =
+    Math.floor(
+      (diferencia %
+        (1000 * 60)) /
+      1000
+    );
 
 
-    document.getElementById(
-        "horas"
-    ).textContent =
-        String(horas)
-        .padStart(2, "0");
+  document.getElementById("dias")
+    .textContent = dias;
 
+  document.getElementById("horas")
+    .textContent = String(horas)
+    .padStart(2, "0");
 
-    document.getElementById(
-        "minutos"
-    ).textContent =
-        String(minutos)
-        .padStart(2, "0");
+  document.getElementById("minutos")
+    .textContent = String(minutos)
+    .padStart(2, "0");
 
-
-    document.getElementById(
-        "segundos"
-    ).textContent =
-        String(segundos)
-        .padStart(2, "0");
+  document.getElementById("segundos")
+    .textContent = String(segundos)
+    .padStart(2, "0");
 
 }
 
-
-/* Iniciar cronómetro */
 
 actualizarContador();
 
-
-/* Actualizar cada segundo */
-
 setInterval(
-    actualizarContador,
-    1000
+  actualizarContador,
+  1000
 );
 
 
-/* =========================================
-   CREAR ROSA
-========================================= */
+/* =========================================================
+   PÉTALOS
+========================================================= */
 
-function crearRosa(contenedor) {
-
-    const rosa =
-        document.createElement("div");
+let petalosIniciados = false;
 
 
-    rosa.className =
-        "rosa";
+function crearPetalo() {
+
+  const contenedor =
+    document.getElementById("petalos");
 
 
-    /* Rosa roja */
-
-    rosa.textContent =
-        "🌹";
-
-
-    /* Posición */
-
-    rosa.style.left =
-        Math.random() * 90 + 5 + "%";
+  if (!contenedor) {
+    return;
+  }
 
 
-    /*
-       Posición vertical aleatoria
-       para que no estén todas juntas
-    */
-
-    rosa.style.top =
-        Math.random() * 80 + 10 + "%";
+  const petalo =
+    document.createElement("div");
 
 
-    /* Tamaño */
-
-    const tamaño =
-        18 +
-        Math.random() * 22;
+  petalo.className =
+    "petalo";
 
 
-    rosa.style.fontSize =
-        tamaño + "px";
+  /*
+     El pétalo nace en la parte superior
+     de la cúpula.
+  */
+
+  petalo.style.left =
+    (20 + Math.random() * 60) + "%";
 
 
-    /*
-       Cada rosa tendrá una
-       velocidad ligeramente distinta
-    */
-
-    rosa.style.animationDuration =
-        (4 + Math.random() * 3) + "s";
+  petalo.style.top =
+    (5 + Math.random() * 15) + "%";
 
 
-    /*
-       Retraso para que no se
-       muevan todas al mismo tiempo
-    */
+  /*
+     Variamos ligeramente el tamaño
+  */
 
-    rosa.style.animationDelay =
-        (-Math.random() * 5) + "s";
-
-
-    contenedor.appendChild(
-        rosa
-    );
-
-}
+  const tamaño =
+    9 + Math.random() * 7;
 
 
-/* =========================================
-   INICIAR ROSAS
-========================================= */
-
-function iniciarRosas() {
+  petalo.style.width =
+    tamaño + "px";
 
 
-    /* Rosas de portada */
-
-    const rosasPortada =
-        document.getElementById(
-            "rosasPortada"
-        );
+  petalo.style.height =
+    (tamaño * 1.35) + "px";
 
 
-    for (
-        let i = 0;
-        i < 7;
-        i++
-    ) {
+  /*
+     Cada pétalo tarda diferente
+     tiempo en caer.
+  */
 
-        crearRosa(
-            rosasPortada
-        );
-
-    }
+  petalo.style.animationDuration =
+    (4 + Math.random() * 4) + "s";
 
 
-    /*
-       Rosas de todas las imágenes
-    */
-
-    const capas =
-        document.querySelectorAll(
-            ".capa-rosas"
-        );
+  petalo.style.animationDelay =
+    (Math.random() * 1.5) + "s";
 
 
-    capas.forEach(
-        function(capa) {
+  contenedor.appendChild(petalo);
 
 
-            /*
-               Crear rosas iniciales
-            */
+  /*
+     Lo eliminamos cuando termina
+     para no llenar la página
+  */
 
-            for (
-                let i = 0;
-                i < 6;
-                i++
-            ) {
+  setTimeout(
+    function() {
 
-                crearRosa(
-                    capa
-                );
+      petalo.remove();
 
-            }
-
-
-            /*
-               Agregar una nueva rosa
-               cada cierto tiempo
-            */
-
-            setInterval(
-                function() {
-
-                    crearRosa(
-                        capa
-                    );
-
-                },
-                3500
-            );
-
-        }
-    );
-
-
-    /*
-       Nuevas rosas en portada
-    */
-
-    setInterval(
-        function() {
-
-            crearRosa(
-                rosasPortada
-            );
-
-        },
-        3500
-    );
+    },
+    9000
+  );
 
 }
 
 
-/* =========================================
+function iniciarPetalos() {
+
+  if (petalosIniciados) {
+    return;
+  }
+
+  petalosIniciados = true;
+
+
+  /*
+     Ponemos algunos pétalos
+     inicialmente.
+  */
+
+  for (
+    let i = 0;
+    i < 4;
+    i++
+  ) {
+
+    setTimeout(
+      crearPetalo,
+      i * 700
+    );
+
+  }
+
+
+  /*
+     Después aparece un pétalo
+     de vez en cuando.
+  */
+
+  setInterval(
+    crearPetalo,
+    1800
+  );
+
+}
+
+
+/* =========================================================
    NIEVE
-========================================= */
+========================================================= */
 
 const simbolosNieve = [
-
-    "❄",
-    "❅",
-    "❆",
-    "✦",
-    "•"
-
+  "❄",
+  "❅",
+  "❆",
+  "✦",
+  "•"
 ];
 
 
 function crearNieve() {
 
-    const elemento =
-        document.createElement("div");
+  const elemento =
+    document.createElement("div");
 
 
-    elemento.className =
-        "nieve";
+  elemento.className =
+    "nieve";
 
 
-    elemento.textContent =
-        simbolosNieve[
-            Math.floor(
-                Math.random() *
-                simbolosNieve.length
-            )
-        ];
+  elemento.textContent =
+    simbolosNieve[
+      Math.floor(
+        Math.random() *
+        simbolosNieve.length
+      )
+    ];
 
 
-    elemento.style.left =
-        Math.random() * 100 + "vw";
+  elemento.style.left =
+    Math.random() * 100 + "vw";
 
 
-    elemento.style.fontSize =
-        (
-            8 +
-            Math.random() * 15
-        ) + "px";
+  elemento.style.fontSize =
+    (8 + Math.random() * 15) + "px";
 
 
-    elemento.style.animationDuration =
-        (
-            5 +
-            Math.random() * 8
-        ) + "s";
+  elemento.style.animationDuration =
+    (5 + Math.random() * 8) + "s";
 
 
-    elemento.style.opacity =
-        0.3 +
-        Math.random() * 0.7;
+  elemento.style.opacity =
+    0.3 +
+    Math.random() * 0.7;
 
 
-    document.body.appendChild(
-        elemento
-    );
+  document.body.appendChild(
+    elemento
+  );
 
 
-    setTimeout(
-        function() {
+  setTimeout(
+    function() {
 
-            elemento.remove();
+      elemento.remove();
 
-        },
-        14000
-    );
+    },
+    14000
+  );
 
 }
 
 
-/* Crear nieve */
+/*
+   La nieve comienza desde que se
+   carga la página.
+*/
 
 setInterval(
-    crearNieve,
-    350
+  crearNieve,
+  350
 );
 
 
 </script>
-
 
 </body>
 </html>
