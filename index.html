@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -9,7 +10,7 @@
 <style>
 
 /* =========================================================
-   CONFIGURACIÓN GENERAL
+   GENERAL
 ========================================================= */
 
 *{
@@ -23,10 +24,11 @@ html{
 }
 
 body{
-  background:#050b1c;
-  font-family:Georgia, "Times New Roman", serif;
+  margin:0;
+  padding:0;
+  background:#061329;
   overflow-x:hidden;
-  color:white;
+  font-family:Georgia,"Times New Roman",serif;
 }
 
 .seccion{
@@ -48,9 +50,9 @@ body{
 ========================================================= */
 
 #portada{
-  position:relative;
   width:100%;
   height:100vh;
+  position:relative;
   overflow:hidden;
   cursor:pointer;
 }
@@ -64,37 +66,52 @@ body{
 .overlay-portada{
   position:absolute;
   inset:0;
+
   display:flex;
   justify-content:center;
   align-items:flex-end;
+
   padding-bottom:8%;
-  background:linear-gradient(
-    to bottom,
-    transparent 60%,
-    rgba(0,0,0,.65)
-  );
+
+  background:
+    linear-gradient(
+      to bottom,
+      transparent 60%,
+      rgba(0,0,0,.65)
+    );
 }
 
 .boton-abrir{
-  padding:15px 35px;
-  border:1px solid #d7b75b;
+  padding:14px 32px;
+
+  border:1px solid #d8b75b;
   border-radius:30px;
-  color:#fff;
-  background:rgba(0,0,0,.35);
+
+  color:white;
+
+  background:rgba(0,0,0,.3);
+
   backdrop-filter:blur(5px);
-  font-size:18px;
+
+  font-size:17px;
   letter-spacing:2px;
-  box-shadow:0 0 15px rgba(215,183,91,.5);
-  animation:pulsoBoton 2s infinite;
+
+  box-shadow:
+    0 0 15px rgba(216,183,91,.45);
+
+  animation:pulso 2.2s ease-in-out infinite;
 }
 
-@keyframes pulsoBoton{
+@keyframes pulso{
+
   0%,100%{
     transform:scale(1);
   }
+
   50%{
     transform:scale(1.04);
   }
+
 }
 
 
@@ -112,26 +129,39 @@ body{
 
 
 /* =========================================================
-   BOTÓN DE MÚSICA
+   MÚSICA
 ========================================================= */
 
 .boton-musica{
   position:fixed;
+
   right:18px;
   bottom:18px;
-  width:48px;
-  height:48px;
+
+  width:55px;
+  height:55px;
+
   border-radius:50%;
-  border:1px solid #d7b75b;
-  background:rgba(5,11,28,.85);
-  color:#d7b75b;
+
+  border:1px solid #d8b75b;
+
+  background:
+    rgba(5,14,32,.92);
+
+  color:#d8b75b;
+
   z-index:9999;
+
   display:flex;
-  align-items:center;
   justify-content:center;
-  font-size:20px;
+  align-items:center;
+
+  font-size:22px;
+
   cursor:pointer;
-  box-shadow:0 0 15px rgba(215,183,91,.5);
+
+  box-shadow:
+    0 0 15px rgba(216,183,91,.35);
 }
 
 
@@ -141,159 +171,229 @@ body{
 
 #cronometro{
   position:relative;
-  overflow:hidden;
   width:100%;
+  overflow:hidden;
+  background:#061a31;
 }
 
 .fondo-cronometro{
-  display:block;
   width:100%;
   height:auto;
+  display:block;
 }
+
+
+/* =========================================================
+   CONTADOR
+========================================================= */
+
+/*
+   MUY IMPORTANTE:
+
+   El contador ya NO queda en medio de la frase.
+
+   Lo colocamos debajo de la frase y antes
+   de la rosa.
+*/
 
 .contador{
   position:absolute;
+
   left:50%;
-  top:43%;
-  transform:translate(-50%,-50%);
-  width:90%;
+
+  top:59%;
+
+  transform:translateX(-50%);
+
+  width:88%;
+
   display:flex;
+
   justify-content:center;
   align-items:center;
-  gap:clamp(8px,2vw,25px);
-  z-index:5;
+
+  gap:clamp(7px,2.5vw,25px);
+
+  z-index:30;
 }
 
 .tiempo{
   text-align:center;
-  min-width:60px;
+
+  min-width:55px;
 }
 
 .numero{
   display:block;
-  color:#fff;
-  font-size:clamp(25px,5vw,55px);
+
+  color:white;
+
+  font-family:Georgia,"Times New Roman",serif;
+
+  font-size:
+    clamp(25px,6vw,52px);
+
   font-weight:bold;
+
   line-height:1;
+
   text-shadow:
-    0 0 5px #000,
-    0 0 10px #000,
-    0 2px 5px rgba(0,0,0,.8);
+    0 2px 4px rgba(0,0,0,.9),
+    0 0 8px rgba(0,0,0,.8);
 }
 
 .etiqueta{
   display:block;
+
   margin-top:7px;
-  color:#fff;
-  font-size:clamp(8px,1.7vw,15px);
-  letter-spacing:2px;
-  text-shadow:0 0 5px #000;
+
+  color:white;
+
+  font-family:Georgia,"Times New Roman",serif;
+
+  font-size:
+    clamp(7px,1.7vw,14px);
+
+  letter-spacing:
+    clamp(1px,1vw,3px);
+
+  text-shadow:
+    0 2px 4px rgba(0,0,0,.9);
 }
 
 
 /* =========================================================
-   ROSA B&B
-   ESTA ROSA VA DEBAJO DEL CRONÓMETRO
+   ZONA DE LA ROSA
 ========================================================= */
 
 .zona-rosa{
+
   position:absolute;
+
   left:0;
   right:0;
 
-  /* IMPORTANTE:
-     queda en la parte inferior de cronometro.jpeg */
-  bottom:0;
+  /*
+     La rosa queda en la parte inferior
+     del cronómetro.
+  */
 
-  height:38%;
-  min-height:250px;
+  top:70%;
+
+  height:29%;
 
   display:flex;
-  justify-content:center;
-  align-items:flex-end;
 
-  z-index:10;
+  justify-content:center;
+
+  align-items:flex-start;
+
+  z-index:20;
+
   pointer-events:none;
 }
 
 
-/* Contenedor original de la rosa */
+/* =========================================================
+   ROSA
+========================================================= */
 
-.container{
+.rosa-container{
+
   position:relative;
 
-  width:260px;
-  height:300px;
+  width:210px;
+  height:270px;
 
-  transform-origin:bottom center;
+  transform-origin:
+    50% 100%;
 
-  animation:moverRosa 5s ease-in-out infinite;
+  animation:
+    balanceoRosa
+    5s
+    ease-in-out
+    infinite;
 }
 
 
-/* =========================================================
-   MOVIMIENTO SUAVE DE LA ROSA
-========================================================= */
+/* movimiento muy suave */
 
-@keyframes moverRosa{
+@keyframes balanceoRosa{
 
   0%,100%{
-    transform:rotate(-1deg) translateY(0);
+    transform:
+      rotate(-1deg)
+      translateY(0);
   }
 
   50%{
-    transform:rotate(1deg) translateY(-4px);
+    transform:
+      rotate(1deg)
+      translateY(-3px);
   }
 
 }
 
 
 /* =========================================================
-   GLASS / CÚPULA
+   CÚPULA DE CRISTAL
 ========================================================= */
 
 .glass{
+
   position:absolute;
 
-  width:220px;
-  height:255px;
+  left:15px;
+  top:0;
 
-  left:20px;
-  top:5px;
+  width:180px;
+  height:225px;
 
   border-radius:
-    110px 110px 20px 20px;
+    90px 90px 25px 25px;
 
-  border:2px solid rgba(255,255,255,.35);
+  border:
+    2px solid
+    rgba(220,235,255,.40);
 
   background:
     linear-gradient(
       90deg,
+      rgba(255,255,255,.035),
+      rgba(255,255,255,.11),
+      rgba(255,255,255,.025),
       rgba(255,255,255,.08),
-      rgba(255,255,255,.02) 35%,
-      rgba(255,255,255,.08) 70%,
-      rgba(255,255,255,.02)
+      rgba(255,255,255,.025)
     );
 
   box-shadow:
-    inset 10px 0 20px rgba(255,255,255,.08),
-    inset -10px 0 20px rgba(255,255,255,.04),
-    0 0 15px rgba(255,255,255,.08);
+
+    inset
+    8px 0 15px
+    rgba(255,255,255,.08),
+
+    inset
+    -8px 0 15px
+    rgba(255,255,255,.04),
+
+    0 0 12px
+    rgba(180,210,255,.10);
 
   z-index:20;
 }
 
 
-/* Brillo del vidrio */
+/* brillo del cristal */
 
 .shine{
+
   position:absolute;
 
-  left:28px;
+  left:22px;
   top:25px;
 
-  width:25px;
-  height:150px;
+  width:16px;
+  height:135px;
 
   border-radius:50%;
 
@@ -301,14 +401,48 @@ body{
     linear-gradient(
       to bottom,
       rgba(255,255,255,.65),
-      rgba(255,255,255,.05)
+      rgba(255,255,255,.02)
     );
 
   filter:blur(3px);
 
-  transform:rotate(8deg);
+  opacity:.35;
 
-  opacity:.45;
+  transform:rotate(8deg);
+}
+
+
+/* =========================================================
+   BASE DE LA CÚPULA
+========================================================= */
+
+.rosa-container::after{
+
+  content:"";
+
+  position:absolute;
+
+  left:10px;
+  bottom:25px;
+
+  width:190px;
+  height:10px;
+
+  border-radius:50%;
+
+  background:
+    linear-gradient(
+      to right,
+      transparent,
+      rgba(210,220,235,.35),
+      rgba(255,255,255,.45),
+      rgba(210,220,235,.35),
+      transparent
+    );
+
+  filter:blur(.5px);
+
+  z-index:25;
 }
 
 
@@ -316,86 +450,36 @@ body{
    TALLO
 ========================================================= */
 
-.container:before{
+.rosa-container::before{
+
   content:"";
 
   position:absolute;
 
-  width:9px;
-  height:180px;
-
-  left:126px;
+  left:103px;
   top:105px;
 
-  border-radius:50%;
+  width:7px;
+  height:145px;
+
+  border-radius:100%;
 
   background:
     linear-gradient(
       to right,
-      #0a3b20,
-      #1d7c3d,
-      #0a351c
+      #06451f,
+      #1b8b3c,
+      #0a4e24
     );
 
-  transform:
-    rotate(3deg);
-
-  z-index:2;
-
   box-shadow:
-    0 0 6px rgba(25,150,70,.5);
-}
+    0 0 5px
+    rgba(50,180,80,.4);
 
+  transform:
+    rotate(2deg);
 
-/* =========================================================
-   ESPINAS
-========================================================= */
-
-.thorns{
-  position:absolute;
-
-  left:0;
-  top:0;
-
-  width:100%;
-  height:100%;
-
-  z-index:5;
-}
-
-.thorns div{
-  position:absolute;
-
-  width:0;
-  height:0;
-
-  border-top:6px solid transparent;
-  border-bottom:6px solid transparent;
-  border-right:13px solid #185b2e;
-}
-
-.thorns div:nth-child(1){
-  left:103px;
-  top:180px;
-  transform:rotate(20deg);
-}
-
-.thorns div:nth-child(2){
-  left:145px;
-  top:210px;
-  transform:rotate(200deg);
-}
-
-.thorns div:nth-child(3){
-  left:102px;
-  top:230px;
-  transform:rotate(30deg);
-}
-
-.thorns div:nth-child(4){
-  left:147px;
-  top:155px;
-  transform:rotate(190deg);
+  z-index:4;
 }
 
 
@@ -404,247 +488,367 @@ body{
 ========================================================= */
 
 .leaves{
+
   position:absolute;
 
-  left:0;
-  top:0;
-
-  width:100%;
-  height:100%;
-
-  z-index:4;
-}
-
-.leaves div{
-  position:absolute;
-
-  width:55px;
-  height:25px;
-
-  border-radius:
-    100% 0 100% 0;
-
-  background:
-    linear-gradient(
-      135deg,
-      #2d9849,
-      #075321
-    );
-
-  box-shadow:
-    0 0 7px rgba(30,150,65,.35);
-}
-
-
-/* hoja izquierda */
-
-.leaves div:nth-child(1){
-  left:72px;
-  top:190px;
-  transform:rotate(-35deg);
-}
-
-
-/* hoja derecha */
-
-.leaves div:nth-child(2){
-  left:137px;
-  top:180px;
-  transform:rotate(35deg);
-}
-
-
-/* hoja izquierda inferior */
-
-.leaves div:nth-child(3){
-  left:78px;
-  top:225px;
-  transform:rotate(-20deg);
-}
-
-
-/* hoja derecha inferior */
-
-.leaves div:nth-child(4){
-  left:140px;
-  top:225px;
-  transform:rotate(25deg);
-}
-
-
-/* =========================================================
-   CENTRO / PÉTALOS DE LA ROSA
-========================================================= */
-
-.petals{
-  position:absolute;
-
-  left:0;
-  top:0;
-
-  width:100%;
-  height:100%;
-
-  z-index:8;
-}
-
-
-/* pétalos */
-
-.petals div{
-  position:absolute;
-
-  width:82px;
-  height:62px;
-
-  background:
-    radial-gradient(
-      ellipse at 50% 35%,
-      #ff5065 0%,
-      #e50935 38%,
-      #9c001e 72%,
-      #4b000d 100%
-    );
-
-  border-radius:
-    70% 35% 65% 40%;
-
-  box-shadow:
-    inset 0 5px 8px rgba(255,110,130,.4),
-    inset -6px -8px 10px rgba(70,0,10,.45),
-    0 0 10px rgba(255,0,40,.25);
-}
-
-
-/* pétalo 1 */
-
-.petals div:nth-child(1){
-  left:89px;
-  top:72px;
-
-  transform:
-    rotate(-10deg);
+  inset:0;
 
   z-index:5;
 }
 
+.leaves div{
 
-/* pétalo 2 */
+  position:absolute;
 
-.petals div:nth-child(2){
-  left:116px;
-  top:72px;
+  width:48px;
+  height:22px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #299746,
+      #07551f
+    );
+
+  border-radius:
+    100% 0 100% 0;
+
+  box-shadow:
+    0 0 5px
+    rgba(20,130,55,.35);
+}
+
+
+/* izquierda */
+
+.leaves div:nth-child(1){
+
+  left:56px;
+  top:175px;
 
   transform:
-    rotate(15deg)
-    scale(.95);
+    rotate(-35deg);
+}
+
+
+/* derecha */
+
+.leaves div:nth-child(2){
+
+  left:110px;
+  top:165px;
+
+  transform:
+    rotate(35deg);
+}
+
+
+/* izquierda abajo */
+
+.leaves div:nth-child(3){
+
+  left:60px;
+  top:205px;
+
+  transform:
+    rotate(-18deg);
+}
+
+
+/* derecha abajo */
+
+.leaves div:nth-child(4){
+
+  left:112px;
+  top:208px;
+
+  transform:
+    rotate(20deg);
+}
+
+
+/* =========================================================
+   ESPINAS
+========================================================= */
+
+.thorns{
+
+  position:absolute;
+
+  inset:0;
 
   z-index:6;
 }
 
+.thorns div{
 
-/* pétalo 3 */
+  position:absolute;
 
-.petals div:nth-child(3){
-  left:73px;
-  top:92px;
+  width:0;
+  height:0;
 
-  transform:
-    rotate(-40deg)
-    scale(.95);
+  border-top:
+    5px solid transparent;
 
-  z-index:4;
+  border-bottom:
+    5px solid transparent;
+
+  border-right:
+    11px solid #14632c;
+}
+
+.thorns div:nth-child(1){
+
+  left:84px;
+  top:165px;
+
+  transform:rotate(20deg);
+}
+
+.thorns div:nth-child(2){
+
+  left:120px;
+  top:188px;
+
+  transform:rotate(190deg);
+}
+
+.thorns div:nth-child(3){
+
+  left:83px;
+  top:212px;
+
+  transform:rotate(25deg);
+}
+
+.thorns div:nth-child(4){
+
+  left:119px;
+  top:145px;
+
+  transform:rotate(190deg);
 }
 
 
-/* pétalo 4 */
+/* =========================================================
+   PÉTALOS DE LA ROSA
+========================================================= */
 
-.petals div:nth-child(4){
-  left:127px;
-  top:92px;
+.petals{
 
-  transform:
-    rotate(40deg)
-    scale(.95);
+  position:absolute;
 
-  z-index:4;
-}
+  left:50%;
+  top:48px;
 
+  width:125px;
+  height:105px;
 
-/* pétalo 5 */
-
-.petals div:nth-child(5){
-  left:90px;
-  top:105px;
-
-  transform:
-    rotate(15deg)
-    scale(.75);
-
-  z-index:9;
-}
-
-
-/* pétalo 6 */
-
-.petals div:nth-child(6){
-  left:109px;
-  top:104px;
-
-  transform:
-    rotate(-15deg)
-    scale(.7);
+  transform:translateX(-50%);
 
   z-index:10;
 }
 
 
-/* pétalo central */
+/*
+   Ahora sí:
 
-.petals div:nth-child(7){
-  left:98px;
-  top:92px;
+   pétalos definidos y curvos,
+   no bolitas.
+*/
 
-  width:55px;
-  height:48px;
+.petals div{
 
-  transform:
-    rotate(5deg)
-    scale(.65);
-
-  z-index:11;
+  position:absolute;
 
   background:
     radial-gradient(
-      ellipse at 40% 35%,
-      #ff7080,
-      #d9002d 55%,
-      #65000f
+      ellipse at 40% 30%,
+      #ff6a78 0%,
+      #f21c43 32%,
+      #bd0829 65%,
+      #650014 100%
     );
+
+  box-shadow:
+
+    inset
+    3px 3px 7px
+    rgba(255,150,160,.35),
+
+    inset
+    -4px -5px 8px
+    rgba(70,0,15,.4),
+
+    0 0 8px
+    rgba(255,20,55,.18);
+
 }
 
 
-/* =========================================================
-   PÉTALOS CAÍDOS
-========================================================= */
+/* pétalo exterior izquierdo */
 
-.deadPetals{
-  position:absolute;
+.petals div:nth-child(1){
+
+  width:65px;
+  height:65px;
 
   left:0;
-  top:0;
+  top:25px;
 
-  width:100%;
-  height:100%;
+  border-radius:
+    70% 35% 65% 45%;
+
+  transform:
+    rotate(-30deg);
+}
+
+
+/* pétalo exterior derecho */
+
+.petals div:nth-child(2){
+
+  width:68px;
+  height:68px;
+
+  right:0;
+  top:23px;
+
+  border-radius:
+    35% 70% 45% 65%;
+
+  transform:
+    rotate(30deg);
+}
+
+
+/* pétalo superior izquierdo */
+
+.petals div:nth-child(3){
+
+  width:63px;
+  height:62px;
+
+  left:22px;
+  top:5px;
+
+  border-radius:
+    65% 35% 55% 45%;
+
+  transform:
+    rotate(-12deg);
+}
+
+
+/* pétalo superior derecho */
+
+.petals div:nth-child(4){
+
+  width:63px;
+  height:62px;
+
+  right:21px;
+  top:4px;
+
+  border-radius:
+    35% 65% 45% 55%;
+
+  transform:
+    rotate(12deg);
+}
+
+
+/* pétalo central izquierdo */
+
+.petals div:nth-child(5){
+
+  width:52px;
+  height:53px;
+
+  left:28px;
+  top:38px;
+
+  border-radius:
+    70% 35% 60% 40%;
+
+  transform:
+    rotate(-20deg);
+
+  z-index:5;
+}
+
+
+/* pétalo central derecho */
+
+.petals div:nth-child(6){
+
+  width:52px;
+  height:53px;
+
+  right:28px;
+  top:37px;
+
+  border-radius:
+    35% 70% 40% 60%;
+
+  transform:
+    rotate(20deg);
+
+  z-index:5;
+}
+
+
+/* centro */
+
+.petals div:nth-child(7){
+
+  width:45px;
+  height:48px;
+
+  left:40px;
+  top:33px;
+
+  border-radius:
+    50% 50% 45% 55%;
+
+  transform:
+    rotate(8deg);
+
+  background:
+    radial-gradient(
+      ellipse at 35% 25%,
+      #ff8994,
+      #ed153d 35%,
+      #a50022 70%,
+      #4d000e
+    );
 
   z-index:15;
 }
 
-.deadPetals div{
+
+/* =========================================================
+   PÉTALOS QUE CAEN
+========================================================= */
+
+.deadPetals{
+
   position:absolute;
 
-  width:16px;
-  height:22px;
+  inset:0;
+
+  z-index:30;
+}
+
+
+/* forma */
+
+.deadPetals div{
+
+  position:absolute;
+
+  width:9px;
+  height:13px;
 
   border-radius:
     70% 30% 70% 30%;
@@ -652,65 +856,82 @@ body{
   background:
     linear-gradient(
       135deg,
-      #ff5068,
-      #dc0b32 55%,
-      #800016
+      #ff6275,
+      #dc0b32 60%,
+      #850016
     );
 
   box-shadow:
-    0 0 5px rgba(255,30,65,.5);
+    0 0 4px
+    rgba(255,40,70,.45);
 
   opacity:0;
 }
 
 
-/* pétalo caído 1 */
+/* pétalo 1 */
 
 .deadPetals div:nth-child(1){
-  left:80px;
-  top:115px;
+
+  left:82px;
+  top:95px;
 
   animation:
-    caerPetalo1 5s linear infinite;
+    petalo1
+    5.5s
+    ease-in
+    infinite;
 }
 
 
-/* pétalo caído 2 */
+/* pétalo 2 */
 
 .deadPetals div:nth-child(2){
-  left:155px;
-  top:120px;
 
-  animation:
-    caerPetalo2 6s linear infinite;
-
-  animation-delay:1.5s;
-}
-
-
-/* pétalo caído 3 */
-
-.deadPetals div:nth-child(3){
-  left:105px;
-  top:130px;
-
-  animation:
-    caerPetalo3 5.5s linear infinite;
-
-  animation-delay:2.5s;
-}
-
-
-/* pétalo caído 4 */
-
-.deadPetals div:nth-child(4){
-  left:135px;
+  left:122px;
   top:105px;
 
   animation:
-    caerPetalo4 6.5s linear infinite;
+    petalo2
+    6s
+    ease-in
+    infinite;
+
+  animation-delay:1.7s;
+}
+
+
+/* pétalo 3 */
+
+.deadPetals div:nth-child(3){
+
+  left:94px;
+  top:112px;
+
+  animation:
+    petalo3
+    5.8s
+    ease-in
+    infinite;
 
   animation-delay:3s;
+}
+
+
+/* pétalo 4 */
+
+.deadPetals div:nth-child(4){
+
+  left:135px;
+  top:92px;
+
+  animation:
+    petalo4
+    6.2s
+    ease-in
+    infinite;
+
+  animation-delay:4s;
 }
 
 
@@ -718,112 +939,47 @@ body{
    ANIMACIONES DE PÉTALOS
 ========================================================= */
 
-@keyframes caerPetalo1{
+@keyframes petalo1{
 
   0%{
     opacity:0;
     transform:
       translate(0,0)
-      rotate(0deg);
+      rotate(0);
   }
 
   10%{
-    opacity:.9;
-  }
-
-  45%{
-    transform:
-      translate(-25px,70px)
-      rotate(160deg);
-  }
-
-  75%{
-    transform:
-      translate(20px,145px)
-      rotate(280deg);
-  }
-
-  100%{
-    opacity:0;
-    transform:
-      translate(-10px,210px)
-      rotate(390deg);
-  }
-
-}
-
-
-@keyframes caerPetalo2{
-
-  0%{
-    opacity:0;
-    transform:
-      translate(0,0)
-      rotate(0deg);
-  }
-
-  12%{
     opacity:.9;
   }
 
   40%{
     transform:
-      translate(20px,60px)
-      rotate(120deg);
+      translate(-15px,45px)
+      rotate(100deg);
   }
 
   70%{
     transform:
-      translate(-15px,135px)
-      rotate(250deg);
+      translate(8px,90px)
+      rotate(210deg);
   }
 
   100%{
     opacity:0;
     transform:
-      translate(10px,205px)
-      rotate(360deg);
+      translate(-10px,135px)
+      rotate(320deg);
   }
-
 }
 
 
-@keyframes caerPetalo3{
+@keyframes petalo2{
 
   0%{
     opacity:0;
     transform:
       translate(0,0)
-      rotate(0deg);
-  }
-
-  10%{
-    opacity:.9;
-  }
-
-  50%{
-    transform:
-      translate(30px,85px)
-      rotate(180deg);
-  }
-
-  100%{
-    opacity:0;
-    transform:
-      translate(-20px,210px)
-      rotate(390deg);
-  }
-
-}
-
-
-@keyframes caerPetalo4{
-
-  0%{
-    opacity:0;
-    transform:
-      translate(0,0)
-      rotate(0deg);
+      rotate(0);
   }
 
   10%{
@@ -832,28 +988,89 @@ body{
 
   45%{
     transform:
-      translate(-20px,80px)
-      rotate(150deg);
+      translate(16px,45px)
+      rotate(110deg);
   }
 
   75%{
     transform:
-      translate(15px,145px)
-      rotate(290deg);
+      translate(-8px,95px)
+      rotate(230deg);
   }
 
   100%{
     opacity:0;
     transform:
-      translate(-5px,220px)
-      rotate(420deg);
+      translate(10px,140px)
+      rotate(350deg);
+  }
+}
+
+
+@keyframes petalo3{
+
+  0%{
+    opacity:0;
+    transform:
+      translate(0,0)
+      rotate(0);
   }
 
+  10%{
+    opacity:.85;
+  }
+
+  50%{
+    transform:
+      translate(18px,55px)
+      rotate(160deg);
+  }
+
+  100%{
+    opacity:0;
+    transform:
+      translate(-10px,140px)
+      rotate(330deg);
+  }
+}
+
+
+@keyframes petalo4{
+
+  0%{
+    opacity:0;
+    transform:
+      translate(0,0)
+      rotate(0);
+  }
+
+  10%{
+    opacity:.85;
+  }
+
+  45%{
+    transform:
+      translate(-16px,50px)
+      rotate(140deg);
+  }
+
+  75%{
+    transform:
+      translate(8px,100px)
+      rotate(260deg);
+  }
+
+  100%{
+    opacity:0;
+    transform:
+      translate(-4px,145px)
+      rotate(370deg);
+  }
 }
 
 
 /* =========================================================
-   CONFIRMAR ASISTENCIA
+   CONFIRMAR
 ========================================================= */
 
 #confirmar{
@@ -861,6 +1078,7 @@ body{
 }
 
 .boton-whatsapp{
+
   position:absolute;
 
   left:50%;
@@ -872,7 +1090,7 @@ body{
 
   border-radius:30px;
 
-  background:#0d8f48;
+  background:#0b8f48;
 
   color:white;
 
@@ -880,60 +1098,156 @@ body{
 
   font-family:Arial,sans-serif;
 
-  font-size:16px;
+  font-size:15px;
 
   font-weight:bold;
 
-  box-shadow:
-    0 4px 15px rgba(0,0,0,.4);
-
   white-space:nowrap;
+
+  box-shadow:
+    0 4px 15px
+    rgba(0,0,0,.4);
 }
 
 
 /* =========================================================
-   RESPONSIVE
+   CRÉDITOS
+========================================================= */
+
+.creditos{
+
+  background:#050d1d;
+
+  text-align:center;
+
+  padding:
+    30px
+    15px
+    40px;
+
+  color:#ddd;
+
+  font-family:Arial,sans-serif;
+}
+
+.creditos .hecho{
+
+  font-size:13px;
+
+  margin-bottom:8px;
+}
+
+.creditos .marca{
+
+  color:#d8b75b;
+
+  font-size:22px;
+
+  font-weight:bold;
+
+  letter-spacing:2px;
+
+  margin-bottom:15px;
+}
+
+.creditos a{
+
+  display:block;
+
+  color:white;
+
+  text-decoration:none;
+
+  font-size:14px;
+
+  margin:6px 0;
+}
+
+.creditos a:hover{
+  color:#d8b75b;
+}
+
+
+/* =========================================================
+   CELULAR
 ========================================================= */
 
 @media(max-width:600px){
 
   .contador{
-    top:43%;
-    gap:5px;
+
+    /*
+      Más abajo de la frase,
+      pero separado de la rosa.
+    */
+
+    top:59%;
+
+    width:94%;
+
+    gap:4px;
   }
+
 
   .tiempo{
-    min-width:50px;
+
+    min-width:48px;
   }
+
 
   .numero{
-    font-size:clamp(20px,7vw,34px);
+
+    font-size:
+      clamp(23px,7vw,34px);
   }
+
 
   .etiqueta{
-    font-size:8px;
-    letter-spacing:1px;
+
+    font-size:
+      clamp(7px,1.8vw,10px);
+
+    letter-spacing:
+      1px;
+
+    margin-top:6px;
   }
 
+
   /*
-    Rosa más pequeña en celular
-    y siempre ABAJO
+     ROSA MÁS PEQUEÑA
   */
 
   .zona-rosa{
-    height:35%;
-    min-height:210px;
+
+    top:71%;
+
+    height:28%;
+
+    align-items:flex-start;
   }
 
-  .container{
-    transform-origin:bottom center;
-    width:220px;
-    height:260px;
-    transform:scale(.82);
-    animation:moverRosaMobile 5s ease-in-out infinite;
+
+  .rosa-container{
+
+    width:180px;
+    height:235px;
+
+    transform:
+      scale(.82);
+
+    transform-origin:
+      top center;
+
+    animation:
+      balanceoRosaMobile
+      5s
+      ease-in-out
+      infinite;
   }
 
-  @keyframes moverRosaMobile{
+
+  @keyframes balanceoRosaMobile{
 
     0%,100%{
       transform:
@@ -951,55 +1265,45 @@ body{
 
   }
 
-  .glass{
-    width:190px;
-    height:225px;
-    left:15px;
-  }
 
   .boton-whatsapp{
+
     font-size:14px;
-    padding:12px 20px;
+
+    padding:
+      12px
+      21px;
   }
 
 }
 
 
 /* =========================================================
-   CRÉDITOS
+   PANTALLAS MUY PEQUEÑAS
 ========================================================= */
 
-.creditos{
-  background:#050b1c;
-  text-align:center;
-  padding:30px 15px 40px;
-  color:#ddd;
-  font-family:Arial,sans-serif;
-}
+@media(max-width:380px){
 
-.creditos .hecho{
-  font-size:13px;
-  margin-bottom:8px;
-}
+  .contador{
 
-.creditos .marca{
-  color:#d7b75b;
-  font-size:22px;
-  font-weight:bold;
-  letter-spacing:2px;
-  margin-bottom:15px;
-}
+    top:58%;
+  }
 
-.creditos a{
-  color:#fff;
-  text-decoration:none;
-  display:block;
-  margin:5px 0;
-  font-size:14px;
-}
+  .numero{
 
-.creditos a:hover{
-  color:#d7b75b;
+    font-size:22px;
+  }
+
+  .etiqueta{
+
+    font-size:7px;
+  }
+
+  .zona-rosa{
+
+    top:70%;
+  }
+
 }
 
 </style>
@@ -1015,12 +1319,17 @@ body{
 
 <section id="portada">
 
-  <img src="portada.jpeg" alt="XV Años de Marian">
+  <img
+    src="portada.jpeg"
+    alt="XV Años de Marian"
+  >
 
   <div class="overlay-portada">
+
     <div class="boton-abrir">
       Toca para abrir
     </div>
+
   </div>
 
 </section>
@@ -1030,20 +1339,29 @@ body{
      MÚSICA
 ===================================================== -->
 
-<audio id="musica" loop preload="auto">
-  <source src="musica.mp3" type="audio/mpeg">
+<audio
+  id="musica"
+  loop
+  preload="auto">
+
+  <source
+    src="musica.mp3"
+    type="audio/mpeg">
+
 </audio>
+
 
 <button
   id="botonMusica"
-  class="boton-musica"
-  onclick="toggleMusica()">
+  class="boton-musica">
+
   ♪
+
 </button>
 
 
 <!-- =====================================================
-     CONTENIDO DE LA INVITACIÓN
+     CONTENIDO
 ===================================================== -->
 
 <main id="contenido">
@@ -1053,8 +1371,14 @@ body{
      INICIO
 ===================================================== -->
 
-<section class="seccion" id="inicio">
-  <img src="inicio.jpeg" alt="Marian">
+<section
+  class="seccion"
+  id="inicio">
+
+  <img
+    src="inicio.jpeg"
+    alt="Marian">
+
 </section>
 
 
@@ -1062,8 +1386,14 @@ body{
      INVITACIÓN
 ===================================================== -->
 
-<section class="seccion" id="invitacion">
-  <img src="invitacion.jpeg" alt="Invitación XV Años de Marian">
+<section
+  class="seccion"
+  id="invitacion">
+
+  <img
+    src="invitacion.jpeg"
+    alt="Invitación XV Años">
+
 </section>
 
 
@@ -1071,8 +1401,14 @@ body{
      DETALLES
 ===================================================== -->
 
-<section class="seccion" id="detalles">
-  <img src="detalles.jpeg" alt="Detalles del evento">
+<section
+  class="seccion"
+  id="detalles">
+
+  <img
+    src="detalles.jpeg"
+    alt="Detalles del evento">
+
 </section>
 
 
@@ -1080,89 +1416,127 @@ body{
      CRONÓMETRO
 ===================================================== -->
 
-<section id="cronometro" class="seccion">
+<section
+  id="cronometro"
+  class="seccion">
 
-  <!-- Imagen original del cronómetro -->
+
+  <!-- IMAGEN ORIGINAL -->
 
   <img
     src="cronometro.jpeg"
-    alt="Una noche soñada está por comenzar"
     class="fondo-cronometro"
+    alt="Una noche soñada está por comenzar"
   >
 
 
-  <!-- NÚMEROS DEL CRONÓMETRO -->
+  <!-- =================================================
+       CONTADOR
+  ================================================== -->
 
   <div class="contador">
 
+
     <div class="tiempo">
+
       <span
         class="numero"
         id="dias">
+
         0
+
       </span>
 
       <span class="etiqueta">
+
         DÍAS
+
       </span>
+
     </div>
 
 
     <div class="tiempo">
+
       <span
         class="numero"
         id="horas">
-        0
+
+        00
+
       </span>
 
       <span class="etiqueta">
+
         HORAS
+
       </span>
+
     </div>
 
 
     <div class="tiempo">
+
       <span
         class="numero"
         id="minutos">
-        0
+
+        00
+
       </span>
 
       <span class="etiqueta">
+
         MINUTOS
+
       </span>
+
     </div>
 
 
     <div class="tiempo">
+
       <span
         class="numero"
         id="segundos">
-        0
+
+        00
+
       </span>
 
       <span class="etiqueta">
+
         SEGUNDOS
+
       </span>
+
     </div>
+
 
   </div>
 
 
   <!-- =================================================
-       ROSA B&B
-       TU CÓDIGO VA AQUÍ
-       ABAJO DEL CRONÓMETRO
+       ROSA
+       ABAJO DEL CONTADOR
   ================================================== -->
 
   <div class="zona-rosa">
 
-    <div class="container">
+
+    <div class="rosa-container">
+
+
+      <!-- CÚPULA -->
 
       <div class="glass">
+
         <div class="shine"></div>
+
       </div>
 
+
+      <!-- ESPINAS -->
 
       <div class="thorns">
 
@@ -1174,6 +1548,8 @@ body{
       </div>
 
 
+      <!-- HOJAS -->
+
       <div class="leaves">
 
         <div></div>
@@ -1183,6 +1559,8 @@ body{
 
       </div>
 
+
+      <!-- ROSA -->
 
       <div class="petals">
 
@@ -1197,6 +1575,8 @@ body{
       </div>
 
 
+      <!-- PÉTALOS QUE CAEN -->
+
       <div class="deadPetals">
 
         <div></div>
@@ -1206,9 +1586,11 @@ body{
 
       </div>
 
+
     </div>
 
   </div>
+
 
 </section>
 
@@ -1221,10 +1603,12 @@ body{
   class="seccion"
   id="confirmar">
 
+
   <img
     src="confirmar.jpeg"
     alt="Confirmar asistencia"
   >
+
 
   <a
     class="boton-whatsapp"
@@ -1234,6 +1618,7 @@ body{
     Confirmar asistencia
 
   </a>
+
 
 </section>
 
@@ -1246,10 +1631,12 @@ body{
   class="seccion"
   id="final">
 
+
   <img
     src="final.jpeg"
     alt="Gracias por acompañarnos"
   >
+
 
 </section>
 
@@ -1264,9 +1651,11 @@ body{
     Invitación digital creada por
   </div>
 
+
   <div class="marca">
     MOONGRAFIK
   </div>
+
 
   <a
     href="https://wa.me/524426070366"
@@ -1275,6 +1664,7 @@ body{
     WhatsApp · 442 607 0366
 
   </a>
+
 
 </footer>
 
@@ -1309,13 +1699,24 @@ function abrirInvitacion(){
 
   contenido.classList.add("visible");
 
+  /*
+     La música empieza desde 0:00
+  */
+
   musica.currentTime = 0;
 
   musica.volume = 1;
 
-  musica.play().catch(function(error){
-    console.log("El navegador bloqueó el audio:",error);
-  });
+  musica.play().catch(
+    function(error){
+
+      console.log(
+        "El navegador bloqueó el audio:",
+        error
+      );
+
+    }
+  );
 
   window.scrollTo({
     top:0,
@@ -1326,7 +1727,7 @@ function abrirInvitacion(){
 
 
 /* =========================================================
-   PORTADA CLICKEABLE
+   PORTADA
 ========================================================= */
 
 portada.addEventListener(
@@ -1336,7 +1737,7 @@ portada.addEventListener(
 
 
 /* =========================================================
-   MÚSICA
+   BOTÓN MÚSICA
 ========================================================= */
 
 function toggleMusica(){
@@ -1356,6 +1757,18 @@ function toggleMusica(){
   }
 
 }
+
+
+botonMusica.addEventListener(
+  "click",
+  function(event){
+
+    event.stopPropagation();
+
+    toggleMusica();
+
+  }
+);
 
 
 /* =========================================================
@@ -1378,12 +1791,15 @@ function actualizarCronometro(){
   const ahora =
     new Date().getTime();
 
+
   let diferencia =
     fechaXV - ahora;
 
 
   if(diferencia < 0){
+
     diferencia = 0;
+
   }
 
 
@@ -1396,63 +1812,65 @@ function actualizarCronometro(){
 
   const horas =
     Math.floor(
-      (diferencia %
-      (1000 * 60 * 60 * 24)) /
+      (
+        diferencia %
+        (1000 * 60 * 60 * 24)
+      ) /
       (1000 * 60 * 60)
     );
 
 
   const minutos =
     Math.floor(
-      (diferencia %
-      (1000 * 60 * 60)) /
+      (
+        diferencia %
+        (1000 * 60 * 60)
+      ) /
       (1000 * 60)
     );
 
 
   const segundos =
     Math.floor(
-      (diferencia %
-      (1000 * 60)) /
+      (
+        diferencia %
+        (1000 * 60)
+      ) /
       1000
     );
 
 
   document.getElementById("dias")
-    .textContent = dias;
+    .textContent =
+    dias;
+
 
   document.getElementById("horas")
     .textContent =
-    String(horas).padStart(2,"0");
+    String(horas)
+    .padStart(2,"0");
+
 
   document.getElementById("minutos")
     .textContent =
-    String(minutos).padStart(2,"0");
+    String(minutos)
+    .padStart(2,"0");
+
 
   document.getElementById("segundos")
     .textContent =
-    String(segundos).padStart(2,"0");
+    String(segundos)
+    .padStart(2,"0");
 
 }
 
 
 actualizarCronometro();
 
+
 setInterval(
   actualizarCronometro,
   1000
-);
-
-
-/* =========================================================
-   EVITAR QUE EL BOTÓN DE MÚSICA ABRA LA PORTADA
-========================================================= */
-
-botonMusica.addEventListener(
-  "click",
-  function(event){
-    event.stopPropagation();
-  }
 );
 
 </script>
