@@ -1,1608 +1,239 @@
-Claro bb 💕 Te paso el **código completo**, ahora el inicio está hecho 100% con CSS, así que **NO necesitas `inicio.jpeg`**.
-
-Además corregí el WhatsApp al número que aparece en tu código y dejé el cronómetro para **30 de diciembre de 2026 a la 1:00 PM**.
-
-```html
 <!DOCTYPE html>
-<html lang="es">
 
-<head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="es"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>XV Años de Marian</title>
 
-<style>
-
-/* ==================================================
-   CONFIGURACIÓN GENERAL
-================================================== */
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-html,
-body {
-    width: 100%;
-    min-width: 100%;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-}
-
-body {
-    background: #071b36;
-    color: white;
-    font-family: Georgia, "Times New Roman", serif;
-}
-
-
-/* ==================================================
-   PANTALLA DE INICIO
-================================================== */
-
-#inicio {
-
-    position: fixed;
-
-    inset: 0;
-
-    width: 100%;
-    height: 100vh;
-
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(255, 215, 0, 0.10),
-            transparent 35%
-        ),
-        linear-gradient(
-            135deg,
-            #071b36,
-            #0b2b52,
-            #071b36
-        );
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    text-align: center;
-
-    z-index: 3000;
-
-    transition:
-        opacity 1.2s ease,
-        visibility 1.2s ease,
-        transform 1.2s ease;
-
-    overflow: hidden;
-}
-
-
-/* Brillo decorativo */
-
-#inicio::before {
-
-    content: "";
-
-    position: absolute;
-
-    width: 500px;
-    height: 500px;
-
-    border-radius: 50%;
-
-    border: 1px solid rgba(255, 215, 0, 0.18);
-
-    box-shadow:
-        0 0 50px rgba(255, 215, 0, 0.08),
-        inset 0 0 50px rgba(255, 215, 0, 0.05);
-
-    animation: girarInicio 18s linear infinite;
-
-}
-
-
-#inicio::after {
-
-    content: "✦";
-
-    position: absolute;
-
-    top: 12%;
-    left: 15%;
-
-    color: #FFD700;
-
-    font-size: 25px;
-
-    opacity: 0.7;
-
-    animation: estrella 2s ease-in-out infinite;
-
-}
-
-
-@keyframes girarInicio {
-
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
-
-}
-
-
-@keyframes estrella {
-
-    0%,
-    100% {
-        opacity: 0.3;
-        transform: scale(0.8);
-    }
-
-    50% {
-        opacity: 1;
-        transform: scale(1.3);
-    }
-
-}
-
-
-/* Cuando desaparece */
-
-#inicio.oculta {
-
-    opacity: 0;
-
-    visibility: hidden;
-
-    transform: scale(1.08);
-
-    pointer-events: none;
-
-}
-
-
-/* Contenido */
-
-.contenido-inicio {
-
-    position: relative;
-
-    z-index: 2;
-
-    width: 100%;
-
-    padding: 30px;
-
-    animation:
-        aparecerInicio 1.5s ease;
-
-}
-
-
-@keyframes aparecerInicio {
-
-    from {
-
-        opacity: 0;
-
-        transform: translateY(25px);
-
-    }
-
-    to {
-
-        opacity: 1;
-
-        transform: translateY(0);
-
-    }
-
-}
-
-
-/* Línea superior */
-
-.linea-dorada {
-
-    width: 100px;
-
-    height: 1px;
-
-    background: #FFD700;
-
-    margin: 0 auto 25px;
-
-    box-shadow:
-        0 0 10px rgba(255, 215, 0, 0.7);
-
-}
-
-
-/* Texto pequeño */
-
-.texto-pequeno {
-
-    color: #FFD700;
-
-    font-size: clamp(13px, 3vw, 18px);
-
-    letter-spacing: 5px;
-
-    margin-bottom: 15px;
-
-    text-transform: uppercase;
-
-}
-
-
-/* XV */
-
-.xv {
-
-    color: #FFD700;
-
-    font-size: clamp(65px, 18vw, 130px);
-
-    line-height: 0.9;
-
-    font-weight: normal;
-
-    text-shadow:
-        0 0 10px rgba(255, 215, 0, 0.35),
-        0 0 30px rgba(255, 215, 0, 0.15);
-
-    margin-bottom: 10px;
-
-}
-
-
-/* Nombre */
-
-.nombre-inicio {
-
-    color: white;
-
-    font-size: clamp(34px, 9vw, 65px);
-
-    letter-spacing: 6px;
-
-    font-weight: normal;
-
-    margin-bottom: 18px;
-
-    text-shadow:
-        0 3px 8px #000;
-
-}
-
-
-/* Frase */
-
-.frase-inicio {
-
-    color: rgba(255,255,255,0.9);
-
-    font-size: clamp(15px, 4vw, 22px);
-
-    font-style: italic;
-
-    margin-bottom: 38px;
-
-}
-
-
-/* Botón */
-
-.boton-inicio {
-
-    display: inline-flex;
-
-    align-items: center;
-    justify-content: center;
-
-    min-width: 190px;
-
-    padding: 15px 28px;
-
-    border: 2px solid #FFD700;
-
-    border-radius: 50px;
-
-    background: rgba(7, 27, 54, 0.85);
-
-    color: #FFD700;
-
-    font-family: Georgia, "Times New Roman", serif;
-
-    font-size: 17px;
-
-    font-weight: bold;
-
-    cursor: pointer;
-
-    box-shadow:
-        0 0 20px rgba(255, 215, 0, 0.25);
-
-    animation: pulsar 1.8s infinite;
-
-    transition:
-        background 0.3s ease,
-        color 0.3s ease,
-        transform 0.2s ease;
-
-}
-
-
-.boton-inicio:hover {
-
-    background: #FFD700;
-
-    color: #071b36;
-
-}
-
-
-.boton-inicio:active {
-
-    transform: scale(0.95);
-
-}
-
-
-@keyframes pulsar {
-
-    0%,
-    100% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.05);
-    }
-
-}
-
-
-/* Línea inferior */
-
-.linea-inferior {
-
-    width: 100px;
-
-    height: 1px;
-
-    background: #FFD700;
-
-    margin: 28px auto 0;
-
-    box-shadow:
-        0 0 10px rgba(255, 215, 0, 0.7);
-
-}
-
-
-/* ==================================================
-   NIEVE
-================================================== */
-
-.nieve {
-
-    position: fixed;
-
-    top: -30px;
-
-    color: white;
-
-    pointer-events: none;
-
-    z-index: 9999;
-
-    line-height: 1;
-
-    animation:
-        caer linear forwards;
-
-}
-
-
-@keyframes caer {
-
-    from {
-
-        transform:
-            translateY(-30px)
-            rotate(0deg);
-
-    }
-
-    to {
-
-        transform:
-            translateY(110vh)
-            rotate(360deg);
-
-    }
-
-}
-
-
-/* ==================================================
-   PORTADA
-================================================== */
-
-#portada {
-
-    position: fixed;
-
-    top: 0;
-    left: 0;
-
-    width: 100%;
-    height: 100vh;
-
-    background-image:
-        url("portada.jpeg");
-
-    background-size: cover;
-
-    background-position: center;
-
-    background-repeat: no-repeat;
-
-    display: flex;
-
-    align-items: flex-end;
-
-    justify-content: center;
-
-    z-index: 2000;
-
-    transition:
-        opacity 1s ease,
-        visibility 1s ease,
-        transform 1s ease;
-
-}
-
-
-#portada.oculta {
-
-    opacity: 0;
-
-    visibility: hidden;
-
-    transform: scale(1.05);
-
-    pointer-events: none;
-
-}
-
-
-/* ==================================================
-   BOTÓN PORTADA
-================================================== */
-
-.abrir {
-
-    margin-bottom: 45px;
-
-    padding: 15px 28px;
-
-    border: 2px solid #FFD700;
-
-    border-radius: 50px;
-
-    background:
-        rgba(7, 27, 54, 0.90);
-
-    color: #FFD700;
-
-    font-size: 20px;
-
-    font-weight: bold;
-
-    line-height: 1.2;
-
-    cursor: pointer;
-
-    box-shadow:
-        0 0 20px rgba(255, 215, 0, 0.5);
-
-    animation:
-        pulsar 1.8s infinite;
-
-}
-
-
-/* ==================================================
-   CONTENIDO
-================================================== */
-
-#contenido {
-
-    display: none;
-
-    width: 100%;
-
-    margin: 0;
-
-    padding: 0;
-
-}
-
-
-#contenido.mostrar {
-
-    display: block;
-
-    animation:
-        aparecer 1s ease;
-
-}
-
-
-@keyframes aparecer {
-
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-
-}
-
-
-/* ==================================================
-   IMÁGENES
-================================================== */
-
-.seccion {
-
-    display: block;
-
-    width: 100%;
-
-    margin: 0;
-
-    padding: 0;
-
-    overflow: hidden;
-
-    line-height: 0;
-
-}
-
-
-.seccion img {
-
-    display: block;
-
-    width: 100%;
-
-    height: auto;
-
-    max-width: none;
-
-    margin: 0;
-
-    padding: 0;
-
-    border: 0;
-
-}
-
-
-/* ==================================================
-   CRONÓMETRO
-================================================== */
-
-.contador {
-
-    position: relative;
-
-    display: block;
-
-    width: 100%;
-
-    margin: 0;
-
-    padding: 0;
-
-    overflow: hidden;
-
-    line-height: 0;
-
-}
-
-
-.imagen-contador {
-
-    display: block;
-
-    width: 100%;
-
-    height: auto;
-
-    max-width: none;
-
-    margin: 0;
-
-    padding: 0;
-
-    border: 0;
-
-}
-
-
-/* ==================================================
-   NÚMEROS DEL CRONÓMETRO
-================================================== */
-
-.numeros-contador {
-
-    position: absolute;
-
-    top: 63%;
-
-    left: 50%;
-
-    transform:
-        translate(-50%, -50%);
-
-    width: 92%;
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(4, 1fr);
-
-    text-align: center;
-
-    color: #FFD700;
-
-    line-height: normal;
-
-    text-shadow:
-        0 2px 5px #000,
-        0 0 10px rgba(255, 215, 0, 0.8);
-
-}
-
-
-.tiempo {
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    justify-content: center;
-
-}
-
-
-.numero {
-
-    font-size:
-        clamp(28px, 7vw, 75px);
-
-    font-weight: bold;
-
-    line-height: 1;
-
-}
-
-
-.etiqueta {
-
-    margin-top: 7px;
-
-    font-size:
-        clamp(8px, 2vw, 17px);
-
-    font-weight: bold;
-
-    letter-spacing: 1px;
-
-    line-height: 1.2;
-
-}
-
-
-/* ==================================================
-   CONFIRMACIÓN
-================================================== */
-
-.confirmacion {
-
-    width: 100%;
-
-    margin: 0;
-
-    padding:
-        18px 15px 25px;
-
-    background: #071b36;
-
-    text-align: center;
-
-    line-height: normal;
-
-}
-
-
-.boton {
-
-    display: inline-block;
-
-    padding:
-        15px 30px;
-
-    border-radius: 50px;
-
-    background: #FFD700;
-
-    color: #071b36;
-
-    text-decoration: none;
-
-    font-size: 18px;
-
-    font-weight: bold;
-
-    line-height: 1.2;
-
-    box-shadow:
-        0 5px 20px rgba(255, 215, 0, 0.4);
-
-    transition:
-        transform 0.2s ease;
-
-}
-
-
-.boton:hover {
-
-    transform:
-        scale(1.05);
-
-}
-
-
-.boton:active {
-
-    transform:
-        scale(0.96);
-
-}
-
-
-/* ==================================================
-   BOTÓN MÚSICA
-================================================== */
-
-#botonMusica {
-
-    position: fixed;
-
-    right: 16px;
-
-    bottom: 16px;
-
-    width: 52px;
-
-    height: 52px;
-
-    border-radius: 50%;
-
-    border: 2px solid #FFD700;
-
-    background:
-        rgba(7, 27, 54, 0.95);
-
-    color: #FFD700;
-
-    font-size: 22px;
-
-    cursor: pointer;
-
-    z-index: 9998;
-
-    line-height: 1;
-
-    box-shadow:
-        0 0 15px rgba(255, 215, 0, 0.4);
-
-}
-
-
-/* ==================================================
-   CELULAR
-================================================== */
-
-@media (max-width: 600px) {
-
-    .contenido-inicio {
-
-        padding: 25px 18px;
-
-    }
-
-
-    .texto-pequeno {
-
-        letter-spacing: 3px;
-
-    }
-
-
-    .nombre-inicio {
-
-        letter-spacing: 3px;
-
-    }
-
-
-    .frase-inicio {
-
-        margin-bottom: 30px;
-
-    }
-
-
-    .boton-inicio {
-
-        min-width: 175px;
-
-        padding: 13px 23px;
-
-        font-size: 16px;
-
-    }
-
-
-    .abrir {
-
-        margin-bottom: 35px;
-
-        padding: 13px 24px;
-
-        font-size: 17px;
-
-    }
-
-
-    .numeros-contador {
-
-        width: 96%;
-
-    }
-
-
-    .numero {
-
-        font-size:
-            clamp(22px, 9vw, 50px);
-
-    }
-
-
-    .etiqueta {
-
-        font-size:
-            clamp(7px, 2.5vw, 13px);
-
-        letter-spacing: 0;
-
-    }
-
-
-    .confirmacion {
-
-        padding:
-            15px 10px 20px;
-
-    }
-
-
-    .boton {
-
-        font-size: 16px;
-
-        padding:
-            13px 24px;
-
-    }
-
-}
-
-</style>
+<style> /* ============================== CONFIGURACIÓN GENERAL ================================ */ * { box-sizing: border-box; margin: 0; padding: 0; } html, body { width: 100%; min-width: 100%; margin: 0; padding: 0; overflow-x: hidden; } body { background: #071b36; color: white; font-family: Georgia, "Times New Roman", serif; } /* ============================== NIEVE ================================ */ .nieve { position: fixed; top: -30px; color: white; pointer-events: none; z-index: 9999; line-height: 1; animation: caer linear forwards; } @keyframes caer { from { transform: translateY(-30px) rotate(0deg); } to { transform: translateY(110vh) rotate(360deg); } } /* ============================== PORTADA ================================ */ #portada { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background-image: url("portada.jpeg"); background-size: cover; background-position: center; background-repeat: no-repeat; display: flex; align-items: flex-end; justify-content: center; z-index: 1000; transition: opacity 1s ease, transform 1s ease; } #portada.oculta { opacity: 0; transform: scale(1.05); pointer-events: none; } /* BOTÓN ABRIR */ .abrir { margin-bottom: 45px; padding: 15px 28px; border: 2px solid #FFD700; border-radius: 50px; background: rgba(7, 27, 54, 0.90); color: #FFD700; font-size: 20px; font-weight: bold; line-height: 1.2; cursor: pointer; box-shadow: 0 0 20px rgba(255, 215, 0, 0.5); animation: pulsar 1.8s infinite; } @keyframes pulsar { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.06); } } /* ============================== CONTENIDO ================================ */ #contenido { display: none; width: 100%; margin: 0; padding: 0; } #contenido.mostrar { display: block; animation: aparecer 1s ease; } @keyframes aparecer { from { opacity: 0; } to { opacity: 1; } } /* ============================== IMÁGENES ================================ */ .seccion { display: block; width: 100%; margin: 0; padding: 0; overflow: hidden; line-height: 0; } .seccion img { display: block; width: 100%; height: auto; max-width: none; margin: 0; padding: 0; border: 0; } /* ============================== CRONÓMETRO ================================ */ .contador { position: relative; display: block; width: 100%; margin: 0; padding: 0; overflow: hidden; line-height: 0; } /* IMAGEN DEL CRONÓMETRO */ .imagen-contador { display: block; width: 100%; height: auto; max-width: none; margin: 0; padding: 0; border: 0; } /* ============================== NÚMEROS DEL CRONÓMETRO ================================ */ .numeros-contador { position: absolute; top: 63%; left: 50%; transform: translate(-50%, -50%); width: 92%; display: grid; grid-template-columns: repeat(4, 1fr); text-align: center; color: #FFD700; line-height: normal; text-shadow: 0 2px 5px #000, 0 0 10px rgba(255, 215, 0, 0.8); } .tiempo { display: flex; flex-direction: column; align-items: center; justify-content: center; } .numero { font-size: clamp(28px, 7vw, 75px); font-weight: bold; line-height: 1; } .etiqueta { margin-top: 7px; font-size: clamp(8px, 2vw, 17px); font-weight: bold; letter-spacing: 1px; line-height: 1.2; } /* ============================== CONFIRMAR ASISTENCIA ================================ */ .confirmacion { width: 100%; margin: 0; padding: 18px 15px 25px; background: #071b36; text-align: center; line-height: normal; } .boton { display: inline-block; padding: 15px 30px; border-radius: 50px; background: #FFD700; color: #071b36; text-decoration: none; font-size: 18px; font-weight: bold; line-height: 1.2; box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4); transition: transform 0.2s ease; } .boton:hover { transform: scale(1.05); } .boton:active { transform: scale(0.96); } /* ============================== BOTÓN DE MÚSICA ================================ */ #botonMusica { position: fixed; right: 16px; bottom: 16px; width: 52px; height: 52px; border-radius: 50%; border: 2px solid #FFD700; background: rgba(7, 27, 54, 0.95); color: #FFD700; font-size: 22px; cursor: pointer; z-index: 9998; line-height: 1; box-shadow: 0 0 15px rgba(255, 215, 0, 0.4); } /* ============================== CELULAR ================================ */ @media (max-width: 600px) { .abrir { margin-bottom: 35px; padding: 13px 24px; font-size: 17px; } .numeros-contador { width: 96%; } .numero { font-size: clamp(22px, 9vw, 50px); } .etiqueta { font-size: clamp(7px, 2.5vw, 13px); letter-spacing: 0; } .confirmacion { padding: 15px 10px 20px; } .boton { font-size: 16px; padding: 13px 24px; } } </style>
 
 </head>
 
-
 <body>
 
+<!-- ========================================= PORTADA ========================================= -->
 
-<!-- ==================================================
-     INICIO
-================================================== -->
+<div id="portada" onclick="abrirInvitacion()" >
 
-<div id="inicio">
+<div class="abrir">
 
-
-    <div class="contenido-inicio">
-
-
-        <div class="linea-dorada"></div>
-
-
-        <div class="texto-pequeno">
-
-            XV AÑOS
-
-        </div>
-
-
-        <div class="xv">
-
-            XV
-
-        </div>
-
-
-        <div class="nombre-inicio">
-
-            MARIAN
-
-        </div>
-
-
-        <div class="frase-inicio">
-
-            Una noche soñada está por comenzar
-
-        </div>
-
-
-        <div
-            class="boton-inicio"
-            onclick="entrarInvitacion(event)"
-        >
-
-            💌 Toca para entrar
-
-        </div>
-
-
-        <div class="linea-inferior"></div>
-
-
-    </div>
-
+    ✨ Toca para abrir ✨
 
 </div>
 
-
-
-<!-- ==================================================
-     PORTADA
-================================================== -->
-
-<div
-    id="portada"
-    onclick="abrirInvitacion()"
->
-
-
-    <div class="abrir">
-
-        ✨ Toca para abrir ✨
-
-    </div>
-
-
 </div>
 
-
-
-<!-- ==================================================
-     MÚSICA
-================================================== -->
+<!-- ========================================= MÚSICA ========================================= -->
 
 <audio
-    id="musica"
-    loop
-    preload="auto"
->
+id="musica"
+loop
+preload="auto"
 
-    <source
-        src="./musica.mp3"
-        type="audio/mpeg"
-    >
+
+
+
+<source
+    src="./musica.mp3"
+    type="audio/mpeg"
+>
 
 </audio>
 
-
-
-<!-- ==================================================
-     CONTENIDO
-================================================== -->
+<!-- ========================================= CONTENIDO ========================================= -->
 
 <main id="contenido">
 
+<!-- =====================================
+     1. INVITACIÓN
+====================================== -->
 
-    <!-- ==============================================
-         INVITACIÓN
-    =============================================== -->
+<section class="seccion">
 
-    <section class="seccion">
+    <img
+        src="invitacion.jpeg"
+        alt="Invitación de Marian"
+    >
 
-        <img
-            src="invitacion.jpeg"
-            alt="Invitación de Marian"
-        >
-
-    </section>
-
+</section>
 
 
-    <!-- ==============================================
-         DETALLES
-    =============================================== -->
+<!-- =====================================
+     2. DETALLES
+====================================== -->
 
-    <section class="seccion">
+<section class="seccion">
 
-        <img
-            src="detalles.jpeg"
-            alt="Detalles de los XV años"
-        >
+    <img
+        src="detalles.jpeg"
+        alt="Detalles de los XV años"
+    >
 
-    </section>
-
-
-
-    <!-- ==============================================
-         CRONÓMETRO
-    =============================================== -->
-
-    <section class="contador">
+</section>
 
 
-        <img
-            class="imagen-contador"
-            src="cronometro.jpeg"
-            alt="Una noche soñada está por comenzar"
-        >
+<!-- =====================================
+     3. CRONÓMETRO
+     
+     AQUÍ VA TU IMAGEN
+     "Una noche soñada está por comenzar"
+====================================== -->
+
+<section class="contador">
 
 
-        <div class="numeros-contador">
+    <!-- IMAGEN DEL CRONÓMETRO -->
+
+    <img
+        class="imagen-contador"
+        src="cronometro.jpeg"
+        alt="Una noche soñada está por comenzar"
+    >
 
 
-            <!-- DÍAS -->
+    <!-- NÚMEROS ENCIMA DE LA IMAGEN -->
 
-            <div class="tiempo">
-
-                <span
-                    id="dias"
-                    class="numero"
-                >
-                    0
-                </span>
-
-                <span class="etiqueta">
-
-                    DÍAS
-
-                </span>
-
-            </div>
+    <div class="numeros-contador">
 
 
+        <!-- DÍAS -->
 
-            <!-- HORAS -->
+        <div class="tiempo">
 
-            <div class="tiempo">
+            <span
+                id="dias"
+                class="numero"
+            >
+                0
+            </span>
 
-                <span
-                    id="horas"
-                    class="numero"
-                >
-                    00
-                </span>
-
-                <span class="etiqueta">
-
-                    HORAS
-
-                </span>
-
-            </div>
-
-
-
-            <!-- MINUTOS -->
-
-            <div class="tiempo">
-
-                <span
-                    id="minutos"
-                    class="numero"
-                >
-                    00
-                </span>
-
-                <span class="etiqueta">
-
-                    MINUTOS
-
-                </span>
-
-            </div>
-
-
-
-            <!-- SEGUNDOS -->
-
-            <div class="tiempo">
-
-                <span
-                    id="segundos"
-                    class="numero"
-                >
-                    00
-                </span>
-
-                <span class="etiqueta">
-
-                    SEGUNDOS
-
-                </span>
-
-            </div>
-
+            <span class="etiqueta">
+                DÍAS
+            </span>
 
         </div>
 
-    </section>
+
+        <!-- HORAS -->
+
+        <div class="tiempo">
+
+            <span
+                id="horas"
+                class="numero"
+            >
+                00
+            </span>
+
+            <span class="etiqueta">
+                HORAS
+            </span>
+
+        </div>
 
 
+        <!-- MINUTOS -->
 
-    <!-- ==============================================
-         CONFIRMAR
-    =============================================== -->
+        <div class="tiempo">
 
-    <section class="seccion">
+            <span
+                id="minutos"
+                class="numero"
+            >
+                00
+            </span>
 
-        <img
-            src="confirmar.jpeg"
-            alt="Confirmar asistencia"
-        >
+            <span class="etiqueta">
+                MINUTOS
+            </span>
 
-    </section>
-
-
-
-    <!-- ==============================================
-         WHATSAPP
-    =============================================== -->
-
-    <section class="confirmacion">
-
-        <a
-            class="boton"
-            href="https://wa.me/522821424816"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-
-            💌 Confirmar asistencia
-
-        </a>
-
-    </section>
+        </div>
 
 
+        <!-- SEGUNDOS -->
 
-    <!-- ==============================================
-         FINAL
-    =============================================== -->
+        <div class="tiempo">
 
-    <section class="seccion">
+            <span
+                id="segundos"
+                class="numero"
+            >
+                00
+            </span>
 
-        <img
-            src="final.jpeg"
-            alt="Gracias por acompañarme"
-        >
+            <span class="etiqueta">
+                SEGUNDOS
+            </span>
 
-    </section>
+        </div>
 
+
+    </div>
+
+</section>
+
+
+<!-- =====================================
+     4. CONFIRMAR ASISTENCIA
+====================================== -->
+
+<section class="seccion">
+
+    <img
+        src="confirmar.jpeg"
+        alt="Confirmar asistencia"
+    >
+
+</section>
+
+
+<!-- =====================================
+     BOTÓN WHATSAPP
+     
+     +52 282 142 4816
+====================================== -->
+
+<section class="confirmacion">
+
+    <a
+        class="boton"
+        href="https://wa.me/522821424816"
+        target="_blank"
+        rel="noopener noreferrer"
+    >
+
+        💌 Confirmar asistencia
+
+    </a>
+
+</section>
+
+
+<!-- =====================================
+     5. FINAL
+====================================== -->
+
+<section class="seccion">
+
+    <img
+        src="final.jpeg"
+        alt="Gracias por acompañarme"
+    >
+
+</section>
 
 </main>
 
-
-
-<!-- ==================================================
-     BOTÓN DE MÚSICA
-================================================== -->
+<!-- ========================================= BOTÓN DE MÚSICA ========================================= -->
 
 <button
-    id="botonMusica"
-    onclick="controlarMusica(event)"
-    aria-label="Controlar música"
->
+id="botonMusica"
+onclick="controlarMusica(event)"
+aria-label="Controlar música"
 
-    🎵
+
+
+
+🎵
 
 </button>
-
-
-
-<script>
-
-/* ==================================================
-   ELEMENTOS
-================================================== */
-
-const inicio =
-    document.getElementById("inicio");
-
-const portada =
-    document.getElementById("portada");
-
-const contenido =
-    document.getElementById("contenido");
-
-const musica =
-    document.getElementById("musica");
-
-const botonMusica =
-    document.getElementById("botonMusica");
-
-
-
-/* ==================================================
-   PASAR DEL INICIO A LA PORTADA
-================================================== */
-
-function entrarInvitacion(event) {
-
-    event.stopPropagation();
-
-
-    inicio.classList.add("oculta");
-
-
-    setTimeout(function() {
-
-        inicio.style.display = "none";
-
-        portada.style.display = "flex";
-
-    }, 1200);
-
-}
-
-
-
-/* ==================================================
-   ABRIR LA PORTADA
-================================================== */
-
-function abrirInvitacion() {
-
-
-    portada.classList.add("oculta");
-
-
-    contenido.classList.add("mostrar");
-
-
-    /*
-       Intentar reproducir música
-       después de la interacción.
-    */
-
-    musica.play()
-        .then(function() {
-
-            botonMusica.textContent = "🎵";
-
-        })
-        .catch(function() {
-
-            console.log(
-                "El navegador bloqueó el inicio automático de la música."
-            );
-
-        });
-
-
-    setTimeout(function() {
-
-        portada.style.display = "none";
-
-    }, 1000);
-
-}
-
-
-
-/* ==================================================
-   CONTROL DE MÚSICA
-================================================== */
-
-function controlarMusica(event) {
-
-    event.stopPropagation();
-
-
-    if (musica.paused) {
-
-        musica.play();
-
-        botonMusica.textContent = "🎵";
-
-    } else {
-
-        musica.pause();
-
-        botonMusica.textContent = "🔇";
-
-    }
-
-}
-
-
-
-/* ==================================================
-   CRONÓMETRO
-================================================== */
-
-/*
-   FECHA DEL EVENTO:
-
-   30 DE DICIEMBRE DE 2026
-   1:00 PM
-
-   Hora de México: UTC -06:00
-*/
-
-const fechaEvento =
-    new Date(
-        "2026-12-30T13:00:00-06:00"
-    ).getTime();
-
-
-
-/* ELEMENTOS DEL CONTADOR */
-
-const diasElemento =
-    document.getElementById("dias");
-
-const horasElemento =
-    document.getElementById("horas");
-
-const minutosElemento =
-    document.getElementById("minutos");
-
-const segundosElemento =
-    document.getElementById("segundos");
-
-
-
-/* ==================================================
-   ACTUALIZAR CRONÓMETRO
-================================================== */
-
-function actualizarCronometro() {
-
-
-    const ahora =
-        Date.now();
-
-
-    let diferencia =
-        fechaEvento - ahora;
-
-
-
-    /*
-       SI YA LLEGÓ LA HORA,
-       TODO QUEDA EN CERO.
-    */
-
-    if (diferencia <= 0) {
-
-        diasElemento.textContent =
-            "0";
-
-        horasElemento.textContent =
-            "00";
-
-        minutosElemento.textContent =
-            "00";
-
-        segundosElemento.textContent =
-            "00";
-
-        return;
-
-    }
-
-
-
-    /* MILISEGUNDOS */
-
-    const segundo =
-        1000;
-
-    const minuto =
-        segundo * 60;
-
-    const hora =
-        minuto * 60;
-
-    const dia =
-        hora * 24;
-
-
-
-    /* DÍAS */
-
-    const dias =
-        Math.floor(
-            diferencia / dia
-        );
-
-
-    diferencia %= dia;
-
-
-
-    /* HORAS */
-
-    const horas =
-        Math.floor(
-            diferencia / hora
-        );
-
-
-    diferencia %= hora;
-
-
-
-    /* MINUTOS */
-
-    const minutos =
-        Math.floor(
-            diferencia / minuto
-        );
-
-
-    diferencia %= minuto;
-
-
-
-    /* SEGUNDOS */
-
-    const segundos =
-        Math.floor(
-            diferencia / segundo
-        );
-
-
-
-    /* MOSTRAR */
-
-    diasElemento.textContent =
-        dias;
-
-
-    horasElemento.textContent =
-        String(horas)
-            .padStart(2, "0");
-
-
-    minutosElemento.textContent =
-        String(minutos)
-            .padStart(2, "0");
-
-
-    segundosElemento.textContent =
-        String(segundos)
-            .padStart(2, "0");
-
-}
-
-
-
-/* ==================================================
-   INICIAR CONTADOR
-================================================== */
-
-actualizarCronometro();
-
-
-setInterval(
-    actualizarCronometro,
-    1000
-);
-
-
-
-/* ==================================================
-   NIEVE
-================================================== */
-
-function crearNieve() {
-
-
-    const copo =
-        document.createElement("div");
-
-
-    copo.className =
-        "nieve";
-
-
-    copo.textContent =
-        "❄";
-
-
-    copo.style.left =
-        Math.random() * 100 + "vw";
-
-
-    copo.style.fontSize =
-        (Math.random() * 12 + 10) + "px";
-
-
-    copo.style.animationDuration =
-        (Math.random() * 5 + 5) + "s";
-
-
-    document.body.appendChild(copo);
-
-
-
-    setTimeout(function() {
-
-        copo.remove();
-
-    }, 10000);
-
-}
-
-
-
-/* CREAR NIEVE */
-
-setInterval(
-    crearNieve,
-    450
-);
-
-</script>
-
-
-</body>
-
-</html>
-```
 
