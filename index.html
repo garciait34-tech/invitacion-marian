@@ -1,0 +1,373 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: linear-gradient(180deg, #0A2342, #1E3A6B);
+  min-height: 100vh;
+  font-family: serif;
+}
+
+.contenedor {
+  max-width: 430px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.pantalla {
+  display: none;
+  min-height: 95vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+}
+.pantalla.activa { display: flex; }
+
+.foto {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.boton {
+  background: linear-gradient(90deg, #B8860B, #FFD700);
+  color: #0A2342;
+  border: none;
+  padding: 0.9rem 2rem;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  width: 85%;
+}
+.boton.confirmar {
+  background: #1E3A6B;
+  color: #FFD700;
+  border: 2px solid #D4AF37;
+}
+
+#botonMusica {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  background: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  z-index: 999;
+}
+
+.oculto { display: none; }
+#gracias {
+  color: #FFD700;
+  font-size: 1.2rem;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+/* 🌹 Pétalos rojos cayendo */
+.petalos {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 998;
+  overflow: hidden;
+}
+
+.petalo {
+  position: absolute;
+  top: -10%;
+  width: 18px;
+  height: 18px;
+  background: radial-gradient(circle, #ff6b6b, #b30000);
+  border-radius: 70% 0 70% 50%;
+  opacity: 0.75;
+  animation: caer linear infinite;
+}
+
+@keyframes caer {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(110vh) rotate(360deg);
+  }
+}}
+
+/* 🌸 Estilos que faltaban */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { 
+  color: #f2d479; 
+  background: linear-gradient(180deg, #0a1629 0%, #152a4f 50%, #0f1f3c 100%); 
+  min-height: 100vh;
+  font-family: 'Georgia', serif;
+}
+
+.portada { 
+  height: 100vh; 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: center; 
+  position: relative; 
+  overflow: hidden;
+}
+.fondo-portada {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at center, rgba(26, 58, 95, 0.8) 0%, rgba(10, 22, 41, 0.95) 100%);
+  z-index: 1;
+}
+.contenido-portada { z-index: 2; text-align: center; padding: 2rem; }
+.portada h1 { 
+  font-size: 2.8rem; 
+  font-weight: normal; 
+  letter-spacing: 3px; 
+  margin-bottom: 0.5rem;
+  color: #f2d479;
+}
+.portada h2 { 
+  font-size: 1.3rem; 
+  font-weight: normal; 
+  color: #e8d5a3; 
+  margin-bottom: 3rem;
+  letter-spacing: 2px;
+}
+.sobre {
+  width: 280px; height: 200px;
+  background: linear-gradient(135deg, #f5e9d3, #e8d5b7, #f0dfc0);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+  border: 1px solid rgba(212,175,55,0.3);
+  margin-bottom: 2rem;
+}
+.sobre:hover { transform: scale(1.05); }
+.sello {
+  width: 70px; height: 70px;
+  background: radial-gradient(circle, #d4af37, #b8860b);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2rem;
+}
+.toca {
+  font-size: 1.1rem;
+  letter-spacing: 4px;
+  color: #e8d5a3;
+  animation: parpadeo 3s infinite;
+}
+@keyframes parpadeo {
+  0%,100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+.contenido-principal { display: none; }
+.seccion {
+  min-height: 100vh;
+  padding: 4rem 2rem;
+  max-width: 850px;
+  margin: 0 auto;
+  text-align: center;
+  animation: entrada 1s ease forwards;
+  opacity: 0;
+}
+@keyframes entrada {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+h2 {
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  color: #f2d479;
+}
+p {
+  font-size: 1.15rem;
+  line-height: 1.9;
+  margin-bottom: 1rem;
+  color: #f0e6cc;
+}
+.nombres-padres {
+  font-size: 1.4rem;
+  margin: 1.5rem 0;
+  color: #f2d479;
+}
+.nombre-marian {
+  font-size: 3rem;
+  margin: 2rem 0;
+  color: #ffd700;
+  letter-spacing: 4px;
+}
+.caja-dato {
+  background: rgba(212, 175, 55, 0.08);
+  padding: 2rem;
+  border-radius: 16px;
+  margin: 1.5rem 0;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+}
+.caja-dato h3 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: #f2d479;
+}
+.madrina {
+  margin: 1.5rem 0;
+  padding: 1rem;
+}
+.etiqueta-madrina {
+  color: #d4af37;
+  margin-bottom: 0.5rem;
+}
+.contador {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2.5rem 0;
+  flex-wrap: wrap;
+}
+.bloque-contador {
+  background: rgba(212, 175, 55, 0.12);
+  padding: 1.5rem 1rem;
+  border-radius: 12px;
+  min-width: 90px;
+}
+.numero {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #ffd700;
+}
+.etiqueta {
+  font-size: 0.85rem;
+  color: #e8d5a3;
+  margin-top: 0.3rem;
+}
+.separador {
+  width: 100px; height: 2px;
+  background: linear-gradient(90deg, transparent, #d4af37, transparent);
+  margin: 2rem auto;
+}
+</style>
+</head>
+<body>
+
+<audio id="musica" loop preload="auto">
+  <source src="musica.mp3" type="audio/mpeg">
+
+
+<div class="petalos" id="petalos"></div>
+
+<div class="portada" id="portada">
+  <div class="fondo-portada"></div>
+  <div class="contenido-portada">
+    <h1>Te invitamos a</h1>
+    <h2>CELEBRAR MIS XV AÑOS</h2>
+    <div class="sobre" id="sobre" onclick="abrirInvitacion()">
+      <div class="sello">🌸</div>
+    </div>
+    <p class="toca">TOCA EL SOBRE PARA ABRIR</p>
+  </div>
+</div>
+
+<div class="contenido-principal" id="contenido">
+  <section class="seccion">
+    <p>Hay momentos en la vida que merecen ser compartidos y celebrados con las personas que más queremos.</p>
+    <p>Con mucha alegría y amor,</p>
+    <p class="nombres-padres"><strong>Joaquín Marcos Antonio</strong><br>y<br><strong>Julvia García Sánchez</strong></p>
+    <p>Tenemos el honor de invitarle a celebrar los</p>
+    <h2>🌸 XV AÑOS DE NUESTRA QUERIDA HIJA 🌸</h2>
+    <h1 class="nombre-marian">MARIAN</h1>
+    <p>Acompáñennos a dar gracias a Dios por este maravilloso momento y a celebrar juntos este día tan especial, lleno de amor, alegría y hermosos recuerdos.</p>
+  </section>
+
+  <section class="seccion">
+    <h2>Faltan...</h2>
+    <div class="contador">
+      <div class="bloque-contador"><div class="numero" id="dias">00</div><div class="etiqueta">Días</div></div>
+      <div class="bloque-contador"><div class="numero" id="horas">00</div><div class="etiqueta">Horas</div></div>
+      <div class="bloque-contador"><div class="numero" id="minutos">00</div><div class="etiqueta">Minutos</div></div>
+      <div class="bloque-contador"><div class="numero" id="segundos">00</div><div class="etiqueta">Segundos</div></div>
+    </div>
+    <p>✨ 30 de Diciembre de 2026 ✨</p>
+  </section>
+
+  <section class="seccion">
+    <div class="caja-dato">
+      <h3>💒 SANTA MISA</h3>
+      <p><strong>30 de diciembre de 2026</strong></p>
+      <p><strong>1:00 p. m.</strong></p>
+      <p>Parroquia Asunción de María</p>
+    </div>
+    <div class="separador"></div>
+    <div class="caja-dato">
+      <h3>🥂 RECEPCIÓN</h3>
+      <p><strong>30 de diciembre de 2026</strong></p>
+      <p><strong>3:00 p. m.</strong></p>
+      <p>Pista 20 de Agosto</p>
+      <p>Av. Los Maestros s/n</p>
+      <p>Asunción Ixtaltepec, Oaxaca</p>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <h2>✨ MADRINAS ✨</h2>
+    <div class="madrina">
+      <p class="etiqueta-madrina">🕯️ Madrina de Velación</p>
+      <p><strong>Lic. en Psicología Yesenia López de la Cruz</strong></p>
+    </div>
+    <div class="madrina">
+      <p class="etiqueta-madrina">🥂 Madrina de Brindis</p>
+      <p><strong>Ing. Aylin Hernández García</strong></p>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <p>Será un honor contar con su distinguida presencia para celebrar junto a nosotros los XV años de Marian y hacer de este día un recuerdo inolvidable.</p>
+    <p style="margin-top: 3rem; color: #d4af37;">🌹 Marian — 30 · 12 · 2026 🌹</p>
+  </section>
+</div>
+
+<script>
+function abrirInvitacion() {
+  document.getElementById('musica').play();
+  document.getElementById('portada').style.opacity = '0';
+  setTimeout(() => {
+    document.getElementById('portada').style.display = 'none';
+    document.getElementById('contenido').style.display = 'block';
+  }, 800);
+}
+
+function actualizarContador() {
+  const fechaMeta = new Date('2026-12-30T13:00:00');
+  const ahora = new Date();
+  const diferencia = fechaMeta - ahora;
+  if (diferencia <= 0) return;
+  
+  const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+  const horas = Math.floor((diferencia / (1000 * 60 * 60)) % 24);
+  const minutos = Math.floor((diferencia / (1000 * 60)) % 60);
+  const segundos = Math.floor((diferencia / 1000) % 60);
+  
+  document.getElementById('dias').textContent = String(dias).padStart(2, '0');
+  document.getElementById('horas').textContent = String(horas).padStart(2, '0');
+  document.getElementById('minutos').textContent = String(minutos).padStart(2, '0');
+  document.getElementById('segundos').textContent = String(segundos).padStart(2, '0');
+}
+setInterval(actualizarContador, 1000);
+actualizarContador();
+
+// Pétalos cayendo
+function crearPetalo() {
+  const p = document.createElement('div');
+  p.classList.add('petalo');
+  p.style.left = Math.random() * 100 + '%';
+  p.style.animationDuration = (Math.random() * 5 + 5) + 's';
+  p.style.transform = `rotate(${Math.random() * 360}deg)`;
+  document.getElementById('petalos').appendChild(p);
+  setTimeout(() => p.remove(), 10000);
+}
+setInterval(crearPetalo, 800);
+</script>
+</body>
+</html>
