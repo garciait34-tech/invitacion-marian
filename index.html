@@ -13,122 +13,19 @@
 ========================================================= */
 
 *{
-  box-sizing:border-box;
+    box-sizing:border-box;
 }
 
 html{
-  scroll-behavior:smooth;
+    scroll-behavior:smooth;
 }
 
 body{
-  margin:0;
-  padding:0;
-  background:#fff;
-  font-family:Arial, Helvetica, sans-serif;
-  overflow-x:hidden;
-}
-
-.seccion{
-  position:relative;
-  width:100%;
-  margin:0;
-  padding:0;
-}
-
-.seccion img{
-  display:block;
-  width:100%;
-  height:auto;
-  margin:0;
-  padding:0;
-}
-
-
-/* =========================================================
-   PORTADA
-========================================================= */
-
-.portada{
-  position:relative;
-  width:100%;
-  height:100vh;
-  overflow:hidden;
-  cursor:pointer;
-}
-
-.portada img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-.portada-overlay{
-  position:absolute;
-  inset:0;
-  display:flex;
-  justify-content:center;
-  align-items:flex-end;
-  padding-bottom:50px;
-  z-index:20;
-}
-
-.boton-abrir{
-  background:rgba(255,255,255,.92);
-  color:#173f78;
-  border:2px solid #c9a227;
-  border-radius:50px;
-  padding:14px 35px;
-  font-size:16px;
-  font-weight:bold;
-  letter-spacing:1px;
-  box-shadow:0 5px 20px rgba(0,0,0,.25);
-  animation:pulsoBoton 2s infinite;
-}
-
-@keyframes pulsoBoton{
-
-  0%,100%{
-    transform:scale(1);
-  }
-
-  50%{
-    transform:scale(1.05);
-  }
-
-}
-
-
-/* =========================================================
-   BOTÓN DE MÚSICA
-========================================================= */
-
-.boton-musica{
-  position:fixed;
-  right:18px;
-  bottom:18px;
-
-  width:48px;
-  height:48px;
-
-  border-radius:50%;
-
-  border:2px solid #c9a227;
-
-  background:rgba(255,255,255,.92);
-
-  color:#17467f;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  font-size:20px;
-
-  cursor:pointer;
-
-  z-index:10000;
-
-  box-shadow:0 4px 15px rgba(0,0,0,.25);
+    margin:0;
+    padding:0;
+    background:#fff;
+    overflow-x:hidden;
+    font-family:Arial,Helvetica,sans-serif;
 }
 
 
@@ -136,13 +33,155 @@ body{
    SECCIONES
 ========================================================= */
 
-.inicio,
-.invitacion,
-.detalles,
-.confirmar,
-.final{
-  position:relative;
-  width:100%;
+.seccion{
+    position:relative;
+    width:100%;
+    margin:0;
+    padding:0;
+}
+
+.seccion img{
+    display:block;
+    width:100%;
+    height:auto;
+    margin:0;
+    padding:0;
+}
+
+
+/* =========================================================
+   PORTADA
+========================================================= */
+
+#portada{
+    position:fixed;
+    inset:0;
+    width:100%;
+    height:100vh;
+    z-index:5000;
+    background:#000;
+    cursor:pointer;
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+}
+
+#portada.oculta{
+    opacity:0;
+    transform:scale(1.05);
+    pointer-events:none;
+}
+
+#portada img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+
+
+/* =========================================================
+   BOTÓN TOCAR
+========================================================= */
+
+.boton-abrir{
+    position:absolute;
+
+    left:50%;
+    bottom:45px;
+
+    transform:translateX(-50%);
+
+    padding:14px 30px;
+
+    background:rgba(255,255,255,.93);
+
+    border:2px solid #c9a227;
+
+    border-radius:40px;
+
+    color:#17467f;
+
+    font-size:15px;
+    font-weight:bold;
+
+    letter-spacing:1px;
+
+    box-shadow:
+        0 5px 20px rgba(0,0,0,.3);
+
+    animation:pulso 2s infinite;
+}
+
+@keyframes pulso{
+
+    0%,100%{
+        transform:translateX(-50%) scale(1);
+    }
+
+    50%{
+        transform:translateX(-50%) scale(1.06);
+    }
+}
+
+
+/* =========================================================
+   CONTENIDO PRINCIPAL
+========================================================= */
+
+#contenido{
+    position:relative;
+    width:100%;
+
+    opacity:0;
+
+    transform:translateY(25px);
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+}
+
+#contenido.visible{
+    opacity:1;
+    transform:translateY(0);
+}
+
+
+/* =========================================================
+   BOTÓN MÚSICA
+========================================================= */
+
+.boton-musica{
+    position:fixed;
+
+    right:18px;
+    bottom:18px;
+
+    width:48px;
+    height:48px;
+
+    border-radius:50%;
+
+    border:2px solid #c9a227;
+
+    background:rgba(255,255,255,.94);
+
+    color:#17467f;
+
+    font-size:20px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    cursor:pointer;
+
+    z-index:9000;
+
+    box-shadow:
+        0 4px 15px rgba(0,0,0,.25);
 }
 
 
@@ -151,15 +190,15 @@ body{
 ========================================================= */
 
 .cronometro{
-  position:relative;
-  width:100%;
-  overflow:hidden;
+    position:relative;
+    width:100%;
+    overflow:hidden;
 }
 
 .cronometro > img{
-  width:100%;
-  height:auto;
-  display:block;
+    width:100%;
+    height:auto;
+    display:block;
 }
 
 
@@ -168,83 +207,99 @@ body{
 ========================================================= */
 
 .contador{
-  position:absolute;
 
-  left:50%;
-  top:59%;
+    position:absolute;
 
-  transform:translate(-50%,-50%);
+    left:50%;
+    top:59%;
 
-  width:92%;
+    transform:translate(-50%,-50%);
 
-  display:flex;
-  justify-content:center;
-  align-items:center;
+    width:92%;
 
-  gap:10px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 
-  z-index:50;
+    gap:8px;
+
+    z-index:50;
 }
 
 .contador-item{
-  min-width:65px;
-  text-align:center;
+    min-width:62px;
+    text-align:center;
 }
 
 .contador-numero{
-  font-size:clamp(22px,5vw,45px);
-  font-weight:bold;
-  color:#fff;
 
-  text-shadow:
-    0 2px 5px rgba(0,0,0,.6),
-    0 0 10px rgba(255,255,255,.4);
+    font-size:clamp(22px,5vw,42px);
+
+    font-weight:bold;
+
+    color:white;
+
+    text-shadow:
+        0 2px 5px rgba(0,0,0,.7),
+        0 0 10px rgba(255,255,255,.35);
 }
 
 .contador-texto{
-  font-size:clamp(8px,2vw,13px);
-  color:#fff;
-  font-weight:bold;
-  letter-spacing:1px;
 
-  text-shadow:
-    0 2px 4px rgba(0,0,0,.7);
+    font-size:clamp(8px,2vw,12px);
+
+    color:white;
+
+    font-weight:bold;
+
+    letter-spacing:1px;
+
+    text-shadow:
+        0 2px 4px rgba(0,0,0,.7);
 }
 
 
 /* =========================================================
-   🌹 ROSA ORIGINAL
+   🌹 ROSA
 ========================================================= */
 
 .rosa-wrapper{
-  position:absolute;
 
-  left:50%;
-  bottom:0;
+    position:absolute;
 
-  transform:translateX(-50%);
+    left:50%;
 
-  width:260px;
-  height:380px;
+    /*
+       IMPORTANTE:
+       La rosa queda abajo del cronómetro
+       y no invade los números.
+    */
 
-  z-index:200;
+    bottom:-15px;
 
-  pointer-events:none;
+    width:180px;
+    height:230px;
+
+    transform:translateX(-50%) scale(.50);
+
+    transform-origin:bottom center;
+
+    z-index:40;
+
+    pointer-events:none;
 }
 
 
-/* CONTENEDOR ORIGINAL DE LA ROSA */
+/* CONTENEDOR ORIGINAL */
 
 .rosa-wrapper .container{
-  position:absolute;
 
-  left:50%;
-  top:50%;
+    position:absolute;
 
-  transform:translate(-50%,-50%);
+    left:50%;
+    top:50%;
 
-  width:250px;
-  height:370px;
+    transform:translate(-50%,-50%);
 }
 
 
@@ -253,52 +308,53 @@ body{
 ========================================================= */
 
 .rosa-wrapper .glass{
-  height:350px;
-  width:200px;
 
-  background:#122139;
+    height:350px;
+    width:200px;
 
-  border-radius:300px 300px 0px 0px;
+    background:#122139;
 
-  position:absolute;
-  left:25px;
-  top:0;
+    border-radius:300px 300px 0 0;
 
-  opacity:.82;
+    position:absolute;
+
+    left:-100px;
+    top:-175px;
 }
 
 .rosa-wrapper .glass:before{
 
-  content:"";
+    content:"";
 
-  height:10px;
-  width:10px;
+    height:10px;
+    width:10px;
 
-  transform-origin:center;
+    transform-origin:center;
 
-  border:10px solid #122139;
+    border:10px solid #122139;
 
-  border-radius:100%;
+    border-radius:100%;
 
-  position:absolute;
+    position:absolute;
 
-  left:87px;
-  top:-25px;
+    left:87px;
+    top:-25px;
 }
 
 .rosa-wrapper .glass:after{
 
-  content:"";
+    content:"";
 
-  position:absolute;
+    position:absolute;
 
-  height:15px;
-  width:250px;
+    height:15px;
+    width:250px;
 
-  background:#a52a2a;
+    background:#a52a2a;
 
-  top:100%;
-  left:-13%;
+    top:100%;
+
+    left:-13%;
 }
 
 
@@ -308,37 +364,37 @@ body{
 
 .rosa-wrapper .shine{
 
-  width:12px;
-  height:140px;
+    width:12px;
+    height:140px;
 
-  background:white;
+    background:white;
 
-  opacity:.2;
+    opacity:.2;
 
-  position:absolute;
+    position:absolute;
 
-  left:85%;
-  top:80px;
+    left:85%;
+    top:80px;
 
-  border-radius:100px;
+    border-radius:100px;
 
-  z-index:10;
+    z-index:10;
 }
 
 .rosa-wrapper .shine:before{
 
-  content:"";
+    content:"";
 
-  width:12px;
-  height:20px;
+    width:12px;
+    height:20px;
 
-  position:absolute;
+    position:absolute;
 
-  background:white;
+    background:white;
 
-  top:160px;
+    top:160px;
 
-  border-radius:100px;
+    border-radius:100px;
 }
 
 
@@ -348,160 +404,166 @@ body{
 
 .rosa-wrapper .petals > div{
 
-  position:absolute;
+    position:absolute;
 
-  background:#d52d58;
+    background:#d52d58;
 
-  width:45px;
-  height:80px;
+    width:45px;
+    height:80px;
 
-  top:55px;
+    top:55px;
 
-  transition:all .5s ease-out;
+    transition:all .5s ease-out;
 }
 
 .rosa-wrapper .petals > div:nth-child(1){
 
-  border-radius:15px;
+    border-radius:15px;
 
-  box-shadow:0px 0px 30px #f594b8;
+    box-shadow:0 0 30px #f594b8;
 
-  left:80px;
-  top:60px;
+    left:80px;
+    top:60px;
 
-  background:#d52d58;
+    background:#d52d58;
 }
 
 .rosa-wrapper .petals > div:nth-child(2),
 .rosa-wrapper .petals > div:nth-child(4),
 .rosa-wrapper .petals > div:nth-child(6){
 
-  background:#b81b43;
+    background:#b81b43;
 
-  left:60px;
+    left:60px;
 
-  border-radius:0px 30px 0px 30px;
+    border-radius:0 30px 0 30px;
 
-  transform-origin:bottom right;
+    transform-origin:bottom right;
 }
 
 .rosa-wrapper .petals > div:nth-child(3),
 .rosa-wrapper .petals > div:nth-child(5),
 .rosa-wrapper .petals > div:nth-child(7){
 
-  background:#b81b43;
+    background:#b81b43;
 
-  left:100px;
+    left:100px;
 
-  border-radius:30px 0px 30px 0px;
+    border-radius:30px 0 30px 0;
 
-  transform-origin:bottom left;
+    transform-origin:bottom left;
 }
 
 .rosa-wrapper .petals > div:nth-child(2){
 
-  z-index:5;
+    z-index:5;
 
-  background:#ab1a3f;
+    background:#ab1a3f;
 
-  top:75px;
-  height:70px;
+    top:75px;
+    height:70px;
 
-  box-shadow:0px 0px 50px rgba(245,148,184,.5);
+    box-shadow:
+        0 0 50px rgba(245,148,184,.5);
 
-  animation:bloom2 3s ease-in-out;
+    animation:bloom2 3s ease-in-out;
 
-  animation-fill-mode:forwards;
+    animation-fill-mode:forwards;
 }
 
 .rosa-wrapper .petals > div:nth-child(3){
 
-  z-index:4;
+    z-index:4;
 
-  background:#ab1a3f;
+    background:#ab1a3f;
 
-  top:75px;
-  height:70px;
+    top:75px;
+    height:70px;
 
-  box-shadow:0px 0px 50px rgba(245,148,184,.5);
+    box-shadow:
+        0 0 50px rgba(245,148,184,.5);
 
-  animation:
-    bloom3 3s ease-in-out,
-    glowing 2.5s ease-in-out infinite;
+    animation:
+        bloom3 3s ease-in-out,
+        glowing 2.5s ease-in-out infinite;
 
-  animation-fill-mode:forwards;
+    animation-fill-mode:forwards;
 }
 
 .rosa-wrapper .petals > div:nth-child(4){
 
-  z-index:3;
+    z-index:3;
 
-  background:#b81b43;
+    background:#b81b43;
 
-  top:70px;
-  height:75px;
+    top:70px;
+    height:75px;
 
-  box-shadow:0px 0px 50px rgba(245,148,184,.5);
+    box-shadow:
+        0 0 50px rgba(245,148,184,.5);
 
-  animation:
-    bloom4 3s ease-in-out,
-    glowing 2.5s ease-in-out infinite;
+    animation:
+        bloom4 3s ease-in-out,
+        glowing 2.5s ease-in-out infinite;
 
-  animation-fill-mode:forwards;
+    animation-fill-mode:forwards;
 }
 
 .rosa-wrapper .petals > div:nth-child(5){
 
-  z-index:2;
+    z-index:2;
 
-  background:#b81b43;
+    background:#b81b43;
 
-  top:70px;
-  height:75px;
+    top:70px;
+    height:75px;
 
-  box-shadow:0px 0px 50px rgba(245,148,184,.5);
+    box-shadow:
+        0 0 50px rgba(245,148,184,.5);
 
-  animation:
-    bloom5 3s ease-in-out,
-    glowing 2.5s ease-in-out infinite;
+    animation:
+        bloom5 3s ease-in-out,
+        glowing 2.5s ease-in-out infinite;
 
-  animation-fill-mode:forwards;
+    animation-fill-mode:forwards;
 }
 
 .rosa-wrapper .petals > div:nth-child(6){
 
-  z-index:1;
+    z-index:1;
 
-  background:#c9204b;
+    background:#c9204b;
 
-  top:65px;
-  height:70px;
+    top:65px;
+    height:70px;
 
-  box-shadow:0px 0px 50px rgba(245,148,184,.3);
+    box-shadow:
+        0 0 50px rgba(245,148,184,.3);
 
-  animation:
-    bloom6 3s ease-in-out,
-    glowing 2.5s ease-in-out infinite;
+    animation:
+        bloom6 3s ease-in-out,
+        glowing 2.5s ease-in-out infinite;
 
-  animation-fill-mode:forwards;
+    animation-fill-mode:forwards;
 }
 
 .rosa-wrapper .petals > div:nth-child(7){
 
-  z-index:0;
+    z-index:0;
 
-  background:#c9204b;
+    background:#c9204b;
 
-  top:65px;
-  height:70px;
+    top:65px;
+    height:70px;
 
-  box-shadow:0px 0px 50px rgba(245,148,184,.3);
+    box-shadow:
+        0 0 50px rgba(245,148,184,.3);
 
-  animation:
-    bloom7 3s ease-in-out,
-    glowing 2.5s ease-in-out infinite;
+    animation:
+        bloom7 3s ease-in-out,
+        glowing 2.5s ease-in-out infinite;
 
-  animation-fill-mode:forwards;
+    animation-fill-mode:forwards;
 }
 
 
@@ -511,60 +573,61 @@ body{
 
 .rosa-wrapper .deadPetals > div{
 
-  position:absolute;
+    position:absolute;
 
-  background:#d52d58;
+    background:#d52d58;
 
-  width:20px;
-  height:15px;
+    width:20px;
+    height:15px;
 
-  top:120px;
+    top:120px;
 
-  border-radius:0px 30px 0px 30px;
+    border-radius:0 30px 0 30px;
 
-  box-shadow:0px 0px 30px rgba(245,148,184,.5);
+    box-shadow:
+        0 0 30px rgba(245,148,184,.5);
 
-  transition:all .5s ease-out;
+    transition:all .5s ease-out;
 }
 
 .rosa-wrapper .deadPetals > div:nth-child(1){
 
-  left:67px;
+    left:67px;
 
-  transform:rotate(-30deg);
+    transform:rotate(-30deg);
 
-  animation:
-    falling 20s 4s ease-in-out infinite;
+    animation:
+        falling 20s 4s ease-in-out infinite;
 }
 
 .rosa-wrapper .deadPetals > div:nth-child(2){
 
-  left:104px;
+    left:104px;
 
-  transform:rotate(-30deg);
+    transform:rotate(-30deg);
 
-  animation:
-    falling 20s 8s ease-in-out infinite;
+    animation:
+        falling 20s 8s ease-in-out infinite;
 }
 
 .rosa-wrapper .deadPetals > div:nth-child(3){
 
-  left:91px;
+    left:91px;
 
-  transform:rotate(-30deg);
+    transform:rotate(-30deg);
 
-  animation:
-    falling 20s 12s ease-in-out infinite;
+    animation:
+        falling 20s 12s ease-in-out infinite;
 }
 
 .rosa-wrapper .deadPetals > div:nth-child(4){
 
-  left:69px;
+    left:69px;
 
-  transform:rotate(-30deg);
+    transform:rotate(-30deg);
 
-  animation:
-    falling 20s 16s ease-in-out infinite;
+    animation:
+        falling 20s 16s ease-in-out infinite;
 }
 
 
@@ -574,74 +637,74 @@ body{
 
 .rosa-wrapper .leaves > div:nth-last-child(1){
 
-  position:absolute;
+    position:absolute;
 
-  width:55px;
-  height:30px;
+    width:55px;
+    height:30px;
 
-  background:#338f37;
+    background:#338f37;
 
-  top:120px;
-  left:75px;
+    top:120px;
+    left:75px;
 
-  border-radius:100px;
+    border-radius:100px;
 }
 
 .rosa-wrapper .leaves > div:nth-child(1){
 
-  position:absolute;
+    position:absolute;
 
-  width:6px;
-  height:210px;
+    width:6px;
+    height:210px;
 
-  background:#054c05;
+    background:#054c05;
 
-  top:95px;
-  left:100px;
+    top:95px;
+    left:100px;
 
-  border-radius:0 0 100px 100px;
+    border-radius:0 0 100px 100px;
 }
 
 .rosa-wrapper .leaves > div:nth-child(2){
 
-  position:absolute;
+    position:absolute;
 
-  width:30px;
-  height:50px;
+    width:30px;
+    height:50px;
 
-  border-radius:5px 40px 20px 40px;
+    border-radius:5px 40px 20px 40px;
 
-  background:#054c05;
+    background:#054c05;
 
-  transform-origin:bottom;
+    transform-origin:bottom;
 
-  transform:rotate(-30deg);
+    transform:rotate(-30deg);
 
-  top:180px;
-  left:80px;
+    top:180px;
+    left:80px;
 
-  box-shadow:inset 5px 5px #066406;
+    box-shadow:inset 5px 5px #066406;
 }
 
 .rosa-wrapper .leaves > div:nth-child(3){
 
-  position:absolute;
+    position:absolute;
 
-  width:30px;
-  height:50px;
+    width:30px;
+    height:50px;
 
-  border-radius:40px 5px 40px 20px;
+    border-radius:40px 5px 40px 20px;
 
-  background:#054c05;
+    background:#054c05;
 
-  transform-origin:bottom;
+    transform-origin:bottom;
 
-  transform:rotate(30deg);
+    transform:rotate(30deg);
 
-  top:150px;
-  left:95px;
+    top:150px;
+    left:95px;
 
-  box-shadow:inset -5px 5px #066406;
+    box-shadow:inset -5px 5px #066406;
 }
 
 
@@ -651,358 +714,330 @@ body{
 
 .rosa-wrapper .thorns > div{
 
-  position:absolute;
+    position:absolute;
 
-  width:0;
-  height:0;
+    width:0;
+    height:0;
 
-  top:140px;
+    top:140px;
 }
 
 .rosa-wrapper .thorns > div:nth-child(odd){
 
-  border-top:5px solid transparent;
-  border-bottom:5px solid transparent;
-  border-left:5px solid #054c05;
+    border-top:5px solid transparent;
+    border-bottom:5px solid transparent;
+    border-left:5px solid #054c05;
 
-  left:105px;
+    left:105px;
 }
 
 .rosa-wrapper .thorns > div:nth-child(even){
 
-  border-top:5px solid transparent;
-  border-bottom:5px solid transparent;
-  border-right:5px solid #054c05;
+    border-top:5px solid transparent;
+    border-bottom:5px solid transparent;
+    border-right:5px solid #054c05;
 
-  left:95px;
+    left:95px;
 }
 
 .rosa-wrapper .thorns > div:nth-child(1){
-  top:200px;
+    top:200px;
 }
 
 .rosa-wrapper .thorns > div:nth-child(2){
-  top:170px;
+    top:170px;
 }
 
 .rosa-wrapper .thorns > div:nth-child(4){
-  top:230px;
+    top:230px;
 }
 
 
 /* =========================================================
-   ANIMACIONES ORIGINALES DE LA ROSA
+   ANIMACIONES ORIGINALES
 ========================================================= */
 
 @keyframes bloom2{
 
-  50%{
-    transform:rotate(-90deg);
-    top:200px;
-    left:100px;
-  }
+    50%{
+        transform:rotate(-90deg);
+        top:200px;
+        left:100px;
+    }
 
-  100%{
-    transform:rotate(-60deg);
-    top:252px;
-    left:50px;
+    100%{
+        transform:rotate(-60deg);
+        top:252px;
+        left:50px;
 
-    background:#71122a;
+        background:#71122a;
 
-    box-shadow:0px 0px 0px rgba(245,148,184,0);
-  }
+        box-shadow:
+            0 0 0 rgba(245,148,184,0);
+    }
 }
 
 @keyframes bloom3{
 
-  100%{
-    transform:rotate(45deg);
-  }
+    100%{
+        transform:rotate(45deg);
+    }
 }
 
 @keyframes bloom4{
 
-  100%{
-    transform:rotate(-20deg);
-  }
+    100%{
+        transform:rotate(-20deg);
+    }
 }
 
 @keyframes bloom5{
 
-  100%{
-    transform:rotate(20deg);
-  }
+    100%{
+        transform:rotate(20deg);
+    }
 }
 
 @keyframes bloom6{
 
-  100%{
-    transform:rotate(-5deg);
-  }
+    100%{
+        transform:rotate(-5deg);
+    }
 }
 
 @keyframes bloom7{
 
-  100%{
-    transform:rotate(5deg);
-  }
+    100%{
+        transform:rotate(5deg);
+    }
 }
 
 @keyframes glowing{
 
-  50%{
+    50%{
 
-    background:#d7365f;
+        background:#d7365f;
 
-    box-shadow:0px 0px 60px #f594b8;
-  }
+        box-shadow:
+            0 0 60px #f594b8;
+    }
 }
 
 @keyframes falling{
 
-  20%{
+    20%{
 
-    top:335px;
+        top:335px;
 
-    background:#9d193b;
+        background:#9d193b;
 
-    box-shadow:0px 0px 0px rgba(245,148,184,0);
-  }
+        box-shadow:
+            0 0 0 rgba(245,148,184,0);
+    }
 
-  100%{
+    100%{
 
-    top:335px;
+        top:335px;
 
-    opacity:0;
-  }
+        opacity:0;
+    }
 }
 
 
 /* =========================================================
-   ❄️ COPOS DE NIEVE
+   ❄️ COPOS
 ========================================================= */
 
 .copos-nieve{
 
-  position:fixed;
+    position:fixed;
 
-  inset:0;
+    inset:0;
 
-  width:100%;
-  height:100%;
+    width:100%;
+    height:100%;
 
-  pointer-events:none;
+    pointer-events:none;
 
-  overflow:hidden;
+    overflow:hidden;
 
-  z-index:9999;
+    z-index:8000;
 }
 
 .copos-nieve span{
 
-  position:absolute;
+    position:absolute;
 
-  top:-40px;
+    top:-30px;
 
-  color:white;
+    color:#fff;
 
-  font-family:Arial,sans-serif;
+    font-family:Arial,sans-serif;
 
-  line-height:1;
+    font-size:18px;
 
-  opacity:.85;
+    line-height:1;
 
-  text-shadow:
-    0 0 4px rgba(255,255,255,.9),
-    0 0 8px rgba(255,255,255,.7);
+    opacity:0;
 
-  animation-name:nieveCaer;
+    text-shadow:
+        0 0 4px #fff,
+        0 0 8px #fff,
+        0 0 14px rgba(150,210,255,.8);
 
-  animation-timing-function:linear;
-
-  animation-iteration-count:infinite;
+    animation:
+        nieveCaer linear infinite;
 }
 
-
-/* posiciones de los copos */
-
 .copos-nieve span:nth-child(1){
-  left:3%;
-  font-size:14px;
-  animation-duration:8s;
-  animation-delay:0s;
+    left:3%;
+    animation-duration:9s;
+    animation-delay:0s;
 }
 
 .copos-nieve span:nth-child(2){
-  left:9%;
-  font-size:20px;
-  animation-duration:11s;
-  animation-delay:2s;
+    left:9%;
+    animation-duration:12s;
+    animation-delay:2s;
 }
 
 .copos-nieve span:nth-child(3){
-  left:15%;
-  font-size:12px;
-  animation-duration:9s;
-  animation-delay:4s;
+    left:15%;
+    animation-duration:10s;
+    animation-delay:4s;
 }
 
 .copos-nieve span:nth-child(4){
-  left:22%;
-  font-size:18px;
-  animation-duration:13s;
-  animation-delay:1s;
+    left:22%;
+    animation-duration:13s;
+    animation-delay:1s;
 }
 
 .copos-nieve span:nth-child(5){
-  left:28%;
-  font-size:15px;
-  animation-duration:10s;
-  animation-delay:5s;
+    left:29%;
+    animation-duration:11s;
+    animation-delay:5s;
 }
 
 .copos-nieve span:nth-child(6){
-  left:35%;
-  font-size:22px;
-  animation-duration:12s;
-  animation-delay:3s;
+    left:36%;
+    animation-duration:14s;
+    animation-delay:3s;
 }
 
 .copos-nieve span:nth-child(7){
-  left:42%;
-  font-size:13px;
-  animation-duration:9s;
-  animation-delay:6s;
+    left:43%;
+    animation-duration:10s;
+    animation-delay:6s;
 }
 
 .copos-nieve span:nth-child(8){
-  left:49%;
-  font-size:19px;
-  animation-duration:14s;
-  animation-delay:2s;
+    left:50%;
+    animation-duration:13s;
+    animation-delay:2s;
 }
 
 .copos-nieve span:nth-child(9){
-  left:56%;
-  font-size:14px;
-  animation-duration:10s;
-  animation-delay:7s;
+    left:57%;
+    animation-duration:11s;
+    animation-delay:7s;
 }
 
 .copos-nieve span:nth-child(10){
-  left:63%;
-  font-size:21px;
-  animation-duration:12s;
-  animation-delay:4s;
+    left:64%;
+    animation-duration:14s;
+    animation-delay:4s;
 }
 
 .copos-nieve span:nth-child(11){
-  left:70%;
-  font-size:13px;
-  animation-duration:9s;
-  animation-delay:1s;
+    left:71%;
+    animation-duration:10s;
+    animation-delay:1s;
 }
 
 .copos-nieve span:nth-child(12){
-  left:76%;
-  font-size:18px;
-  animation-duration:13s;
-  animation-delay:5s;
+    left:78%;
+    animation-duration:13s;
+    animation-delay:5s;
 }
 
 .copos-nieve span:nth-child(13){
-  left:82%;
-  font-size:15px;
-  animation-duration:10s;
-  animation-delay:3s;
+    left:84%;
+    animation-duration:11s;
+    animation-delay:3s;
 }
 
 .copos-nieve span:nth-child(14){
-  left:87%;
-  font-size:22px;
-  animation-duration:14s;
-  animation-delay:8s;
+    left:90%;
+    animation-duration:14s;
+    animation-delay:8s;
 }
 
 .copos-nieve span:nth-child(15){
-  left:92%;
-  font-size:13px;
-  animation-duration:9s;
-  animation-delay:2s;
+    left:96%;
+    animation-duration:10s;
+    animation-delay:2s;
 }
 
 .copos-nieve span:nth-child(16){
-  left:97%;
-  font-size:19px;
-  animation-duration:11s;
-  animation-delay:6s;
+    left:18%;
+    animation-duration:15s;
+    animation-delay:7s;
 }
 
 .copos-nieve span:nth-child(17){
-  left:18%;
-  font-size:11px;
-  animation-duration:15s;
-  animation-delay:9s;
+    left:47%;
+    animation-duration:12s;
+    animation-delay:9s;
 }
 
 .copos-nieve span:nth-child(18){
-  left:45%;
-  font-size:16px;
-  animation-duration:12s;
-  animation-delay:7s;
+    left:68%;
+    animation-duration:15s;
+    animation-delay:6s;
 }
 
 .copos-nieve span:nth-child(19){
-  left:68%;
-  font-size:12px;
-  animation-duration:13s;
-  animation-delay:10s;
+    left:81%;
+    animation-duration:11s;
+    animation-delay:10s;
 }
 
 .copos-nieve span:nth-child(20){
-  left:88%;
-  font-size:17px;
-  animation-duration:10s;
-  animation-delay:11s;
+    left:93%;
+    animation-duration:13s;
+    animation-delay:11s;
 }
-
-
-/* =========================================================
-   ANIMACIÓN NIEVE
-========================================================= */
 
 @keyframes nieveCaer{
 
-  0%{
+    0%{
+        transform:
+            translate3d(0,-50px,0)
+            rotate(0deg);
 
-    transform:
-      translate3d(0,-50px,0)
-      rotate(0deg);
+        opacity:0;
+    }
 
-    opacity:0;
-  }
+    10%{
+        opacity:.9;
+    }
 
-  10%{
-    opacity:.9;
-  }
+    50%{
+        transform:
+            translate3d(35px,50vh,0)
+            rotate(180deg);
 
-  50%{
+        opacity:.8;
+    }
 
-    transform:
-      translate3d(35px,50vh,0)
-      rotate(180deg);
+    100%{
+        transform:
+            translate3d(-30px,110vh,0)
+            rotate(360deg);
 
-    opacity:.8;
-  }
-
-  100%{
-
-    transform:
-      translate3d(-30px,110vh,0)
-      rotate(360deg);
-
-    opacity:0;
-  }
+        opacity:0;
+    }
 }
 
 
@@ -1010,27 +1045,39 @@ body{
    CONFIRMACIÓN
 ========================================================= */
 
-.boton-whatsapp{
+.confirmar{
+    position:relative;
+}
 
-  display:inline-block;
+.boton-confirmar{
 
-  margin:20px auto;
+    position:absolute;
 
-  padding:15px 30px;
+    left:50%;
+    bottom:25px;
 
-  background:#17467f;
+    transform:translateX(-50%);
 
-  color:white;
+    display:inline-block;
 
-  text-decoration:none;
+    padding:14px 28px;
 
-  border-radius:40px;
+    background:#17467f;
 
-  border:2px solid #c9a227;
+    color:white;
 
-  font-weight:bold;
+    text-decoration:none;
 
-  box-shadow:0 5px 15px rgba(0,0,0,.2);
+    border:2px solid #c9a227;
+
+    border-radius:40px;
+
+    font-weight:bold;
+
+    box-shadow:
+        0 5px 15px rgba(0,0,0,.25);
+
+    white-space:nowrap;
 }
 
 
@@ -1040,52 +1087,48 @@ body{
 
 .creditos{
 
-  width:100%;
+    text-align:center;
 
-  padding:35px 20px 45px;
+    padding:30px 20px 40px;
 
-  text-align:center;
+    background:#fff;
 
-  background:#fff;
-
-  color:#17467f;
+    color:#17467f;
 }
 
 .credito-titulo{
 
-  font-size:12px;
+    font-size:12px;
 
-  letter-spacing:2px;
+    letter-spacing:2px;
 
-  text-transform:uppercase;
+    text-transform:uppercase;
 
-  margin-bottom:7px;
+    margin-bottom:6px;
 }
 
 .credito-marca{
 
-  font-size:25px;
+    font-size:25px;
 
-  font-weight:bold;
+    font-weight:bold;
 
-  color:#c9a227;
+    color:#c9a227;
 
-  margin-bottom:12px;
+    margin-bottom:10px;
 }
 
 .credito-whatsapp{
 
-  display:inline-block;
+    color:#17467f;
 
-  text-decoration:none;
+    text-decoration:none;
 
-  color:#17467f;
+    font-size:13px;
 
-  font-size:13px;
+    border-bottom:1px solid #c9a227;
 
-  border-bottom:1px solid #c9a227;
-
-  padding-bottom:3px;
+    padding-bottom:3px;
 }
 
 
@@ -1095,24 +1138,29 @@ body{
 
 @media(max-width:600px){
 
-  .contador{
-    gap:3px;
-    width:98%;
-  }
+    .contador{
+        width:98%;
+        gap:2px;
+    }
 
-  .contador-item{
-    min-width:52px;
-  }
+    .contador-item{
+        min-width:52px;
+    }
 
-  .rosa-wrapper{
+    .rosa-wrapper{
 
-    width:230px;
-    height:350px;
+        bottom:-18px;
 
-    transform:translateX(-50%) scale(.82);
+        transform:
+            translateX(-50%)
+            scale(.42);
+    }
 
-    transform-origin:bottom center;
-  }
+    .boton-confirmar{
+        bottom:18px;
+        font-size:14px;
+        padding:12px 22px;
+    }
 
 }
 
@@ -1124,31 +1172,31 @@ body{
 
 
 <!-- ======================================================
-     ❄️ COPOS DE NIEVE
+     ❄️ NIEVE
 ====================================================== -->
 
 <div class="copos-nieve" aria-hidden="true">
 
-  <span>❄</span>
-  <span>❄</span>
-  <span>❄</span>
-  <span>❄</span>
-  <span>❄</span>
-  <span>❄</span>
-  <span>❄</span>
-  <span>❄</span>
-  <span>❄</span>
-  <span>❄</span>
-  <span>❄</span>
-  <span>❄</span>
-  <span>❄</span>
-  <span>❄</span>
-  <span>❄</span>
-  <span>❄</span>
-  <span>❄</span>
-  <span>❄</span>
-  <span>❄</span>
-  <span>❄</span>
+    <span>❄</span>
+    <span>❄</span>
+    <span>❄</span>
+    <span>❄</span>
+    <span>❄</span>
+    <span>❄</span>
+    <span>❄</span>
+    <span>❄</span>
+    <span>❄</span>
+    <span>❄</span>
+    <span>❄</span>
+    <span>❄</span>
+    <span>❄</span>
+    <span>❄</span>
+    <span>❄</span>
+    <span>❄</span>
+    <span>❄</span>
+    <span>❄</span>
+    <span>❄</span>
+    <span>❄</span>
 
 </div>
 
@@ -1158,288 +1206,311 @@ body{
 ====================================================== -->
 
 <audio id="musica" loop preload="auto">
-
-  <source src="musica.mp3" type="audio/mpeg">
-
+    <source src="musica.mp3" type="audio/mpeg">
 </audio>
-
-
-<!-- ======================================================
-     🔊 BOTÓN DE MÚSICA
-====================================================== -->
-
-<button
-  id="botonMusica"
-  class="boton-musica"
-  onclick="toggleMusica()"
-  aria-label="Controlar música">
-
-  🔊
-
-</button>
 
 
 <!-- ======================================================
      🌹 PORTADA
 ====================================================== -->
 
-<section
-  class="portada"
-  onclick="abrirInvitacion()">
+<section id="portada" onclick="abrirInvitacion()">
 
-  <img
-    src="portada.jpeg"
-    alt="Portada XV años de Marian">
-
-  <div class="portada-overlay">
+    <img
+        src="portada.jpeg"
+        alt="XV años de Marian">
 
     <div class="boton-abrir">
-      Toca para abrir
+        Toca para abrir
     </div>
 
-  </div>
-
 </section>
 
 
 <!-- ======================================================
-     🖼️ INICIO
+     CONTENIDO
 ====================================================== -->
 
-<section class="seccion inicio">
-
-  <img
-    src="inicio.jpeg"
-    alt="XV años de Marian">
-
-</section>
+<main id="contenido">
 
 
-<!-- ======================================================
-     💌 INVITACIÓN
-====================================================== -->
+    <!-- ==================================================
+         🔊 MÚSICA
+    ================================================== -->
 
-<section class="seccion invitacion">
+    <button
+        id="botonMusica"
+        class="boton-musica"
+        onclick="toggleMusica(event)">
 
-  <img
-    src="invitacion.jpeg"
-    alt="Invitación XV años de Marian">
+        🔊
 
-</section>
-
-
-<!-- ======================================================
-     📋 DETALLES
-====================================================== -->
-
-<section class="seccion detalles">
-
-  <img
-    src="detalles.jpeg"
-    alt="Detalles XV años de Marian">
-
-</section>
+    </button>
 
 
-<!-- ======================================================
-     ⏳ CRONÓMETRO
-====================================================== -->
+    <!-- ==================================================
+         🖼️ INICIO
+    ================================================== -->
 
-<section class="seccion cronometro">
+    <section class="seccion">
 
-  <img
-    src="cronometro.jpeg"
-    alt="Cuenta regresiva">
+        <img
+            src="inicio.jpeg"
+            alt="Marian XV años">
 
-  <div class="contador">
+    </section>
 
-    <div class="contador-item">
 
-      <div
-        id="dias"
-        class="contador-numero">
-        0
-      </div>
+    <!-- ==================================================
+         💌 INVITACIÓN
+    ================================================== -->
 
-      <div class="contador-texto">
-        DÍAS
-      </div>
+    <section class="seccion">
+
+        <img
+            src="invitacion.jpeg"
+            alt="Invitación">
+
+    </section>
+
+
+    <!-- ==================================================
+         📋 DETALLES
+    ================================================== -->
+
+    <section class="seccion">
+
+        <img
+            src="detalles.jpeg"
+            alt="Detalles">
+
+    </section>
+
+
+    <!-- ==================================================
+         ⏳ CRONÓMETRO
+    ================================================== -->
+
+    <section class="seccion cronometro">
+
+        <img
+            src="cronometro.jpeg"
+            alt="Cuenta regresiva">
+
+
+        <div class="contador">
+
+
+            <div class="contador-item">
+
+                <div
+                    id="dias"
+                    class="contador-numero">
+
+                    0
+
+                </div>
+
+                <div class="contador-texto">
+
+                    DÍAS
+
+                </div>
+
+            </div>
+
+
+            <div class="contador-item">
+
+                <div
+                    id="horas"
+                    class="contador-numero">
+
+                    0
+
+                </div>
+
+                <div class="contador-texto">
+
+                    HORAS
+
+                </div>
+
+            </div>
+
+
+            <div class="contador-item">
+
+                <div
+                    id="minutos"
+                    class="contador-numero">
+
+                    0
+
+                </div>
+
+                <div class="contador-texto">
+
+                    MINUTOS
+
+                </div>
+
+            </div>
+
+
+            <div class="contador-item">
+
+                <div
+                    id="segundos"
+                    class="contador-numero">
+
+                    0
+
+                </div>
+
+                <div class="contador-texto">
+
+                    SEGUNDOS
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- ==================================================
+             🌹 ROSA ORIGINAL
+        ================================================== -->
+
+        <div class="rosa-wrapper">
+
+            <div class="container">
+
+
+                <div class="glass">
+
+                    <div class="shine"></div>
+
+                </div>
+
+
+                <div class="thorns">
+
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+
+                </div>
+
+
+                <div class="leaves">
+
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+
+                </div>
+
+
+                <div class="petals">
+
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+
+                </div>
+
+
+                <div class="deadPetals">
+
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==================================================
+         📱 CONFIRMAR
+    ================================================== -->
+
+    <section class="seccion confirmar">
+
+        <img
+            src="confirmar.jpeg"
+            alt="Confirmar asistencia">
+
+
+        <a
+            class="boton-confirmar"
+            href="https://wa.me/522821424816"
+            target="_blank"
+            rel="noopener">
+
+            Confirmar asistencia
+
+        </a>
+
+    </section>
+
+
+    <!-- ==================================================
+         ✨ FINAL
+    ================================================== -->
+
+    <section class="seccion">
+
+        <img
+            src="final.jpeg"
+            alt="Marian XV años">
+
+    </section>
+
+
+    <!-- ==================================================
+         🖋️ CRÉDITOS
+    ================================================== -->
+
+    <div class="creditos">
+
+        <div class="credito-titulo">
+            Creado por
+        </div>
+
+        <div class="credito-marca">
+            Moongrafik
+        </div>
+
+        <a
+            class="credito-whatsapp"
+            href="https://wa.me/524426070366"
+            target="_blank"
+            rel="noopener">
+
+            WhatsApp · 4426070366
+
+        </a>
 
     </div>
 
 
-    <div class="contador-item">
-
-      <div
-        id="horas"
-        class="contador-numero">
-        0
-      </div>
-
-      <div class="contador-texto">
-        HORAS
-      </div>
-
-    </div>
-
-
-    <div class="contador-item">
-
-      <div
-        id="minutos"
-        class="contador-numero">
-        0
-      </div>
-
-      <div class="contador-texto">
-        MINUTOS
-      </div>
-
-    </div>
-
-
-    <div class="contador-item">
-
-      <div
-        id="segundos"
-        class="contador-numero">
-        0
-      </div>
-
-      <div class="contador-texto">
-        SEGUNDOS
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <!-- ==================================================
-       🌹 ROSA ORIGINAL
-  ================================================== -->
-
-  <div class="rosa-wrapper">
-
-    <div class="container">
-
-      <div class="glass">
-
-        <div class="shine"></div>
-
-      </div>
-
-
-      <div class="thorns">
-
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-
-      </div>
-
-
-      <div class="leaves">
-
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-
-      </div>
-
-
-      <div class="petals">
-
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-
-      </div>
-
-
-      <div class="deadPetals">
-
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- ======================================================
-     📱 CONFIRMAR
-====================================================== -->
-
-<section class="seccion confirmar">
-
-  <img
-    src="confirmar.jpeg"
-    alt="Confirmar asistencia">
-
-  <a
-    class="boton-whatsapp"
-    href="https://wa.me/522821424816"
-    target="_blank"
-    rel="noopener">
-
-    Confirmar asistencia
-
-  </a>
-
-</section>
-
-
-<!-- ======================================================
-     ✨ FINAL
-====================================================== -->
-
-<section class="seccion final">
-
-  <img
-    src="final.jpeg"
-    alt="Marian XV años">
-
-</section>
-
-
-<!-- ======================================================
-     🖋️ CRÉDITOS
-====================================================== -->
-
-<div class="creditos">
-
-  <div class="credito-titulo">
-    Creado por
-  </div>
-
-  <div class="credito-marca">
-    Moongrafik
-  </div>
-
-  <a
-    class="credito-whatsapp"
-    href="https://wa.me/524426070366"
-    target="_blank"
-    rel="noopener">
-
-    WhatsApp · 4426070366
-
-  </a>
-
-</div>
+</main>
 
 
 <script>
@@ -1448,56 +1519,119 @@ body{
    🎵 MÚSICA
 ========================================================= */
 
-const musica = document.getElementById("musica");
+const musica =
+    document.getElementById("musica");
 
 const botonMusica =
-  document.getElementById("botonMusica");
+    document.getElementById("botonMusica");
 
+
+/* =========================================================
+   👆 ABRIR INVITACIÓN
+========================================================= */
 
 function abrirInvitacion(){
 
-  /*
-    Reiniciamos la música desde 0:00
-  */
+    /*
+       La música comienza desde 0:00
+    */
 
-  musica.currentTime = 0;
+    musica.currentTime = 0;
 
-  musica.volume = 1;
+    musica.volume = 1;
 
-  musica.play()
-    .then(() => {
+    musica.play()
+        .then(() => {
 
-      botonMusica.textContent = "🔊";
+            if(botonMusica){
+                botonMusica.textContent = "🔊";
+            }
 
-    })
-    .catch(() => {
+        })
+        .catch(() => {
 
-      console.log("El navegador bloqueó la reproducción.");
+            console.log(
+                "El navegador bloqueó la reproducción."
+            );
 
-    });
+        });
+
+
+    /*
+       Quitamos la portada
+       con transición.
+    */
+
+    const portada =
+        document.getElementById("portada");
+
+    const contenido =
+        document.getElementById("contenido");
+
+
+    portada.classList.add("oculta");
+
+
+    setTimeout(() => {
+
+        contenido.classList.add("visible");
+
+        /*
+           Después de abrir,
+           bajamos suavemente al inicio.
+        */
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    },700);
+
+
+    /*
+       Después de la transición
+       quitamos la portada del flujo.
+    */
+
+    setTimeout(() => {
+
+        portada.style.display = "none";
+
+    },1100);
 
 }
 
 
 /* =========================================================
-   CONTROL DE MÚSICA
+   🔊 CONTROL DE MÚSICA
 ========================================================= */
 
-function toggleMusica(){
+function toggleMusica(event){
 
-  if(musica.paused){
+    /*
+       Evita que el botón provoque
+       otros eventos.
+    */
 
-    musica.play();
+    if(event){
+        event.stopPropagation();
+    }
 
-    botonMusica.textContent = "🔊";
 
-  }else{
+    if(musica.paused){
 
-    musica.pause();
+        musica.play();
 
-    botonMusica.textContent = "🔇";
+        botonMusica.textContent = "🔊";
 
-  }
+    }else{
+
+        musica.pause();
+
+        botonMusica.textContent = "🔇";
+
+    }
 
 }
 
@@ -1507,86 +1641,86 @@ function toggleMusica(){
 ========================================================= */
 
 const fechaXV =
-  new Date(
-    2026,
-    11,
-    30,
-    0,
-    0,
-    0
-  ).getTime();
+    new Date(
+        2026,
+        11,
+        30,
+        0,
+        0,
+        0
+    ).getTime();
 
 
 function actualizarContador(){
 
-  const ahora =
-    new Date().getTime();
+    const ahora =
+        new Date().getTime();
 
-  const diferencia =
-    fechaXV - ahora;
+    const diferencia =
+        fechaXV - ahora;
 
 
-  if(diferencia <= 0){
+    if(diferencia <= 0){
+
+        document.getElementById("dias").textContent =
+            "0";
+
+        document.getElementById("horas").textContent =
+            "0";
+
+        document.getElementById("minutos").textContent =
+            "0";
+
+        document.getElementById("segundos").textContent =
+            "0";
+
+        return;
+
+    }
+
+
+    const dias =
+        Math.floor(
+            diferencia /
+            (1000 * 60 * 60 * 24)
+        );
+
+
+    const horas =
+        Math.floor(
+            (diferencia %
+            (1000 * 60 * 60 * 24)) /
+            (1000 * 60 * 60)
+        );
+
+
+    const minutos =
+        Math.floor(
+            (diferencia %
+            (1000 * 60 * 60)) /
+            (1000 * 60)
+        );
+
+
+    const segundos =
+        Math.floor(
+            (diferencia %
+            (1000 * 60)) /
+            1000
+        );
+
 
     document.getElementById("dias").textContent =
-      "0";
+        dias;
 
     document.getElementById("horas").textContent =
-      "0";
+        horas;
 
     document.getElementById("minutos").textContent =
-      "0";
+        minutos;
 
     document.getElementById("segundos").textContent =
-      "0";
-
-    return;
-
-  }
-
-
-  const dias =
-    Math.floor(
-      diferencia /
-      (1000 * 60 * 60 * 24)
-    );
-
-
-  const horas =
-    Math.floor(
-      (diferencia %
-      (1000 * 60 * 60 * 24)) /
-      (1000 * 60 * 60)
-    );
-
-
-  const minutos =
-    Math.floor(
-      (diferencia %
-      (1000 * 60 * 60)) /
-      (1000 * 60)
-    );
-
-
-  const segundos =
-    Math.floor(
-      (diferencia %
-      (1000 * 60)) /
-      1000
-    );
-
-
-  document.getElementById("dias").textContent =
-    dias;
-
-  document.getElementById("horas").textContent =
-    horas;
-
-  document.getElementById("minutos").textContent =
-    minutos;
-
-  document.getElementById("segundos").textContent =
-    segundos;
+        segundos;
 
 }
 
@@ -1594,12 +1728,11 @@ function actualizarContador(){
 actualizarContador();
 
 setInterval(
-  actualizarContador,
-  1000
+    actualizarContador,
+    1000
 );
 
 </script>
-
 
 </body>
 </html>
