@@ -1,379 +1,243 @@
-```html
 <!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<html lang="es"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>XV Años de Marian</title>
 
-<style>
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+<style> /* ============================== CONFIGURACIÓN GENERAL ================================ */ * { box-sizing: border-box; margin: 0; padding: 0; } html, body { width: 100%; min-width: 100%; margin: 0; padding: 0; overflow-x: hidden; } body { background: #071b36; color: white; font-family: Georgia, "Times New Roman", serif; } /* ============================== NIEVE ================================ */ .nieve { position: fixed; top: -30px; color: white; pointer-events: none; z-index: 9999; line-height: 1; animation: caer linear forwards; } @keyframes caer { from { transform: translateY(-30px) rotate(0deg); } to { transform: translateY(110vh) rotate(360deg); } } /* ============================== PORTADA ================================ */ #portada { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background-image: url("portada.jpeg"); background-size: cover; background-position: center; background-repeat: no-repeat; display: flex; align-items: flex-end; justify-content: center; z-index: 1000; transition: opacity 1s ease, transform 1s ease; } #portada.oculta { opacity: 0; transform: scale(1.05); pointer-events: none; } /* BOTÓN ABRIR */ .abrir { margin-bottom: 45px; padding: 15px 28px; border: 2px solid #FFD700; border-radius: 50px; background: rgba(7, 27, 54, 0.90); color: #FFD700; font-size: 20px; font-weight: bold; line-height: 1.2; cursor: pointer; box-shadow: 0 0 20px rgba(255, 215, 0, 0.5); animation: pulsar 1.8s infinite; } @keyframes pulsar { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.06); } } /* ============================== CONTENIDO ================================ */ #contenido { display: none; width: 100%; margin: 0; padding: 0; } #contenido.mostrar { display: block; animation: aparecer 1s ease; } @keyframes aparecer { from { opacity: 0; } to { opacity: 1; } } /* ============================== IMÁGENES ================================ */ .seccion { display: block; width: 100%; margin: 0; padding: 0; overflow: hidden; line-height: 0; } .seccion img { display: block; width: 100%; height: auto; max-width: none; margin: 0; padding: 0; border: 0; } /* ============================== CRONÓMETRO ================================ */ .contador { position: relative; display: block; width: 100%; margin: 0; padding: 0; overflow: hidden; line-height: 0; } /* IMAGEN DEL CRONÓMETRO */ .imagen-contador { display: block; width: 100%; height: auto; max-width: none; margin: 0; padding: 0; border: 0; } /* ============================== NÚMEROS DEL CRONÓMETRO ================================ */ .numeros-contador { position: absolute; top: 63%; left: 50%; transform: translate(-50%, -50%); width: 92%; display: grid; grid-template-columns: repeat(4, 1fr); text-align: center; color: #FFD700; line-height: normal; text-shadow: 0 2px 5px #000, 0 0 10px rgba(255, 215, 0, 0.8); } .tiempo { display: flex; flex-direction: column; align-items: center; justify-content: center; } .numero { font-size: clamp(28px, 7vw, 75px); font-weight: bold; line-height: 1; } .etiqueta { margin-top: 7px; font-size: clamp(8px, 2vw, 17px); font-weight: bold; letter-spacing: 1px; line-height: 1.2; } /* ============================== CONFIRMAR ASISTENCIA ================================ */ .confirmacion { width: 100%; margin: 0; padding: 18px 15px 25px; background: #071b36; text-align: center; line-height: normal; } .boton { display: inline-block; padding: 15px 30px; border-radius: 50px; background: #FFD700; color: #071b36; text-decoration: none; font-size: 18px; font-weight: bold; line-height: 1.2; box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4); transition: transform 0.2s ease; } .boton:hover { transform: scale(1.05); } .boton:active { transform: scale(0.96); } /* ============================== BOTÓN DE MÚSICA ================================ */ #botonMusica { position: fixed; right: 16px; bottom: 16px; width: 52px; height: 52px; border-radius: 50%; border: 2px solid #FFD700; background: rgba(7, 27, 54, 0.95); color: #FFD700; font-size: 22px; cursor: pointer; z-index: 9998; line-height: 1; box-shadow: 0 0 15px rgba(255, 215, 0, 0.4); } /* ============================== CELULAR ================================ */ @media (max-width: 600px) { .abrir { margin-bottom: 35px; padding: 13px 24px; font-size: 17px; } .numeros-contador { width: 96%; } .numero { font-size: clamp(22px, 9vw, 50px); } .etiqueta { font-size: clamp(7px, 2.5vw, 13px); letter-spacing: 0; } .confirmacion { padding: 15px 10px 20px; } .boton { font-size: 16px; padding: 13px 24px; } } </style>
 
-html,
-body {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  background: #071b36;
-  color: white;
-  font-family: Georgia, "Times New Roman", serif;
-  overflow-x: hidden;
-  line-height: 0;
-}
-
-/* =========================
-   NIEVE
-========================= */
-
-.nieve {
-  position: fixed;
-  top: -30px;
-  color: white;
-  pointer-events: none;
-  z-index: 9999;
-  animation: caer linear forwards;
-  line-height: 1;
-}
-
-@keyframes caer {
-  from {
-    transform: translateY(-30px) rotate(0deg);
-  }
-
-  to {
-    transform: translateY(110vh) rotate(360deg);
-  }
-}
-
-/* =========================
-   PORTADA
-========================= */
-
-#portada {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100vh;
-
-  background-image: url("portada.jpeg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-
-  z-index: 1000;
-
-  transition:
-    opacity 1s ease,
-    transform 1s ease;
-}
-
-#portada.oculta {
-  opacity: 0;
-  transform: scale(1.05);
-  pointer-events: none;
-}
-
-.abrir {
-  margin-bottom: 45px;
-
-  padding: 15px 28px;
-
-  border: 2px solid #FFD700;
-  border-radius: 50px;
-
-  background: rgba(7, 27, 54, 0.85);
-
-  color: #FFD700;
-
-  font-size: 20px;
-  font-weight: bold;
-  line-height: 1.2;
-
-  cursor: pointer;
-
-  box-shadow:
-    0 0 15px rgba(255, 215, 0, 0.5);
-
-  animation: pulsar 1.8s infinite;
-}
-
-@keyframes pulsar {
-  0%, 100% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.05);
-  }
-}
-
-/* =========================
-   CONTENIDO
-========================= */
-
-#contenido {
-  display: none;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-#contenido.mostrar {
-  display: block;
-  animation: aparecer 1s ease;
-}
-
-@keyframes aparecer {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-/* =========================
-   TODAS LAS IMÁGENES
-========================= */
-
-.seccion {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  display: block;
-  overflow: hidden;
-}
-
-.seccion img {
-  display: block;
-
-  width: 100%;
-  max-width: 100%;
-
-  height: auto;
-
-  margin: 0;
-  padding: 0;
-
-  object-fit: contain;
-}
-
-/* =========================
-   CRONÓMETRO
-========================= */
-
-.contador {
-  position: relative;
-
-  width: 100%;
-
-  margin: 0;
-  padding: 0;
-
-  overflow: hidden;
-
-  line-height: 0;
-}
-
-/* Imagen del cronómetro */
-
-.imagen-contador {
-  display: block;
-
-  width: 100%;
-  max-width: 100%;
-
-  height: auto;
-
-  margin: 0;
-  padding: 0;
-
-  object-fit: contain;
-}
-
-/* Números encima de la imagen */
-
-.numeros-contador {
-  position: absolute;
-
-  top: 63%;
-  left: 50%;
-
-  transform: translate(-50%, -50%);
-
-  width: 92%;
-
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-
-  text-align: center;
-
-  color: #FFD700;
-
-  line-height: normal;
-
-  text-shadow:
-    0 2px 5px #000,
-    0 0 10px rgba(255, 215, 0, 0.8);
-}
-
-.tiempo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.numero {
-  font-size: clamp(28px, 7vw, 75px);
-
-  font-weight: bold;
-
-  line-height: 1;
-}
-
-.etiqueta {
-  margin-top: 6px;
-
-  font-size: clamp(8px, 2vw, 17px);
-
-  font-weight: bold;
-
-  letter-spacing: 1px;
-
-  line-height: 1.2;
-}
-
-/* =========================
-   CONFIRMAR ASISTENCIA
-========================= */
-
-.confirmacion {
-  width: 100%;
-
-  margin: 0;
-  padding: 18px 15px 25px;
-
-  background: #071b36;
-
-  text-align: center;
-
-  line-height: normal;
-}
-
-.boton {
-  display: inline-block;
-
-  padding: 14px 28px;
-
-  border-radius: 50px;
-
-  background: #FFD700;
-
-  color: #071b36;
-
-  text-decoration: none;
-
-  font-size: 18px;
-
-  font-weight: bold;
-
-  line-height: 1.2;
-
-  box-shadow:
-    0 5px 20px rgba(255, 215, 0, 0.4);
-
-  transition: transform 0.3s ease;
-}
-
-.boton:hover {
-  transform: scale(1.05);
-}
-
-/* =========================
-   BOTÓN DE MÚSICA
-========================= */
-
-#botonMusica {
-  position: fixed;
-
-  right: 16px;
-  bottom: 16px;
-
-  width: 52px;
-  height: 52px;
-
-  border-radius: 50%;
-
-  border: 2px solid #FFD700;
-
-  background: rgba(7, 27, 54, 0.92);
-
-  color: #FFD700;
-
-  font-size: 22px;
-
-  cursor: pointer;
-
-  z-index: 9998;
-
-  line-height: 1;
-
-  box-shadow:
-    0 0 15px rgba(255, 215, 0, 0.4);
-}
-
-/* =========================
-   CELULAR
-========================= */
-
-@media (max-width: 600px) {
-
-  .abrir {
-    margin-bottom: 35px;
-    padding: 13px 24px;
-    font-size: 17px;
-  }
-
-  .numeros-contador {
-    width: 96%;
-  }
-
-  .numero {
-    font-size: clamp(23px, 9vw, 50px);
-  }
-
-  .etiqueta {
-    font-size: clamp(7px, 2.5vw, 13px);
-  }
-
-  .confirmacion {
-    padding: 15px 12px 20px;
-  }
-
-  .boton {
-    font-size: 16px;
-    padding: 13px 24px;
-  }
-}
-</style>
 </head>
 
 <body>
 
-<!-- =========================
-     PORTADA
-```
+<!-- ========================================= PORTADA ========================================= -->
+
+<div id="portada" onclick="abrirInvitacion()" >
+
+<div class="abrir">
+
+    ✨ Toca para abrir ✨
+
+</div>
+
+</div>
+
+<!-- ========================================= MÚSICA ========================================= -->
+
+<audio
+id="musica"
+loop
+preload="auto"
+
+
+
+
+<source
+    src="./musica.mp3"
+    type="audio/mpeg"
+>
+
+</audio>
+
+<!-- ========================================= CONTENIDO ========================================= -->
+
+<main id="contenido">
+
+<!-- =====================================
+     1. INVITACIÓN
+====================================== -->
+
+<section class="seccion">
+
+    <img
+        src="invitacion.jpeg"
+        alt="Invitación de Marian"
+    >
+
+</section>
+
+
+<!-- =====================================
+     2. DETALLES
+====================================== -->
+
+<section class="seccion">
+
+    <img
+        src="detalles.jpeg"
+        alt="Detalles de los XV años"
+    >
+
+</section>
+
+
+<!-- =====================================
+     3. CRONÓMETRO
+     
+     AQUÍ VA TU IMAGEN
+     "Una noche soñada está por comenzar"
+====================================== -->
+
+<section class="contador">
+
+
+    <!-- IMAGEN DEL CRONÓMETRO -->
+
+    <img
+        class="imagen-contador"
+        src="cronometro.jpeg"
+        alt="Una noche soñada está por comenzar"
+    >
+
+
+    <!-- NÚMEROS ENCIMA DE LA IMAGEN -->
+
+    <div class="numeros-contador">
+
+
+        <!-- DÍAS -->
+
+        <div class="tiempo">
+
+            <span
+                id="dias"
+                class="numero"
+            >
+                0
+            </span>
+
+            <span class="etiqueta">
+                DÍAS
+            </span>
+
+        </div>
+
+
+        <!-- HORAS -->
+
+        <div class="tiempo">
+
+            <span
+                id="horas"
+                class="numero"
+            >
+                00
+            </span>
+
+            <span class="etiqueta">
+                HORAS
+            </span>
+
+        </div>
+
+
+        <!-- MINUTOS -->
+
+        <div class="tiempo">
+
+            <span
+                id="minutos"
+                class="numero"
+            >
+                00
+            </span>
+
+            <span class="etiqueta">
+                MINUTOS
+            </span>
+
+        </div>
+
+
+        <!-- SEGUNDOS -->
+
+        <div class="tiempo">
+
+            <span
+                id="segundos"
+                class="numero"
+            >
+                00
+            </span>
+
+            <span class="etiqueta">
+                SEGUNDOS
+            </span>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =====================================
+     4. CONFIRMAR ASISTENCIA
+====================================== -->
+
+<section class="seccion">
+
+    <img
+        src="confirmar.jpeg"
+        alt="Confirmar asistencia"
+    >
+
+</section>
+
+
+<!-- =====================================
+     BOTÓN WHATSAPP
+     
+     +52 282 142 4816
+====================================== -->
+
+<section class="confirmacion">
+
+    <a
+        class="boton"
+        href="https://wa.me/522821424816"
+        target="_blank"
+        rel="noopener noreferrer"
+    >
+
+        💌 Confirmar asistencia
+
+    </a>
+
+</section>
+
+
+<!-- =====================================
+     5. FINAL
+====================================== -->
+
+<section class="seccion">
+
+    <img
+        src="final.jpeg"
+        alt="Gracias por acompañarme"
+    >
+
+</section>
+
+</main>
+
+<!-- ========================================= BOTÓN DE MÚSICA ========================================= -->
+
+<button
+id="botonMusica"
+onclick="controlarMusica(event)"
+aria-label="Controlar música"
+
+
+
+
+🎵
+
+</button>
+
+<script> /* ========================================= ABRIR INVITACIÓN ========================================= */ function abrirInvitacion() { const portada = document.getElementById("portada"); const contenido = document.getElementById("contenido"); const musica = document.getElementById("musica"); /* Quitar portada */ portada.classList.add("oculta"); /* Mostrar invitación */ contenido.classList.add("mostrar"); /* Iniciar música desde 0:00 */ musica.currentTime = 0; musica.volume = 1; musica.play() .then(function() { document.getElementById( "botonMusica" ).textContent = "🎵"; }) .catch(function(error) { console.log( "No se pudo reproducir la música:", error ); }); } /* ========================================= CONTROL DE MÚSICA ========================================= */ function controlarMusica(event) { event.stopPropagation(); const musica = document.getElementById("musica"); const boton = document.getElementById("botonMusica"); if (musica.paused) { musica.play(); boton.textContent = "🎵"; } else { musica.pause(); boton.textContent = "🔇"; } } /* ========================================= CRONÓMETRO ========================================= */ /* FECHA DEL EVENTO: 30 DE DICIEMBRE DE 2026 La fecha se establece a las 00:00:00 del día del evento. */ const fechaXV = new Date( 2026, 11, 30, 0, 0, 0 ).getTime(); function actualizarContador() { const ahora = new Date().getTime(); const diferencia = fechaXV - ahora; /* ========================= SI YA LLEGÓ LA FECHA ========================= */ if (diferencia <= 0) { document.getElementById( "dias" ).textContent = "0"; document.getElementById( "horas" ).textContent = "00"; document.getElementById( "minutos" ).textContent = "00"; document.getElementById( "segundos" ).textContent = "00"; return; } /* ========================= CALCULAR DÍAS ========================= */ const dias = Math.floor( diferencia / (1000 * 60 * 60 * 24) ); /* ========================= CALCULAR HORAS ========================= */ const horas = Math.floor( (diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60) ); /* ========================= CALCULAR MINUTOS ========================= */ const minutos = Math.floor( (diferencia % (1000 * 60 * 60)) / (1000 * 60) ); /* ========================= CALCULAR SEGUNDOS ========================= */ const segundos = Math.floor( (diferencia % (1000 * 60)) / 1000 ); /* ========================= MOSTRAR DÍAS ========================= */ document.getElementById( "dias" ).textContent = dias; /* ========================= MOSTRAR HORAS ========================= */ document.getElementById( "horas" ).textContent = String(horas).padStart(2, "0"); /* ========================= MOSTRAR MINUTOS ========================= */ document.getElementById( "minutos" ).textContent = String(minutos).padStart(2, "0"); /* ========================= MOSTRAR SEGUNDOS ========================= */ document.getElementById( "segundos" ).textContent = String(segundos).padStart(2, "0"); } /* ========================================= INICIAR CRONÓMETRO ========================================= */ actualizarContador(); /* ========================================= ACTUALIZAR CADA SEGUNDO ========================================= */ setInterval( actualizarContador, 1000 ); /* ========================================= NIEVE ========================================= */ const simbolos = [ "❄", "❅", "❆", "✦", "•" ]; function crearNieve() { const elemento = document.createElement("div"); elemento.className = "nieve"; elemento.textContent = simbolos[ Math.floor( Math.random() * simbolos.length ) ]; elemento.style.left = Math.random() * 100 + "vw"; elemento.style.fontSize = (8 + Math.random() * 15) + "px"; elemento.style.animationDuration = (5 + Math.random() * 8) + "s"; elemento.style.opacity = 0.3 + Math.random() * 0.7; document.body.appendChild( elemento ); setTimeout( function() { elemento.remove(); }, 14000 ); } /* Crear nieve */ setInterval( crearNieve, 350 ); </script>
+
+</body> </html> ```
+
