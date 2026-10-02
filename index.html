@@ -124,11 +124,12 @@ body{
 
 
 /* =====================================================
-   NÚMEROS DEL CRONÓMETRO
+   CONTADOR
 ===================================================== */
 
 .contador{
     position:absolute;
+
     top:64%;
     left:0;
 
@@ -151,8 +152,6 @@ body{
     flex-direction:column;
     align-items:center;
     justify-content:flex-start;
-
-    padding-top:0;
 }
 
 .contador .numero{
@@ -169,6 +168,7 @@ body{
 
     font-size:clamp(10px,2.8vw,22px);
     font-weight:bold;
+
     letter-spacing:1px;
 
     text-shadow:
@@ -178,25 +178,21 @@ body{
 
 /* =====================================================
    ROSA
+   MÁS GRANDE Y UN POCO MÁS ARRIBA
 ===================================================== */
-
-/*
-   ESTE CONTENEDOR ES EL QUE CONTROLA
-   EL TAMAÑO DE TODA LA ROSA.
-*/
 
 .rosa-wrapper{
     position:absolute;
 
     left:50%;
-    bottom:0;
+    bottom:45px;
 
     width:200px;
     height:350px;
 
     transform:
         translateX(-50%)
-        scale(.50);
+        scale(.72);
 
     transform-origin:bottom center;
 
@@ -206,15 +202,9 @@ body{
 }
 
 
-/*
-   IMPORTANTE:
-
-   La rosa original tenía su propio
-   transform: translate(-50%,-50%).
-
-   Aquí lo anulamos para que no se
-   vuelva gigante ni se mueva.
-*/
+/* =====================================================
+   CONTENEDOR ORIGINAL DE LA ROSA
+===================================================== */
 
 .rosa-wrapper .container{
     position:absolute;
@@ -230,7 +220,7 @@ body{
 
 
 /* =====================================================
-   ROSA ORIGINAL
+   CRISTAL
 ===================================================== */
 
 .rosa-wrapper .glass{
@@ -240,7 +230,7 @@ body{
     background:#122139;
 
     border-radius:
-        300px 300px 0px 0px;
+        300px 300px 0 0;
 }
 
 .rosa-wrapper .glass:before{
@@ -340,7 +330,6 @@ body{
 .rosa-wrapper .petals > div:nth-child(2),
 .rosa-wrapper .petals > div:nth-child(4),
 .rosa-wrapper .petals > div:nth-child(6){
-
     background:#b81b43;
 
     left:60px;
@@ -354,7 +343,6 @@ body{
 .rosa-wrapper .petals > div:nth-child(3),
 .rosa-wrapper .petals > div:nth-child(5),
 .rosa-wrapper .petals > div:nth-child(7){
-
     background:#b81b43;
 
     left:100px;
@@ -366,7 +354,6 @@ body{
 }
 
 .rosa-wrapper .petals > div:nth-child(2){
-
     z-index:5;
 
     background:#ab1a3f;
@@ -384,7 +371,6 @@ body{
 }
 
 .rosa-wrapper .petals > div:nth-child(3){
-
     z-index:4;
 
     background:#ab1a3f;
@@ -403,7 +389,6 @@ body{
 }
 
 .rosa-wrapper .petals > div:nth-child(4){
-
     z-index:3;
 
     background:#b81b43;
@@ -422,7 +407,6 @@ body{
 }
 
 .rosa-wrapper .petals > div:nth-child(5){
-
     z-index:2;
 
     background:#b81b43;
@@ -441,7 +425,6 @@ body{
 }
 
 .rosa-wrapper .petals > div:nth-child(6){
-
     z-index:1;
 
     background:#c9204b;
@@ -460,7 +443,6 @@ body{
 }
 
 .rosa-wrapper .petals > div:nth-child(7){
-
     z-index:0;
 
     background:#c9204b;
@@ -480,11 +462,10 @@ body{
 
 
 /* =====================================================
-   PÉTALOS QUE CAEN DE LA ROSA
+   PÉTALOS QUE CAEN
 ===================================================== */
 
 .rosa-wrapper .deadPetals > div{
-
     position:absolute;
 
     background:#d52d58;
@@ -504,7 +485,6 @@ body{
 }
 
 .rosa-wrapper .deadPetals > div:nth-child(1){
-
     left:67px;
 
     transform:rotate(-30deg);
@@ -514,7 +494,6 @@ body{
 }
 
 .rosa-wrapper .deadPetals > div:nth-child(2){
-
     left:104px;
 
     transform:rotate(-30deg);
@@ -524,7 +503,6 @@ body{
 }
 
 .rosa-wrapper .deadPetals > div:nth-child(3){
-
     left:91px;
 
     transform:rotate(-30deg);
@@ -534,7 +512,6 @@ body{
 }
 
 .rosa-wrapper .deadPetals > div:nth-child(4){
-
     left:69px;
 
     transform:rotate(-30deg);
@@ -549,7 +526,6 @@ body{
 ===================================================== */
 
 .rosa-wrapper .leaves > div:nth-last-child(1){
-
     position:absolute;
 
     width:55px;
@@ -564,7 +540,6 @@ body{
 }
 
 .rosa-wrapper .leaves > div:nth-child(1){
-
     position:absolute;
 
     width:6px;
@@ -580,13 +555,13 @@ body{
 }
 
 .rosa-wrapper .leaves > div:nth-child(2){
-
     position:absolute;
 
     width:30px;
     height:50px;
 
-    top:53px;
+    top:180px;
+    left:80px;
 
     border-radius:
         5px 40px 20px 40px;
@@ -597,21 +572,18 @@ body{
 
     transform:rotate(-30deg);
 
-    top:180px;
-    left:80px;
-
     box-shadow:
         inset 5px 5px #066406;
 }
 
 .rosa-wrapper .leaves > div:nth-child(3){
-
     position:absolute;
 
     width:30px;
     height:50px;
 
-    top:53px;
+    top:150px;
+    left:95px;
 
     border-radius:
         40px 5px 40px 20px;
@@ -621,9 +593,6 @@ body{
     transform-origin:bottom;
 
     transform:rotate(30deg);
-
-    top:150px;
-    left:95px;
 
     box-shadow:
         inset -5px 5px #066406;
@@ -635,7 +604,6 @@ body{
 ===================================================== */
 
 .rosa-wrapper .thorns > div{
-
     position:absolute;
 
     width:0;
@@ -645,7 +613,6 @@ body{
 }
 
 .rosa-wrapper .thorns > div:nth-child(odd){
-
     border-top:
         5px solid transparent;
 
@@ -659,7 +626,6 @@ body{
 }
 
 .rosa-wrapper .thorns > div:nth-child(even){
-
     border-top:
         5px solid transparent;
 
@@ -690,7 +656,6 @@ body{
 ===================================================== */
 
 @keyframes bloom2{
-
     50%{
         transform:rotate(-90deg);
         top:200px;
@@ -710,44 +675,37 @@ body{
 }
 
 @keyframes bloom3{
-
     100%{
         transform:rotate(45deg);
     }
 }
 
 @keyframes bloom4{
-
     100%{
         transform:rotate(-20deg);
     }
 }
 
 @keyframes bloom5{
-
     100%{
         transform:rotate(20deg);
     }
 }
 
 @keyframes bloom6{
-
     100%{
         transform:rotate(-5deg);
     }
 }
 
 @keyframes bloom7{
-
     100%{
         transform:rotate(5deg);
     }
 }
 
 @keyframes glowing{
-
     50%{
-
         background:#d7365f;
 
         box-shadow:
@@ -756,9 +714,7 @@ body{
 }
 
 @keyframes falling{
-
     20%{
-
         top:335px;
 
         background:#9d193b;
@@ -768,9 +724,7 @@ body{
     }
 
     100%{
-
         top:335px;
-
         opacity:0;
     }
 }
@@ -785,7 +739,6 @@ body{
 }
 
 .boton-confirmar{
-
     display:block;
 
     width:max-content;
@@ -816,9 +769,7 @@ body{
 }
 
 .boton-confirmar:hover{
-
     background:#c9a227;
-
     color:#06182d;
 }
 
@@ -828,7 +779,6 @@ body{
 ===================================================== */
 
 .creditos{
-
     width:100%;
 
     text-align:center;
@@ -842,14 +792,11 @@ body{
 }
 
 .creditos p{
-
     margin:5px 0;
-
     font-size:14px;
 }
 
 .creditos .marca{
-
     color:#c9a227;
 
     font-size:18px;
@@ -858,7 +805,6 @@ body{
 }
 
 .creditos a{
-
     color:white;
 
     text-decoration:none;
@@ -867,7 +813,6 @@ body{
 }
 
 .creditos a:hover{
-
     color:#c9a227;
 }
 
@@ -877,7 +822,6 @@ body{
 ===================================================== */
 
 #botonMusica{
-
     position:fixed;
 
     right:15px;
@@ -911,7 +855,6 @@ body{
 ===================================================== */
 
 .copos-nieve{
-
     position:fixed;
 
     inset:0;
@@ -927,7 +870,6 @@ body{
 }
 
 .copo{
-
     position:absolute;
 
     top:-50px;
@@ -947,9 +889,7 @@ body{
 }
 
 @keyframes caer{
-
     0%{
-
         transform:
             translateY(-50px)
             rotate(0deg);
@@ -966,7 +906,6 @@ body{
     }
 
     100%{
-
         transform:
             translateY(110vh)
             rotate(360deg);
@@ -977,10 +916,14 @@ body{
 
 
 /* =====================================================
-   AJUSTES PARA CELULAR
+   CELULAR
 ===================================================== */
 
 @media(max-width:600px){
+
+    .contador{
+        top:64%;
+    }
 
     .contador .numero{
         font-size:25px;
@@ -991,21 +934,19 @@ body{
         letter-spacing:.5px;
     }
 
-    /*
-       ROSA AÚN MÁS PEQUEÑA EN CELULAR
-    */
+
+    /* SOLO CAMBIAMOS LA ROSA */
 
     .rosa-wrapper{
-
-        bottom:0;
+        bottom:45px;
 
         transform:
             translateX(-50%)
-            scale(.28);
+            scale(.62);
     }
 
-    .boton-confirmar{
 
+    .boton-confirmar{
         font-size:14px;
 
         padding:
@@ -1016,7 +957,6 @@ body{
     }
 
     #botonMusica{
-
         width:42px;
         height:42px;
 
@@ -1025,12 +965,12 @@ body{
 
         font-size:18px;
     }
+
 }
 
 </style>
 
 </head>
-
 
 <body>
 
@@ -1039,7 +979,10 @@ body{
      PORTADA
 ===================================================== -->
 
-<div id="portada" onclick="abrirInvitacion()">
+<div
+    id="portada"
+    onclick="abrirInvitacion()"
+>
 
     <img
         src="portada.jpeg"
@@ -1047,7 +990,6 @@ body{
     >
 
 </div>
-
 
 
 <!-- =====================================================
@@ -1074,7 +1016,6 @@ body{
 >
     🔊
 </button>
-
 
 
 <!-- =====================================================
@@ -1145,7 +1086,6 @@ body{
 </div>
 
 
-
 <!-- =====================================================
      CONTENIDO
 ===================================================== -->
@@ -1153,9 +1093,7 @@ body{
 <main id="contenido">
 
 
-    <!-- =================================================
-         INICIO
-    ================================================== -->
+    <!-- INICIO -->
 
     <section class="seccion">
 
@@ -1167,10 +1105,7 @@ body{
     </section>
 
 
-
-    <!-- =================================================
-         INVITACIÓN
-    ================================================== -->
+    <!-- INVITACIÓN -->
 
     <section class="seccion">
 
@@ -1182,10 +1117,7 @@ body{
     </section>
 
 
-
-    <!-- =================================================
-         DETALLES
-    ================================================== -->
+    <!-- DETALLES -->
 
     <section class="seccion">
 
@@ -1195,7 +1127,6 @@ body{
         >
 
     </section>
-
 
 
     <!-- =================================================
@@ -1280,7 +1211,6 @@ body{
         </div>
 
 
-
         <!-- =================================================
              ROSA
         ================================================== -->
@@ -1345,9 +1275,8 @@ body{
     </section>
 
 
-
     <!-- =================================================
-         CONFIRMAR ASISTENCIA
+         CONFIRMAR
     ================================================== -->
 
     <section class="seccion confirmar">
@@ -1356,7 +1285,6 @@ body{
             src="confirmar.jpeg"
             alt="Confirmar asistencia"
         >
-
 
         <a
             class="boton-confirmar"
@@ -1368,7 +1296,6 @@ body{
         </a>
 
     </section>
-
 
 
     <!-- =================================================
@@ -1385,9 +1312,8 @@ body{
     </section>
 
 
-
     <!-- =================================================
-         CRÉDITOS MOONGRAFIK
+         CRÉDITOS
     ================================================== -->
 
     <footer class="creditos">
@@ -1417,7 +1343,6 @@ body{
 </main>
 
 
-
 <script>
 
 /* =====================================================
@@ -1436,8 +1361,6 @@ function abrirInvitacion(){
         document.getElementById("contenido");
 
 
-    /* Iniciar música desde 0 */
-
     musica.currentTime = 0;
 
     musica.volume = 1;
@@ -1451,12 +1374,8 @@ function abrirInvitacion(){
     });
 
 
-    /* Animación de salida de portada */
-
     portada.classList.add("oculta");
 
-
-    /* Mostrar contenido */
 
     setTimeout(function(){
 
@@ -1470,8 +1389,6 @@ function abrirInvitacion(){
     },700);
 
 
-    /* Ocultar portada completamente */
-
     setTimeout(function(){
 
         portada.style.display="none";
@@ -1479,7 +1396,6 @@ function abrirInvitacion(){
     },1100);
 
 }
-
 
 
 /* =====================================================
@@ -1514,7 +1430,6 @@ function toggleMusica(event){
 }
 
 
-
 /* =====================================================
    CUENTA REGRESIVA
 ===================================================== */
@@ -1528,7 +1443,6 @@ const fechaXV =
         0,
         0
     ).getTime();
-
 
 
 function actualizarContador(){
@@ -1608,7 +1522,6 @@ function actualizarContador(){
 
 
 actualizarContador();
-
 
 setInterval(
     actualizarContador,
